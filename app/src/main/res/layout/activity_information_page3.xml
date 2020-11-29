@@ -1,0 +1,152 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:orientation="vertical"
+    android:background="#ffff"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".InformationPage">
+
+
+    <ImageView
+        android:id="@+id/imageView2"
+        android:layout_width="300dp"
+        android:layout_marginRight="20dp"
+        android:layout_height="300dp"
+        android:layout_below="@+id/textView8"
+        android:layout_centerHorizontal="true"
+        app:srcCompat="@drawable/bmi" />
+
+    <TextView
+        android:layout_marginTop="50dp"
+        android:id="@+id/textView8"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:textStyle="bold"
+        android:text="مرحله 4/4"
+        android:textColor="#b55dc8" />
+
+    <Button
+        android:id="@+id/ok"
+        android:layout_width="300dp"
+        android:background="@drawable/rounded_rec5"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="20dp"
+        android:textColor="#fff"
+        android:text="ثبت" />
+
+    <com.crystal.crystalrangeseekbar.widgets.BubbleThumbSeekbar
+        android:id="@+id/weight"
+        android:layout_width="300dp"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/textView11"
+        android:layout_marginTop="10dp"
+        android:layout_centerHorizontal="true"
+        app:min_value="30"
+        app:max_value="200"
+        app:bar_highlight_color="@color/colorPrimaryDark"
+        app:left_thumb_color="@color/colorAccent"
+        app:left_thumb_color_pressed="@color/colorAccent"
+        app:data_type="_integer"
+        android:scrollbarSize="10dp"
+        android:min="30"
+        />
+
+    <com.crystal.crystalrangeseekbar.widgets.BubbleThumbSeekbar
+        android:layout_marginTop="5dp"
+        android:id="@+id/height"
+        android:min="120"
+        android:max="200"
+        android:layout_centerHorizontal="true"
+        android:layout_width="300dp"
+        app:min_value="120"
+        app:max_value="200"
+        android:layout_height="wrap_content"
+        app:bar_highlight_color="@color/colorPrimaryDark"
+        app:left_thumb_color="@color/colorAccent"
+        app:left_thumb_color_pressed="@color/colorAccent"
+        app:data_type="_integer"
+        android:layout_below="@+id/textView10" />
+
+    <TextView
+        android:id="@+id/textView10"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/imageView2"
+        android:layout_centerHorizontal="true"
+        android:textSize="15dp"
+        android:textColor="#000"
+        android:text="قد" />
+
+    <TextView
+        android:layout_marginTop="40dp"
+        android:id="@+id/textView11"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/height"
+        android:layout_centerHorizontal="true"
+        android:textSize="15dp"
+        android:textColor="#000"
+        android:text="وزن" />
+
+    <TextView
+        android:id="@+id/textView14"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignTop="@+id/imageView2"
+        android:layout_centerHorizontal="true"
+        android:textColor="#000"
+        android:layout_marginTop="15dp"
+        android:textSize="15dp"
+        android:textStyle="bold"
+        android:text="قد و ورن خود را انتخاب کنید" />
+
+    <ImageView
+        android:id="@+id/imageView7"
+        android:layout_width="36dp"
+        android:layout_height="32dp"
+        android:layout_marginTop="11dp"
+        android:layout_alignParentStart="true"
+        android:layout_marginStart="5dp"
+        app:srcCompat="@drawable/per" />
+
+    <TextView
+        android:layout_marginTop="15dp"
+        android:id="@+id/hmin"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/height"
+        android:layout_alignStart="@+id/height"
+        android:text="" />
+
+    <TextView
+        android:id="@+id/hmax"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignEnd="@+id/imageView2"
+        android:layout_alignTop="@+id/height"
+        android:text="" />
+
+    <TextView
+        android:layout_marginTop="15dp"
+        android:id="@+id/wmin"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignStart="@+id/height"
+        android:layout_below="@+id/weight"
+        android:text="" />
+
+    <TextView
+        android:id="@+id/wmax"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignEnd="@+id/imageView2"
+        android:layout_alignTop="@+id/weight"
+        android:text="" />
+
+</RelativeLayout>

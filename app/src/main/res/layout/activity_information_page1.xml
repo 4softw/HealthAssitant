@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:orientation="vertical"
+    android:background="#ffff"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".InformationPage">
+
+
+    <ImageView
+        android:id="@+id/imageView2"
+        android:layout_width="300dp"
+        android:layout_height="300dp"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="108dp"
+        app:srcCompat="@drawable/name" />
+
+    <TextView
+        android:id="@+id/textVew8"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="50dp"
+        android:layout_centerHorizontal="true"
+        android:textStyle="bold"
+        android:text="مرحله 1/4"
+        android:textColor="#b55dc8" />
+
+    <EditText
+        android:id="@+id/name"
+        android:layout_width="300dp"
+        android:layout_marginTop="10dp"
+        android:layout_height="50dp"
+        android:layout_below="@+id/imageView2"
+        android:layout_centerHorizontal="true"
+        android:background="@drawable/rounded_rec3"
+        android:ems="10"
+        android:hint=" نام"
+        android:inputType="textPersonName"
+        android:text=""
+        android:textDirection="rtl" />
+
+    <EditText
+        android:id="@+id/Lastname"
+        android:layout_width="300dp"
+        android:layout_height="50dp"
+        android:layout_centerHorizontal="true"
+        android:layout_below="@id/name"
+        android:layout_marginTop="30dp"
+        android:ems="10"
+        android:textDirection="rtl"
+        android:hint=" نام خانوادگی"
+        android:background="@drawable/rounded_rec3"
+        android:inputType="textPersonName"
+        android:text="" />
+    <ImageView
+        android:id="@+id/imageView8"
+        android:layout_width="36dp"
+        android:layout_height="32dp"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentBottom="true"
+        android:layout_marginBottom="11dp"
+        android:layout_marginEnd="5dp"
+        app:srcCompat="@drawable/next" />
+
+    <TextView
+        android:id="@+id/textView12"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/textVew8"
+        android:layout_marginTop="15dp"
+        android:layout_centerHorizontal="true"
+        android:textSize="15dp"
+        android:textStyle="bold"
+        android:text="نام و نام خانوادگی خودرا وارد کنید"
+        android:textColor="#000" />
+
+</RelativeLayout>
