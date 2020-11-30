@@ -2,6 +2,7 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:background="#ffffff"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".MainActivity">
@@ -25,52 +26,6 @@
         />
 
     <ImageView
-        android:id="@+id/imageView20"
-        android:layout_width="55dp"
-        android:layout_height="48dp"
-        android:layout_alignParentStart="true"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentTop="true"
-        android:layout_alignParentBottom="true"
-        android:layout_centerHorizontal="true"
-        android:layout_marginStart="176dp"
-        android:layout_marginLeft="176dp"
-        android:layout_marginTop="554dp"
-        android:layout_marginBottom="1dp"
-        android:clickable="true"
-        app:srcCompat="@drawable/food" />
-
-    <ImageView
-        android:id="@+id/imageView21"
-        android:layout_width="74dp"
-        android:layout_height="46dp"
-        android:layout_alignParentStart="true"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentTop="true"
-        android:layout_alignParentBottom="true"
-        android:layout_marginStart="32dp"
-        android:layout_marginLeft="32dp"
-        android:layout_marginTop="555dp"
-        android:layout_marginBottom="2dp"
-        android:clickable="true"
-        app:srcCompat="@drawable/home" />
-
-    <ImageView
-        android:id="@+id/imageView22"
-        android:layout_width="70dp"
-        android:layout_height="52dp"
-        android:layout_alignParentStart="true"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentTop="true"
-        android:layout_alignParentBottom="true"
-        android:layout_marginStart="300dp"
-        android:layout_marginLeft="300dp"
-        android:layout_marginTop="548dp"
-        android:layout_marginBottom="5dp"
-        android:clickable="true"
-        app:srcCompat="@drawable/sport" />
-
-    <ImageView
         android:id="@+id/imageView23"
         android:layout_width="38dp"
         android:layout_height="31dp"
@@ -83,15 +38,15 @@
         app:srcCompat="@drawable/sun" />
 
     <ImageView
-        android:id="@+id/imageView24"
-        android:layout_width="308dp"
+        android:id="@+id/set"
+        android:layout_width="match_parent"
         android:layout_height="200dp"
         android:layout_alignParentStart="true"
         android:layout_alignParentLeft="true"
         android:layout_alignParentTop="true"
         android:layout_centerHorizontal="true"
-        android:layout_marginStart="49dp"
-        android:layout_marginLeft="49dp"
+        android:layout_marginRight="50dp"
+        android:layout_marginLeft="50dp"
         android:layout_marginTop="76dp"
         app:srcCompat="@drawable/rect2_2" />
 
@@ -99,24 +54,17 @@
         android:id="@+id/imageView25"
         android:layout_width="76dp"
         android:layout_height="60dp"
-        android:layout_alignParentStart="true"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentBottom="true"
-        android:layout_marginStart="61dp"
-        android:layout_marginLeft="61dp"
-        android:layout_marginBottom="431dp"
+        android:layout_alignEnd="@+id/colori"
+        android:layout_alignTop="@+id/textView21"
         app:srcCompat="@drawable/cg" />
 
     <ImageView
         android:id="@+id/imageView26"
-        android:layout_width="122dp"
+        android:layout_marginRight="10dp"
+        android:layout_width="130dp"
         android:layout_height="131dp"
-        android:layout_alignParentEnd="true"
-        android:layout_alignParentRight="true"
-        android:layout_alignParentBottom="true"
-        android:layout_marginEnd="195dp"
-        android:layout_marginRight="195dp"
-        android:layout_marginBottom="212dp"
+        android:layout_toStartOf="@id/textView28"
+        android:layout_below="@+id/set"
         android:clickable="true"
         app:srcCompat="@drawable/cl" />
 
@@ -124,29 +72,28 @@
         android:id="@+id/imageView27"
         android:layout_width="122dp"
         android:layout_height="131dp"
+        android:layout_alignStart="@id/imageView26"
         android:layout_below="@+id/imageView26"
-        android:layout_marginStart="-195dp"
-        android:layout_marginTop="-212dp"
-        android:layout_toEndOf="@+id/imageView26"
         android:clickable="true"
         app:srcCompat="@drawable/step___background" />
 
     <ImageView
         android:id="@+id/imageView28"
-        android:layout_width="122dp"
+        android:layout_width="120dp"
         android:layout_height="131dp"
-        android:layout_alignStart="@+id/imageView26"
+        android:layout_alignEnd="@+id/imageView29"
         android:layout_below="@+id/imageView26"
-        android:layout_marginTop="-212dp"
         app:srcCompat="@drawable/water" />
 
     <ImageView
         android:id="@+id/imageView29"
         android:layout_width="122dp"
         android:layout_height="131dp"
-        android:layout_alignTop="@+id/imageView26"
-        android:layout_marginStart="-195dp"
-        android:layout_toEndOf="@+id/imageView26"
+        android:layout_marginRight="5dp"
+        android:layout_marginLeft="10dp"
+
+        android:layout_toEndOf="@id/textView28"
+        android:layout_below="@+id/set"
         android:clickable="true"
         app:srcCompat="@drawable/weight" />
 
@@ -194,12 +141,9 @@
         android:id="@+id/textView21"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignParentStart="true"
-        android:layout_alignParentLeft="true"
+        android:layout_alignEnd="@+id/textView22"
         android:layout_alignParentTop="true"
-        android:layout_marginStart="138dp"
-        android:layout_marginLeft="138dp"
-        android:layout_marginTop="126dp"
+        android:layout_marginTop="129dp"
         android:text="امتیاز سلامتی"
         android:textColor="#000000"
         android:textSize="18sp"
@@ -238,7 +182,6 @@
         android:id="@+id/textView24"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignEnd="@+id/imageView21"
         android:layout_alignParentTop="true"
         android:layout_marginTop="117dp"
         android:text="98"
@@ -249,21 +192,24 @@
         android:id="@+id/textView26"
         android:layout_width="47dp"
         android:layout_height="wrap_content"
-        android:layout_alignTop="@+id/textView27"
-        android:layout_toEndOf="@+id/textView19"
+        android:layout_marginTop="20dp"
+        android:layout_marginRight="32dp"
+        android:layout_toStartOf="@+id/textView28"
         android:text="کالری"
+        android:layout_below="@+id/set"
         android:textColor="#FFFFFF"
-        android:textSize="18sp"
+        android:textSize="16sp"
         android:textStyle="bold" />
 
     <TextView
         android:id="@+id/textView27"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignEnd="@+id/imageView30"
-        android:layout_alignParentTop="true"
-        android:layout_marginTop="266dp"
+        android:layout_below="@+id/set"
+        android:layout_toEndOf="@+id/textView28"
         android:text="وزن"
+        android:layout_marginTop="20dp"
+        android:layout_marginLeft="80dp"
         android:textColor="#FFFFFF"
         android:textSize="18sp"
         android:textStyle="bold" />
@@ -272,8 +218,8 @@
         android:id="@+id/textView28"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_above="@+id/imageView30"
-        android:layout_alignEnd="@+id/textView26"
+       android:layout_centerVertical="true"
+        android:layout_centerHorizontal="true"
         android:text="آب"
         android:textColor="#FFFFFF"
         android:textSize="18sp"
@@ -283,29 +229,23 @@
         android:id="@+id/textView29"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_above="@+id/imageView30"
-        android:layout_toStartOf="@+id/imageView19"
+        android:layout_below="@+id/set"
+        android:layout_marginTop="150dp"
+        android:layout_alignEnd="@+id/textView26"
         android:text="گام ها"
         android:textColor="#FFFFFF"
         android:textSize="18sp"
         android:textStyle="bold" />
 
-    <TextView
-        android:id="@+id/weight"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentBottom="true"
-        android:layout_marginBottom="230dp"
-        android:layout_toStartOf="@+id/imageView19"
-        android:text="58 کیلوگرم"
-        android:textColor="#FFFFFF" />
 
     <TextView
-        android:id="@+id/colort"
+        android:id="@+id/colori"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignTop="@+id/weight"
-        android:layout_toEndOf="@+id/imageView21"
+        android:layout_alignEnd="@+id/textView26"
+        android:layout_below="@+id/textView26"
+        android:layout_marginTop="55dp"
+        android:layout_marginRight="10dp"
         android:text="500 کالری"
         android:textColor="#FFFFFF" />
 
@@ -313,21 +253,21 @@
         android:id="@+id/steps"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignTop="@+id/water"
-        android:layout_toStartOf="@+id/imageView19"
+        android:layout_alignEnd="@+id/textView26"
+        android:layout_below="@id/textView29"
+        android:layout_marginTop="55dp"
         android:text="5100 قدم"
+        android:layout_marginRight="10dp"
         android:textColor="#FFFFFF" />
 
     <TextView
         android:id="@+id/water"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignParentStart="true"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentBottom="true"
-        android:layout_marginStart="113dp"
-        android:layout_marginLeft="113dp"
-        android:layout_marginBottom="99dp"
+        android:layout_below="@+id/textView2"
+        android:layout_alignEnd="@+id/textView2"
+        android:layout_marginTop="55dp"
+        android:layout_marginRight="10dp"
         android:text="لیوان5/8"
         android:textColor="#FFFFFF" />
 
@@ -343,5 +283,26 @@
         app:srcCompat="@drawable/profile"
         android:layout_alignParentRight="true"
         android:layout_marginRight="13dp" />
+
+    <TextView
+        android:id="@+id/textView2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignEnd="@+id/textView27"
+        android:layout_alignTop="@+id/textView29"
+        android:textSize="18dp"
+        android:textColor="#ffff"
+        android:text="آب" />
+
+    <TextView
+        android:id="@+id/weight"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/textView27"
+        android:layout_alignEnd="@+id/textView27"
+        android:layout_marginTop="55dp"
+        android:layout_marginRight="10dp"
+        android:textColor="#fff"
+        android:text="58 کیلو" />
 
 </RelativeLayout>

@@ -65,10 +65,31 @@ public class SignUpDBHelper extends SQLiteOpenHelper {
         return personList;
     }
 
+    public List<InformationModel> GetInf() {
+        SQLiteDatabase db = getReadableDatabase();
+        List<InformationModel> model = new ArrayList<>();
+        Cursor cursor = db.rawQuery("SELECT * FROM InfTable", null);
+        if (cursor.moveToFirst()) {
+            do {
+                InformationModel person = new InformationModel();
+                person.setId(cursor.getString(cursor.getColumnIndex("Id")));
+                person.setName(cursor.getString(cursor.getColumnIndex("Name")));
+                person.setLastname(cursor.getString(cursor.getColumnIndex("LastName")));
+                person.setWeight(cursor.getString(cursor.getColumnIndex("Weight")));
+                person.setHeight(cursor.getString(cursor.getColumnIndex("Height")));
+                person.setAge(cursor.getString(cursor.getColumnIndex("Age")));
+                person.setSex(cursor.getString(cursor.getColumnIndex("Sex")));
+                model.add(person);
+            } while (cursor.moveToNext());
+        }
+        cursor.close();
+        return model;
+    }
+
 
     public void InsertInf(InformationModel person){
         ContentValues values=new ContentValues();
-        values.put(InformationModel.KEY_ID,person.getName());
+        values.put(InformationModel.KEY_ID,person.getId());
         values.put(InformationModel.KEY_NAME,person.getName());
         values.put(InformationModel.KEY_LNAME,person.getLastname());
         values.put(InformationModel.KEY_W,person.getWeight());
