@@ -26,24 +26,21 @@
         android:layout_width="38dp"
         android:layout_height="31dp"
         android:layout_alignParentStart="true"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentTop="true"
-        android:layout_marginStart="14dp"
-        android:layout_marginLeft="14dp"
-        android:layout_marginTop="20dp"
+        android:layout_alignTop="@+id/imageView19"
+        android:layout_marginStart="39dp"
         app:srcCompat="@drawable/sun" />
 
     <ImageView
         android:id="@+id/set"
-        android:layout_width="match_parent"
-        android:layout_height="200dp"
-        android:layout_alignParentStart="true"
+        android:layout_width="251dp"
+        android:layout_height="124dp"
         android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
         android:layout_alignParentTop="true"
         android:layout_centerHorizontal="true"
-        android:layout_marginRight="20dp"
         android:layout_marginLeft="20dp"
-        android:layout_marginTop="76dp"
+        android:layout_marginRight="20dp"
+        android:layout_marginTop="82dp"
         app:srcCompat="@drawable/rounded_rec10" />
 
     <TextView
@@ -51,11 +48,8 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentStart="true"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentTop="true"
-        android:layout_marginStart="55dp"
-        android:layout_marginLeft="55dp"
-        android:layout_marginTop="30dp"
+        android:layout_below="@+id/imageView23"
+        android:layout_marginStart="30dp"
         android:text="سه شنبه 23آذر"
         android:textColor="#673AB7"
         android:textSize="12sp" />
@@ -64,75 +58,57 @@
         android:id="@+id/hi"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignParentStart="true"
-        android:layout_below="@+id/imageView23"
-        android:layout_marginStart="34dp"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="37dp"
         android:fontFamily=""
-        android:text="سلام ،پریا"
+        android:text=" "
         android:textColor="#000000"
         android:textSize="19sp"
         android:textStyle="bold" />
 
     <ImageView
         android:id="@+id/imageView25"
-        android:layout_width="76dp"
-        android:layout_height="60dp"
-        android:layout_alignEnd="@+id/hi"
+        android:layout_width="34dp"
+        android:layout_height="40dp"
+        android:layout_alignStart="@+id/point"
         android:layout_below="@+id/imageView19"
         app:srcCompat="@drawable/cg" />
 
 
     <TextView
         android:id="@+id/point"
-        android:layout_width="76dp"
-        android:layout_height="60dp"
-        android:layout_alignEnd="@+id/hi"
+        android:layout_width="34dp"
+        android:layout_height="40dp"
+        android:layout_alignStart="@+id/imageView23"
         android:layout_below="@+id/imageView19"
-        android:textColor="#ffff"
         android:fontFamily="@font/iransans"
-        android:gravity="center_vertical|center_horizontal"
-        android:text="16"
-         />
+        android:gravity="center_horizontal|center_vertical"
+        android:text="0"
+        android:textColor="#ffff" />
 
     <TextView
         android:id="@+id/textView21"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_alignBaseline="@+id/point"
         android:layout_alignEnd="@+id/textView22"
-        android:layout_alignParentTop="true"
-        android:layout_marginTop="129dp"
         android:text="امتیاز سلامتی"
         android:textColor="#000000"
-        android:textSize="18sp"
+        android:textSize="12sp"
         android:textStyle="bold" />
 
     <TextView
         android:id="@+id/textView22"
         android:layout_width="175dp"
-        android:layout_height="68dp"
-        android:layout_alignParentTop="true"
-        android:layout_alignParentEnd="true"
-        android:layout_alignParentRight="true"
-        android:layout_marginTop="163dp"
-        android:layout_marginEnd="89dp"
-        android:layout_marginRight="89dp"
+        android:layout_height="58dp"
+        android:layout_below="@+id/imageView25"
+        android:layout_toEndOf="@+id/imageView23"
+        android:gravity="center"
         android:text="شما براساس دنبال کردن برنامه رورانه خود و فعالیت ورزشی امتیاز می گیرید. "
-        android:textColor="#000000"
+        android:textColor="#949494"
+        android:textSize="10dp"
         android:textStyle="bold" />
-
-    <TextView
-        android:id="@+id/textView23"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentTop="true"
-        android:layout_alignParentEnd="true"
-        android:layout_alignParentRight="true"
-        android:layout_marginTop="225dp"
-        android:layout_marginEnd="98dp"
-        android:layout_marginRight="98dp"
-        android:clickable="true"
-        android:text="بیشتر بخوانید"
-        android:textColor="#673AB7" />
 
 
     <TextView
@@ -148,36 +124,193 @@
 
     <ImageView
         android:id="@+id/imageView"
-        android:layout_width="86dp"
-        android:layout_height="88dp"
-        android:layout_alignParentTop="true"
-        android:layout_alignParentEnd="true"
-        android:layout_marginTop="11dp"
-        android:layout_marginEnd="13dp"
+        android:layout_width="42dp"
+        android:layout_height="31dp"
+        android:layout_alignEnd="@+id/imageView19"
+        android:layout_alignTop="@+id/imageView19"
         android:clickable="true"
-        app:srcCompat="@drawable/profile"
-        android:layout_alignParentRight="true"
-        android:layout_marginRight="13dp" />
+        app:srcCompat="@drawable/profile" />
 
     <ScrollView
-        android:layout_below="@+id/set"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_above="@+id/tab"
+        android:layout_below="@+id/set"
         android:orientation="vertical">
 
         <TableLayout
-            android:padding="10dp"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
+            android:padding="10dp"
             android:stretchColumns="1">
+
+            <RelativeLayout
+                android:id="@+id/pedimeter"
+                android:layout_width="match_parent"
+                android:layout_height="160dp"
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="10dp"
+                android:layout_marginTop="10dp"
+                android:background="@drawable/rounded_rec8">
+
+
+                <com.mikhaellopez.circularprogressbar.CircularProgressBar
+                    android:id="@+id/circuldistance"
+                    android:layout_width="49dp"
+                    android:layout_height="54dp"
+                    android:layout_alignStart="@+id/showrate"
+                   android:layout_marginTop="20dp"
+                    android:layout_marginBottom="-4dp"
+                    android:layout_marginEnd="18dp"
+                    android:padding="10dp"
+                    app:cpb_background_progressbar_color="#e6e6fa"
+                    app:cpb_background_progressbar_width="5dp"
+                    app:cpb_progress_direction="to_right"
+                    app:cpb_progressbar_color="#9370db"
+                    app:cpb_progressbar_width="5dp"
+                    app:cpb_round_border="false" />
+
+                <com.mikhaellopez.circularprogressbar.CircularProgressBar
+                    android:id="@+id/circularstep"
+                    android:layout_width="120dp"
+                    android:layout_height="120dp"
+                    android:layout_centerInParent="true"
+                    app:cpb_background_progressbar_color="#fff8dc"
+                    app:cpb_background_progressbar_width="12dp"
+                    app:cpb_progress_direction="to_right"
+                    app:cpb_progressbar_color="#fcf75e"
+                    app:cpb_progressbar_width="10dp"
+                    app:cpb_round_border="false" />
+
+                <TextView
+                    android:id="@+id/stepcounter"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerInParent="true"
+                    android:text="0"
+                    android:fontFamily="@font/iransans"
+                    android:textColor="#000"
+                    android:textSize="20dp" />
+
+                <TextView
+                    android:id="@+id/timecounter"
+                    android:layout_width="50dp"
+                    android:layout_height="50dp"
+                    android:layout_alignStart="@+id/circultime"
+                    android:layout_alignTop="@+id/circultime"
+                    android:gravity="center"
+                    android:text="0"
+                    android:textColor="#303030" />
+
+                <TextView
+                    android:id="@+id/textView37"
+                    android:layout_width="50dp"
+                    android:layout_height="wrap_content"
+                    android:layout_above="@+id/stepcounter"
+                    android:layout_alignStart="@+id/timecounter"
+                    android:gravity="center"
+                    android:text="دقیقه"
+                    android:textSize="4dp" />
+
+                <TextView
+                    android:id="@+id/Mainstepcounter"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/stepcounter"
+                    android:layout_centerHorizontal="true"
+                    android:fontFamily="@font/iransans"
+                    android:text="10000"
+                    android:textSize="7dp" />
+
+                <TextView
+                    android:id="@+id/textView"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignBottom="@+id/stepcounter"
+                    android:layout_toEndOf="@+id/stepcounter"
+                    android:fontFamily="@font/iransans"
+                    android:text="قدم"
+                    android:textSize="7dp" />
+
+                <TextView
+                    android:id="@+id/persent"
+                    android:layout_width="50dp"
+                    android:layout_height="49dp"
+                    android:layout_alignStart="@+id/circuldistance"
+                    android:layout_alignTop="@+id/circuldistance"
+                    android:fontFamily="@font/iransans"
+                    android:gravity="center"
+                    android:text="0" />
+
+                <TextView
+                    android:id="@+id/textView40"
+                    android:layout_width="18dp"
+                    android:layout_height="wrap_content"
+                    android:layout_above="@+id/stepcounter"
+                    android:layout_alignParentEnd="true"
+                    android:layout_marginEnd="34dp"
+                    android:fontFamily=""
+                    android:gravity="center"
+                    android:text="متر"
+                    android:textSize="7dp" />
+
+                <ImageView
+                    android:id="@+id/imageView14"
+                    android:layout_width="42dp"
+                    android:layout_height="42dp"
+                    android:layout_alignBottom="@+id/circuldistance"
+                    android:layout_alignStart="@+id/timecounter"
+                    android:layout_marginBottom="4dp"
+                    android:layout_marginStart="4dp"
+                    app:srcCompat="@drawable/c" />
+
+                <com.mikhaellopez.circularprogressbar.CircularProgressBar
+                    android:id="@+id/circultime"
+                    android:layout_width="49dp"
+                    android:layout_height="54dp"
+                    android:layout_marginTop="20dp"
+                    android:layout_alignParentStart="true"
+                    android:layout_marginBottom="-4dp"
+                    android:layout_marginStart="18dp"
+                    android:padding="10dp"
+                    app:cpb_background_progressbar_color="#e6e6fa"
+                    app:cpb_background_progressbar_width="5dp"
+                    app:cpb_progress_direction="to_right"
+                    app:cpb_progressbar_color="#554081"
+                    app:cpb_progressbar_width="5dp"
+                    app:cpb_round_border="false" />
+
+                <ImageView
+                    android:id="@+id/heart"
+                    android:layout_width="15dp"
+                    android:layout_height="16dp"
+                    android:layout_alignParentEnd="true"
+                    android:layout_alignTop="@+id/circularstep"
+                    android:layout_marginEnd="38dp"
+                    android:visibility="gone"
+                    app:srcCompat="@drawable/heart" />
+
+                <TextView
+                    android:id="@+id/showrate"
+                    android:layout_width="52dp"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentEnd="true"
+                    android:layout_alignTop="@+id/textView37"
+                    android:layout_marginEnd="16dp"
+                    android:gravity="center"
+                    android:text=""
+                    android:textSize="10dp" />
+
+
+
+            </RelativeLayout>
 
 
             <RelativeLayout
                 android:layout_width="match_parent"
-                android:layout_height="90dp"
+                android:layout_height="110dp"
                 android:layout_marginLeft="10dp"
                 android:layout_marginRight="10dp"
+                android:layout_marginTop="10dp"
                 android:background="@drawable/rounded_rec8">
 
                 <TextView
@@ -188,10 +321,10 @@
                     android:layout_alignParentStart="true"
                     android:layout_marginBottom="11dp"
                     android:layout_marginLeft="10dp"
-                    android:textSize="30dp"
+                    android:text="0"
                     android:textColor="#000"
-                    android:textStyle="bold"
-                    android:text="0" />
+                    android:textSize="40dp"
+                    android:textStyle="bold" />
 
                 <TextView
                     android:id="@+id/textView0"
@@ -230,6 +363,7 @@
                     android:layout_height="wrap_content"
                     android:layout_alignBottom="@+id/useColori"
                     android:layout_toEndOf="@+id/textView16"
+                    android:fontFamily="@font/iransans"
                     android:text="5000" />
 
                 <Button
@@ -237,8 +371,7 @@
                     android:layout_width="98dp"
                     android:layout_height="17dp"
                     android:layout_above="@+id/textView16"
-                    android:layout_alignParentStart="true"
-                    android:layout_marginStart="98dp"
+                    android:layout_centerHorizontal="true"
                     android:background="@drawable/rounded_rec9"
                     android:text="اضافه کردن"
                     android:textSize="10dp" />
@@ -246,22 +379,22 @@
             </RelativeLayout>
 
             <RelativeLayout
-                android:layout_marginTop="10dp"
                 android:layout_width="match_parent"
-                android:layout_marginRight="10dp"
+                android:layout_height="110dp"
                 android:layout_marginLeft="10dp"
-                android:background="@drawable/rounded_rec8"
-                android:layout_height="90dp">
+                android:layout_marginRight="10dp"
+                android:layout_marginTop="10dp"
+                android:background="@drawable/rounded_rec8">
 
                 <TextView
                     android:id="@+id/textView15"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:fontFamily="@font/iransans"
-                    android:textSize="10dp"
                     android:layout_alignBottom="@+id/useColori2"
                     android:layout_toEndOf="@+id/useColori2"
-                    android:text="کالری" />
+                    android:fontFamily="@font/iransans"
+                    android:text="کالری"
+                    android:textSize="10dp" />
 
                 <TextView
                     android:id="@+id/useColori2"
@@ -273,14 +406,14 @@
                     android:layout_marginLeft="10dp"
                     android:text="0"
                     android:textColor="#000"
-                    android:textSize="30dp"
+                    android:textSize="40dp"
                     android:textStyle="bold" />
 
                 <TextView
-                    android:layout_marginTop="10dp"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_alignParentTop="true"
+                    android:layout_marginTop="10dp"
                     android:layout_toStartOf="@+id/imageView6"
                     android:padding="5dp"
                     android:text="میزان فعالیت روزانه"
@@ -289,55 +422,47 @@
                     android:textStyle="bold" />
 
                 <ImageView
-                    android:layout_marginTop="12dp"
                     android:id="@+id/imageView6"
                     android:layout_width="15dp"
                     android:layout_height="20dp"
                     android:layout_alignParentEnd="true"
                     android:layout_marginEnd="12dp"
+                    android:layout_marginTop="12dp"
                     app:srcCompat="@drawable/running" />
 
-                <ImageView
-                    android:id="@+id/imageView9"
-                    android:layout_width="30dp"
+                <TextView
+                    android:id="@+id/ser"
+                    android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_alignParentStart="true"
-                    android:layout_alignParentTop="true"
-                    android:layout_marginStart="111dp"
-                    app:srcCompat="@drawable/ex" />
-
-                <ImageView
-                    android:id="@+id/imageView10"
-                    android:layout_width="30dp"
-                    android:layout_height="wrap_content"
-                    android:layout_alignParentTop="true"
-                    android:layout_centerHorizontal="true"
-                    app:srcCompat="@drawable/walk" />
+                    android:layout_centerInParent="true"
+                    android:text="" />
             </RelativeLayout>
 
 
             <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="110dp"
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="10dp"
                 android:layout_marginTop="10dp"
-            android:layout_width="match_parent"
-            android:layout_marginRight="10dp"
-            android:layout_marginLeft="10dp"
-            android:background="@drawable/rounded_rec8"
-            android:layout_height="90dp">
+                android:background="@drawable/rounded_rec8">
 
                 <ImageView
                     android:id="@+id/add"
                     android:layout_width="30dp"
                     android:layout_height="30dp"
-                    android:layout_centerInParent="true"
+                    android:layout_centerVertical="true"
+                    android:layout_marginLeft="13dp"
+                    android:layout_toEndOf="@+id/ser1"
                     app:srcCompat="@drawable/add" />
 
                 <ImageView
                     android:id="@+id/minus"
                     android:layout_width="30dp"
                     android:layout_height="30dp"
-                    android:layout_alignParentStart="true"
                     android:layout_centerVertical="true"
-                    android:layout_marginStart="109dp"
+                    android:layout_marginRight="13dp"
+                    android:layout_toStartOf="@+id/ser1"
                     app:srcCompat="@drawable/minus" />
 
                 <TextView
@@ -353,13 +478,13 @@
 
 
                 <ImageView
-                    android:layout_marginTop="10dp"
-                    android:layout_marginRight="10dp"
                     android:id="@+id/imageView11"
                     android:layout_width="15dp"
                     android:layout_height="29dp"
                     android:layout_alignParentEnd="true"
                     android:layout_alignParentTop="true"
+                    android:layout_marginRight="10dp"
+                    android:layout_marginTop="10dp"
                     app:srcCompat="@drawable/water" />
 
                 <TextView
@@ -372,7 +497,7 @@
                     android:padding="5dp"
                     android:text="0"
                     android:textColor="#000"
-                    android:textSize="30dp"
+                    android:textSize="40dp"
                     android:textStyle="bold" />
 
                 <TextView
@@ -380,23 +505,30 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_alignParentBottom="true"
+                    android:layout_marginBottom="5dp"
                     android:layout_toEndOf="@+id/water"
                     android:fontFamily="@font/iransans"
-                    android:textSize="10dp"
-                    android:layout_marginBottom="5dp"
-                    android:text="لیوان" />
+                    android:text="لیوان"
+                    android:textSize="10dp" />
+
+                <TextView
+                    android:id="@+id/ser1"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerInParent="true"
+                    android:text="" />
 
 
             </RelativeLayout>
 
 
             <RelativeLayout
-                android:layout_marginTop="10dp"
                 android:layout_width="match_parent"
-                android:layout_marginRight="10dp"
+                android:layout_height="90dp"
                 android:layout_marginLeft="10dp"
-                android:background="@drawable/rounded_rec8"
-                android:layout_height="90dp">
+                android:layout_marginRight="10dp"
+                android:layout_marginTop="10dp"
+                android:background="@drawable/rounded_rec8">
 
                 <TextView
                     android:id="@+id/textView9"
@@ -425,9 +557,7 @@
                     android:id="@+id/button2"
                     android:layout_width="98dp"
                     android:layout_height="17dp"
-                    android:layout_alignParentStart="true"
-                    android:layout_centerVertical="true"
-                    android:layout_marginStart="99dp"
+                    android:layout_centerInParent="true"
                     android:background="@drawable/rounded_rec9"
                     android:text="ضبط" />
 
@@ -444,30 +574,4 @@
 
         </TableLayout>
     </ScrollView>
-
-    <android.support.design.widget.TabLayout
-        android:id="@+id/tab"
-        android:layout_alignParentBottom="true"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content">
-
-        <android.support.design.widget.TabItem
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:icon="@drawable/sport"
-            android:text="" />
-
-        <android.support.design.widget.TabItem
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:icon="@drawable/home"
-            android:text="" />
-
-        <android.support.design.widget.TabItem
-            android:icon="@drawable/food"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="" />
-    </android.support.design.widget.TabLayout>
-
 </RelativeLayout>
