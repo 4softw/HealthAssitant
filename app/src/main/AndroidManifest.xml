@@ -3,7 +3,13 @@
     package="com.google.se">
 
     <uses-permission android:name="android.permission.INTERNET" />
-    <uses-permission android:name="android.permission.BODY_SENSORS"/>
+
+    <uses-feature
+        android:name="android.hardware.sensor.stepcounter"
+        android:required="true" />
+
+    <uses-permission android:name="android.permission.WAKE_LOCK" />
+    <uses-permission android:name="android.permission.BODY_SENSORS" />
 
     <application
         android:allowBackup="true"
@@ -23,7 +29,8 @@
         <activity android:name=".SignupPage" />
         <activity android:name=".StartActivity" />
         <activity android:name=".InformationPage" />
-        <activity android:name=".HomePage"></activity>
+        <activity android:name=".HomePage" />
+        <service android:name=".StepsService"></service>
     </application>
 
 </manifest>

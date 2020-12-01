@@ -3,24 +3,22 @@ package com.google.se;
 import android.app.AlertDialog;
 import android.content.Context;
 import android.content.DialogInterface;
+import android.content.Intent;
 import android.graphics.Color;
 import android.hardware.Sensor;
 import android.hardware.SensorEvent;
 import android.hardware.SensorEventListener;
 import android.hardware.SensorManager;
-import android.os.Handler;
+import android.os.PowerManager;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.text.Editable;
-import android.text.TextWatcher;
+import android.support.v7.recyclerview.extensions.ListAdapter;
 import android.util.Log;
 import android.view.View;
-import android.view.animation.AlphaAnimation;
-import android.view.animation.Animation;
-import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
+import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -47,13 +45,16 @@ import java.util.Map;
 public class HomePage extends AppCompatActivity implements SensorEventListener {
 
     TextView hi, Maincolori, date, point, water, showrate;
+    public static final String TAG = "Hiii";
     String url = "http://healthcareassistantproject.ir/mySite/fetchwithid.php";
     String name;
+    int PROXIMITY_WAKE_LOCK = 32;
     SignUpDBHelper signUpDBHelper;
     ImageView add, minus;
     ImageView heart, shoe;
-    boolean setTimer = false;
-    private Sensor accel;
+    StepsDBHelper mStepsDBHelper;
+    ArrayList<DateStepsModel> mStepCountList;
+    static PowerManager.WakeLock mWakeLock;
     CircularProgressBar circulartime, circularstep, circuldistance;
     TextView mainstep, step, time, persent;
     static List<InformationModel> person = new ArrayList<>();
@@ -64,10 +65,14 @@ public class HomePage extends AppCompatActivity implements SensorEventListener {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home_page1);
+    //    startActivity(new Intent(this,Pedometer.class));
         signUpDBHelper = new SignUpDBHelper(this);
         person = signUpDBHelper.GetInf();
         init();
         sensorManager = (SensorManager) getSystemService(Context.SENSOR_SERVICE);
+        Intent mStepsIntent = new Intent(this, StepsService.class);
+        startService(mStepsIntent);
+
         Toast.makeText(this, "" + person.size(), Toast.LENGTH_SHORT).show();
         if (person.size() == 0) {
             GetFromHost(MainActivity.person.get(0).getId());
@@ -119,7 +124,9 @@ public class HomePage extends AppCompatActivity implements SensorEventListener {
                     DialogForChangeStepts();
                 }
             });
+
         }
+        first();
     }
 
 
@@ -150,7 +157,7 @@ public class HomePage extends AppCompatActivity implements SensorEventListener {
             if (person.get(0).getSex().equals("woman")) {
                 distance = Integer.parseInt(mainstep.getText().toString()) * 70 / (float) 100;
             }
-            circularstep.setProgressMax(distance);
+            circuldistance.setProgressMax(distance);
             circulartime.setProgressMax(100);
         }
 
@@ -161,6 +168,8 @@ public class HomePage extends AppCompatActivity implements SensorEventListener {
     protected void onResume() {
         super.onResume();
         Sensor countsteps = sensorManager.getDefaultSensor(Sensor.TYPE_STEP_COUNTER);
+        sensorManager.registerListener(this, countsteps,
+                SensorManager.SENSOR_DELAY_NORMAL);
         if (countsteps != null) {
             sensorManager.registerListener(this, countsteps, SensorManager.SENSOR_DELAY_UI);
         } else {
@@ -181,11 +190,13 @@ public class HomePage extends AppCompatActivity implements SensorEventListener {
     @Override
     public void onAccuracyChanged(Sensor sensor, int accuracy) {
 
+
     }
 
     @Override
     protected void onPause() {
         super.onPause();
+  //      sensorManager.unregisterListener(this);
     }
 
     public void GetFromHost(final String id) {
@@ -270,16 +281,19 @@ public class HomePage extends AppCompatActivity implements SensorEventListener {
 
     @Override
     public void onSensorChanged(SensorEvent event) {
+        mStepsDBHelper = new StepsDBHelper(this);
+        mStepCountList = mStepsDBHelper.readStepsEntries(getApplicationContext());
+        circularstep.setProgress((float)mStepCountList.size());
+        step.setText(String.valueOf(mStepCountList.size()));
+  //      Toast.makeText(this, ""+mStepCountList.size(), Toast.LENGTH_SHORT).show();
         float distance = 0;
-        if (event.sensor.getType() == Sensor.TYPE_STEP_COUNTER) {
-            circularstep.setProgress(event.values[0]);
-            step.setText(String.valueOf((int) event.values[0]));
+
             if (person.size() != 0) {
                 if (person.get(0).getSex().equals("man")) {
-                    distance = (float) ((int) event.values[0] * 78) / (float) 100;
+                    distance = (float) ((int) mStepCountList.size() * 78) / (float) 100;
                 }
                 if (person.get(0).getSex().equals("woman")) {
-                    distance = (float) ((int) event.values[0] * 70) / (float) 100;
+                    distance = (float) ((int)mStepCountList.size() * 70) / (float) 100;
                 }
             }
             persent.setText(String.valueOf((int) distance));
@@ -290,12 +304,37 @@ public class HomePage extends AppCompatActivity implements SensorEventListener {
                 point.setText(String.valueOf(pget));
             }
 
-            float time1 = (float) ((int) event.values[0] * 100) / (float) 10000;
+            float time1 = (float) ((int) mStepCountList.size()* 100) / (float) 10000;
             circulartime.setProgress(time1);
             time.setText(String.valueOf((int) time1));
+    }
+    public void first() {
+        mStepsDBHelper = new StepsDBHelper(this);
+        mStepCountList = mStepsDBHelper.readStepsEntries(getApplicationContext());
+        circularstep.setProgress((float)mStepCountList.size());
+        step.setText(String.valueOf(mStepCountList.size()));
+        //      Toast.makeText(this, ""+mStepCountList.size(), Toast.LENGTH_SHORT).show();
+        float distance = 0;
 
+        if (person.size() != 0) {
+            if (person.get(0).getSex().equals("man")) {
+                distance = (float) ((int) mStepCountList.size() * 78) / (float) 100;
+            }
+            if (person.get(0).getSex().equals("woman")) {
+                distance = (float) ((int)mStepCountList.size() * 70) / (float) 100;
+            }
+        }
+        persent.setText(String.valueOf((int) distance));
+        circuldistance.setProgress(distance);
+        if (Integer.parseInt(persent.getText().toString()) % 50 == 0) {
+            int pget = Integer.valueOf(point.getText().toString());
+            pget = pget + 1;
+            point.setText(String.valueOf(pget));
         }
 
+        float time1 = (float) ((int) mStepCountList.size()* 100) / (float) 10000;
+        circulartime.setProgress(time1);
+        time.setText(String.valueOf((int) time1));
     }
 
 
@@ -303,7 +342,6 @@ public class HomePage extends AppCompatActivity implements SensorEventListener {
         AlertDialog.Builder dialog = new AlertDialog.Builder(HomePage.this, R.style.Theme_AppCompat_DayNight_Dialog_Alert);
         dialog.setTitle("تعداد قدم های کل را وارد کنید");
         final EditText text = new EditText(HomePage.this);
-        text.size
         text.setTextColor(Color.BLACK);
         LinearLayout.LayoutParams lp = new LinearLayout.LayoutParams(
                 LinearLayout.LayoutParams.MATCH_PARENT,
@@ -331,5 +369,4 @@ public class HomePage extends AppCompatActivity implements SensorEventListener {
 
 
     }
-
 }

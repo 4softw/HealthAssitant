@@ -369,7 +369,7 @@
                 <Button
                     android:id="@+id/button"
                     android:layout_width="98dp"
-                    android:layout_height="17dp"
+                    android:layout_height="24dp"
                     android:layout_above="@+id/textView16"
                     android:layout_centerHorizontal="true"
                     android:background="@drawable/rounded_rec9"
@@ -436,6 +436,13 @@
                     android:layout_height="wrap_content"
                     android:layout_centerInParent="true"
                     android:text="" />
+
+                <ProgressBar
+                    android:id="@+id/progressBar"
+                    style="?android:attr/progressBarStyleHorizontal"
+                    android:layout_width="127dp"
+                    android:layout_height="34dp"
+                    android:layout_centerInParent="true" />
             </RelativeLayout>
 
 
@@ -553,22 +560,22 @@
                     android:layout_marginEnd="11dp"
                     app:srcCompat="@drawable/moon" />
 
-                <Button
-                    android:id="@+id/button2"
-                    android:layout_width="98dp"
-                    android:layout_height="17dp"
-                    android:layout_centerInParent="true"
-                    android:background="@drawable/rounded_rec9"
-                    android:text="ضبط" />
-
                 <TextView
                     android:id="@+id/textView30"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_alignParentStart="true"
-                    android:layout_below="@+id/button2"
                     android:layout_marginStart="13dp"
                     android:text="2 : 46" />
+
+                <ProgressBar
+                    android:id="@+id/progressBar2"
+                    style="?android:attr/progressBarStyleHorizontal"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignEnd="@+id/textView9"
+                    android:layout_alignParentBottom="true"
+                    android:layout_marginBottom="22dp" />
             </RelativeLayout>
 
 
