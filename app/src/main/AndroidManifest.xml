@@ -18,6 +18,7 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
+        <activity android:name=".FoodPage"></activity>
         <activity android:name=".loginPage" />
         <activity android:name=".MainActivity">
             <intent-filter>
@@ -30,7 +31,8 @@
         <activity android:name=".StartActivity" />
         <activity android:name=".InformationPage" />
         <activity android:name=".HomePage" />
-        <service android:name=".StepsService"></service>
+
+        <service android:name=".StepsService" />
     </application>
 
 </manifest>
