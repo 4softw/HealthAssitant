@@ -1,0 +1,213 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".FoodPage">
+
+    <TextView
+        android:id="@+id/back"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="غذا >"
+        android:textSize="12pt"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.103"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.023" />
+
+
+    <TextView
+        android:id="@+id/textView18"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="276dp"
+        android:text="420"
+        android:textDirection="rtl"
+        android:textSize="18pt"
+        app:layout_constraintBottom_toTopOf="@+id/progressCalorie"
+        app:layout_constraintEnd_toStartOf="@+id/textView31"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/textView31"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="292dp"
+        android:text="/"
+        android:textAlignment="center"
+        android:textSize="10pt"
+        app:layout_constraintBottom_toTopOf="@+id/progressCalorie"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.521"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/textView25"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="4dp"
+        android:layout_marginTop="292dp"
+        android:text="850"
+        android:textDirection="ltr"
+        android:textSize="10pt"
+        app:layout_constraintBottom_toTopOf="@+id/progressCalorie"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toEndOf="@+id/textView31"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.478" />
+
+    <com.sasank.roundedhorizontalprogress.RoundedHorizontalProgressBar
+        android:id="@+id/progressCalorie"
+        style="?android:attr/progressBarStyleHorizontal"
+        android:layout_width="310dp"
+        android:layout_height="20dp"
+        android:indeterminate="false"
+        android:maxHeight="12dp"
+        android:minHeight="12dp"
+        android:progress="40"
+        app:backgroundColor="#66CCC4C4"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.495"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.486"
+        app:progressColor="@color/colorPrimary" />
+
+    <Button
+        android:id="@+id/button5"
+        style="@style/Widget.AppCompat.Button.Borderless"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:clickable="false"
+        android:text="دوشنبه; 17 آذر"
+        android:textColor="#906EAF"
+        android:textSize="14pt"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.211" />
+
+
+    <ImageView
+        android:id="@+id/imageView4"
+        android:layout_width="38dp"
+        android:layout_height="40dp"
+        app:layout_constraintBottom_toTopOf="@+id/progressCalorie"
+        app:layout_constraintEnd_toStartOf="@+id/textView18"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.96"
+        app:srcCompat="@drawable/icon" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="328dp"
+        android:gravity="center_horizontal"
+        android:orientation="vertical"
+        android:weightSum="2"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.995">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="230dp"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:orientation="horizontal"
+            android:padding="0dp"
+            android:weightSum="11">
+
+
+            <ImageView
+                android:id="@+id/breakfast"
+                android:layout_width="110dp"
+                android:layout_height="110dp"
+                android:layout_weight="3"
+                android:clickable="true"
+                android:focusable="true"
+                android:scaleType="fitStart"
+                app:srcCompat="@drawable/breakfast" />
+
+            <ImageView
+                android:id="@+id/lunch"
+                android:layout_width="110dp"
+                android:layout_height="110dp"
+                android:layout_weight="3"
+                android:clickable="true"
+                android:focusable="true"
+                android:scaleType="fitStart"
+                app:srcCompat="@drawable/launch" />
+
+            <ImageView
+                android:id="@+id/dinner"
+                android:layout_width="110dp"
+                android:layout_height="110dp"
+                android:layout_weight="3"
+                android:clickable="true"
+                android:focusable="true"
+                android:scaleType="fitStart"
+                app:srcCompat="@drawable/dinner" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:orientation="horizontal"
+            android:weightSum="11">
+
+            <ImageView
+                android:id="@+id/drinks"
+                android:layout_width="110dp"
+                android:layout_height="110dp"
+                android:layout_weight="2"
+                android:clickable="true"
+                android:focusable="true"
+                android:scaleType="fitStart"
+                app:srcCompat="@drawable/drink" />
+
+            <ImageView
+                android:id="@+id/snack"
+                android:layout_width="110dp"
+                android:layout_height="110dp"
+                android:layout_weight="2"
+                android:clickable="true"
+                android:focusable="true"
+                android:scaleType="fitStart"
+                app:srcCompat="@drawable/snack" />
+        </LinearLayout>
+    </LinearLayout>
+
+    <ImageView
+        android:id="@+id/imageButton4"
+        android:layout_width="27dp"
+        android:layout_height="25dp"
+        android:clickable="true"
+        android:focusable="true"
+        android:scaleType="fitStart"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.958"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.029"
+        app:srcCompat="@drawable/icon2" />
+
+</android.support.constraint.ConstraintLayout>
