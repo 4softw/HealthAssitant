@@ -100,6 +100,11 @@ public class SignUpDBHelper extends SQLiteOpenHelper {
         db.insert(ITABLE,null,values);
     }
 
+    public void update(String id,ContentValues values){
+        SQLiteDatabase database=getWritableDatabase();
+        database.update("InfTable",values,"Name"+" = "+id ,null);
+    }
+
     @Override
     public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
 

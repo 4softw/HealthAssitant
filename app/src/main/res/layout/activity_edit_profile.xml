@@ -1,0 +1,195 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/drawer_layout"
+    android:background="#ffffff"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:fitsSystemWindows="true"
+    tools:openDrawer="start">
+
+
+    <ImageView
+        android:id="@+id/imageView15"
+        android:layout_width="match_parent"
+        android:layout_height="250dp"
+        app:srcCompat="@drawable/peaple" />
+
+
+    <EditText
+        android:id="@+id/editname"
+        android:layout_width="160dp"
+        android:layout_height="50dp"
+        android:gravity="center"
+        android:layout_alignParentEnd="true"
+        android:layout_below="@+id/imageView15"
+        android:layout_centerVertical="true"
+        android:layout_marginEnd="20dp"
+        android:layout_marginTop="20dp"
+        android:background="#ffffff"
+        android:ems="10"
+        android:inputType="textPersonName"
+        android:text="Name"
+        android:textDirection="rtl" />
+
+    <EditText
+        android:id="@+id/editlastname"
+        android:layout_width="160dp"
+        android:layout_height="50dp"
+        android:gravity="center"
+        android:layout_alignParentStart="true"
+        android:layout_below="@id/imageView15"
+        android:layout_centerVertical="true"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="20dp"
+        android:background="#ffffff"
+        android:ems="10"
+        android:inputType="textPersonName"
+        android:text="Name"
+        android:textDirection="rtl" />
+
+    <RadioGroup
+        android:layout_marginTop="10dp"
+        android:id="@+id/grup"
+        android:layout_width="105dp"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/editname"
+        android:layout_centerHorizontal="true"
+        android:orientation="vertical">
+
+        <RadioButton
+            android:id="@+id/editwoman"
+            android:layout_width="100dp"
+            android:layout_height="wrap_content"
+            android:layout_marginRight="20dp"
+            android:layout_weight="1"
+            android:text="زن" />
+
+        <RadioButton
+            android:id="@+id/editman"
+            android:layout_width="100dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="مرد" />
+
+    </RadioGroup>
+
+
+    <com.crystal.crystalrangeseekbar.widgets.BubbleThumbSeekbar
+        android:id="@+id/editage"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="28dp"
+        android:layout_below="@+id/grup"
+        android:layout_marginStart="30dp"
+        android:layout_alignStart="@+id/editlastname"
+        android:min="30"
+        android:layout_marginEnd="50dp"
+        android:scrollbarSize="5dp"
+        app:bar_highlight_color="@color/colorPrimaryDark"
+        app:data_type="_integer"
+        app:left_thumb_color="@color/colorAccent"
+        app:left_thumb_color_pressed="@color/colorAccent"
+        app:max_value="80"
+        app:min_value="15" />
+
+
+    <com.crystal.crystalrangeseekbar.widgets.BubbleThumbSeekbar
+        android:id="@+id/editweight"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="28dp"
+        android:layout_marginEnd="50dp"
+        android:layout_marginStart="30dp"
+        android:layout_below="@+id/editage"
+        android:layout_alignStart="@+id/editlastname"
+        android:min="30"
+        android:scrollbarSize="5dp"
+        app:bar_highlight_color="@color/colorPrimaryDark"
+        app:data_type="_integer"
+        app:left_thumb_color="@color/colorAccent"
+        app:left_thumb_color_pressed="@color/colorAccent"
+        app:max_value="200"
+        app:min_value="30" />
+
+
+    <com.crystal.crystalrangeseekbar.widgets.BubbleThumbSeekbar
+        android:id="@+id/editheight"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="30dp"
+        android:layout_marginEnd="50dp"
+        android:layout_alignStart="@+id/editlastname"
+        android:layout_below="@+id/editweight"
+        android:layout_marginTop="28dp"
+        android:min="30"
+        android:scrollbarSize="5dp"
+        app:bar_highlight_color="@color/colorPrimaryDark"
+        app:data_type="_integer"
+        app:left_thumb_color="@color/colorAccent"
+        app:left_thumb_color_pressed="@color/colorAccent"
+        app:max_value="200"
+        app:min_value="120" />
+
+
+    <Button
+        android:id="@+id/ok"
+        android:layout_width="131dp"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="25dp"
+        android:text="ثبت" />
+
+    <TextView
+        android:id="@+id/textView33"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignEnd="@+id/editname"
+        android:layout_alignTop="@+id/editage"
+        android:text="سن" />
+
+    <TextView
+        android:id="@+id/textView34"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignTop="@+id/editheight"
+        android:layout_alignEnd="@+id/editname"
+        android:text="قد" />
+
+    <TextView
+        android:id="@+id/evalue"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignEnd="@+id/editname"
+        android:layout_alignTop="@+id/editweight"
+        android:text="وزن" />
+
+    <TextView
+        android:id="@+id/agevalue"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignStart="@+id/editlastname"
+        android:layout_alignTop="@+id/editage"
+        android:text="" />
+
+    <TextView
+        android:id="@+id/weightvalue"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignEnd="@+id/agevalue"
+        android:layout_alignTop="@+id/editweight"
+        android:text="" />
+
+    <TextView
+        android:id="@+id/heightvalue"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignStart="@+id/editlastname"
+        android:layout_alignTop="@+id/editheight"
+        android:text="" />
+
+
+</RelativeLayout>

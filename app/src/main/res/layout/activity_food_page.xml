@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<android.support.constraint.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
@@ -10,14 +11,15 @@
         android:id="@+id/back"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:fontFamily="@font/iransans"
         android:text="غذا >"
-        android:textSize="12pt"
+        android:textSize="10pt"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.103"
+        app:layout_constraintHorizontal_bias="0.047"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.023" />
+        app:layout_constraintVertical_bias="0.029" />
 
 
     <TextView
@@ -25,6 +27,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="276dp"
+        android:textColor="#000"
         android:text="420"
         android:textDirection="rtl"
         android:textSize="18pt"
@@ -32,7 +35,8 @@
         app:layout_constraintEnd_toStartOf="@+id/textView31"
         app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="1.0" />
 
     <TextView
         android:id="@+id/textView31"
@@ -44,9 +48,10 @@
         android:textSize="10pt"
         app:layout_constraintBottom_toTopOf="@+id/progressCalorie"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.521"
+        app:layout_constraintHorizontal_bias="0.501"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="1.0" />
 
     <TextView
         android:id="@+id/textView25"
@@ -62,7 +67,7 @@
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toEndOf="@+id/textView31"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.478" />
+        app:layout_constraintVertical_bias="1.0" />
 
     <com.sasank.roundedhorizontalprogress.RoundedHorizontalProgressBar
         android:id="@+id/progressCalorie"
@@ -76,10 +81,9 @@
         app:backgroundColor="#66CCC4C4"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.495"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.486"
+        app:layout_constraintVertical_bias="0.358"
         app:progressColor="@color/colorPrimary" />
 
     <Button
@@ -88,14 +92,16 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:clickable="false"
+        android:fontFamily="@font/iransans"
         android:text="دوشنبه; 17 آذر"
         android:textColor="#906EAF"
-        android:textSize="14pt"
+        android:textSize="12pt"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.502"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.211" />
+        app:layout_constraintVertical_bias="0.095" />
 
 
     <ImageView
@@ -104,10 +110,10 @@
         android:layout_height="40dp"
         app:layout_constraintBottom_toTopOf="@+id/progressCalorie"
         app:layout_constraintEnd_toStartOf="@+id/textView18"
-        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintHorizontal_bias="0.614"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.96"
+        app:layout_constraintVertical_bias="0.957"
         app:srcCompat="@drawable/icon" />
 
     <LinearLayout

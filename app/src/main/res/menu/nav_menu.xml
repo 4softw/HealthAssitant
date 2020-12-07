@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:showIn="navigation_view">
+    <item android:title="">
+        <menu>
+            <item
+                android:title=" مشخصات فردی"
+                android:id="@+id/edit"
+                android:icon="@drawable/ep"
+                android:gravity="end"
+                android:layout_gravity="end"
+              />
+
+            <item
+                android:title="تاریخچه"
+                android:id="@+id/histori_nav"
+                android:icon="@drawable/history"
+                android:gravity="end"
+                android:layout_gravity="end"
+                />
+
+            <item
+                android:title="تنظیمات"
+                android:id="@+id/setting"
+                android:icon="@drawable/se"
+                android:gravity="end"
+                android:layout_gravity="end"
+                />
+
+            <item
+                android:title="notification"
+                android:id="@+id/not"
+                android:icon="@drawable/not"
+                android:gravity="end"
+                android:layout_gravity="end"
+                />
+        </menu>
+    </item>
+
+    <item android:title="">
+        <menu>
+            <item android:title="تماس با ما"
+                android:icon="@drawable/call"
+                android:id="@+id/call"/>
+            <item android:title="امتیاز "
+                android:icon="@drawable/star"
+                android:id="@+id/score"/>
+        </menu>
+    </item>
+
+</menu>
