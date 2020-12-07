@@ -10,10 +10,16 @@ import android.hardware.SensorEvent;
 import android.hardware.SensorEventListener;
 import android.hardware.SensorManager;
 import android.os.PowerManager;
+import android.support.annotation.NonNull;
+import android.support.design.widget.NavigationView;
+import android.support.v4.view.GravityCompat;
+import android.support.v4.widget.DrawerLayout;
+import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.recyclerview.extensions.ListAdapter;
 import android.util.Log;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -43,16 +49,18 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-public class HomePage extends AppCompatActivity implements SensorEventListener {
+public class HomePage extends AppCompatActivity implements SensorEventListener,NavigationView.OnNavigationItemSelectedListener {
+
 
     TextView hi, Maincolori, date, point, water, showrate;
     public static final String TAG = "Hiii";
     String url = "http://healthcareassistantproject.ir/mySite/fetchwithid.php";
     String name;
-    int PROXIMITY_WAKE_LOCK = 32;
+    NavigationView navigationView;
+    DrawerLayout drawerLayout;
     SignUpDBHelper signUpDBHelper;
     ImageView add, minus;
-    ImageView heart, shoe;
+    ImageView heart, fab;
     StepsDBHelper mStepsDBHelper;
     ArrayList<DateStepsModel> mStepCountList;
     static PowerManager.WakeLock mWakeLock;
@@ -66,10 +74,10 @@ public class HomePage extends AppCompatActivity implements SensorEventListener {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home_page1);
-    //    startActivity(new Intent(this,Pedometer.class));
         signUpDBHelper = new SignUpDBHelper(this);
         person = signUpDBHelper.GetInf();
         init();
+
         sensorManager = (SensorManager) getSystemService(Context.SENSOR_SERVICE);
         Intent mStepsIntent = new Intent(this, StepsService.class);
         startService(mStepsIntent);
@@ -133,6 +141,11 @@ public class HomePage extends AppCompatActivity implements SensorEventListener {
             });
 
         }
+
+        ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(this, drawerLayout, null,
+                R.string.open, R.string.close);
+        drawerLayout.addDrawerListener(toggle);
+        toggle.syncState();
         first();
     }
 
@@ -153,6 +166,10 @@ public class HomePage extends AppCompatActivity implements SensorEventListener {
         persent = findViewById(R.id.persent);
         heart = findViewById(R.id.heart);
         showrate = findViewById(R.id.showrate);
+        fab=findViewById(R.id.fab);
+        drawerLayout = findViewById(R.id.drawer_layout);
+        navigationView=findViewById(R.id.nav_view);
+        navigationView.setNavigationItemSelectedListener(this);
         circuldistance = findViewById(R.id.circuldistance);
         circularstep.setProgressMax(Integer.parseInt(mainstep.getText().toString()));
 
@@ -373,7 +390,31 @@ public class HomePage extends AppCompatActivity implements SensorEventListener {
                 });
 
         dialog.show();
-
-
     }
+
+    @Override
+    protected void onRestart() {
+        Toast.makeText(this, "hiiiiiiiiiii", Toast.LENGTH_SHORT).show();
+        super.onRestart();
+    }
+
+    @Override
+    public boolean onNavigationItemSelected(@NonNull MenuItem item) {
+
+        switch (item.getItemId()) {
+            case R.id.edit:
+                startActivity(new Intent(HomePage.this,EditProfile.class));
+                checkOpenDrawer();
+                break;
+        }
+
+        return true;
+    }
+
+    public void checkOpenDrawer() {
+        if (drawerLayout.isDrawerOpen(GravityCompat.START)) {
+            drawerLayout.closeDrawer(GravityCompat.START, true);
+        }
+    }
+
 }
