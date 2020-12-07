@@ -15,6 +15,7 @@ import android.os.Bundle;
 import android.support.v7.recyclerview.extensions.ListAdapter;
 import android.util.Log;
 import android.view.View;
+import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
@@ -59,7 +60,7 @@ public class HomePage extends AppCompatActivity implements SensorEventListener {
     TextView mainstep, step, time, persent;
     static List<InformationModel> person = new ArrayList<>();
     SensorManager sensorManager;
-
+    Button FoodAdd;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -72,7 +73,13 @@ public class HomePage extends AppCompatActivity implements SensorEventListener {
         sensorManager = (SensorManager) getSystemService(Context.SENSOR_SERVICE);
         Intent mStepsIntent = new Intent(this, StepsService.class);
         startService(mStepsIntent);
-
+        FoodAdd = findViewById(R.id.AddFood);
+        FoodAdd.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                startActivity(new Intent(HomePage.this,FoodPage.class));
+            }
+        });
         Toast.makeText(this, "" + person.size(), Toast.LENGTH_SHORT).show();
         if (person.size() == 0) {
             GetFromHost(MainActivity.person.get(0).getId());

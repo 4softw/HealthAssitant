@@ -34,13 +34,13 @@
         android:id="@+id/set"
         android:layout_width="251dp"
         android:layout_height="124dp"
-        android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true"
+        android:layout_alignParentLeft="true"
         android:layout_alignParentTop="true"
         android:layout_centerHorizontal="true"
         android:layout_marginLeft="20dp"
-        android:layout_marginRight="20dp"
         android:layout_marginTop="82dp"
+        android:layout_marginRight="20dp"
         app:srcCompat="@drawable/rounded_rec10" />
 
     <TextView
@@ -133,8 +133,9 @@
 
     <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_height="525dp"
         android:layout_below="@+id/set"
+        android:layout_marginTop="0dp"
         android:orientation="vertical">
 
         <TableLayout
@@ -148,8 +149,8 @@
                 android:layout_width="match_parent"
                 android:layout_height="160dp"
                 android:layout_marginLeft="10dp"
-                android:layout_marginRight="10dp"
                 android:layout_marginTop="10dp"
+                android:layout_marginRight="10dp"
                 android:background="@drawable/rounded_rec8">
 
 
@@ -158,9 +159,9 @@
                     android:layout_width="49dp"
                     android:layout_height="54dp"
                     android:layout_alignStart="@+id/showrate"
-                   android:layout_marginTop="20dp"
-                    android:layout_marginBottom="-4dp"
+                    android:layout_marginTop="20dp"
                     android:layout_marginEnd="18dp"
+                    android:layout_marginBottom="-4dp"
                     android:padding="10dp"
                     app:cpb_background_progressbar_color="#e6e6fa"
                     app:cpb_background_progressbar_width="5dp"
@@ -186,8 +187,8 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_centerInParent="true"
-                    android:text="0"
                     android:fontFamily="@font/iransans"
+                    android:text="0"
                     android:textColor="#000"
                     android:textSize="20dp" />
 
@@ -257,20 +258,20 @@
                     android:id="@+id/imageView14"
                     android:layout_width="42dp"
                     android:layout_height="42dp"
-                    android:layout_alignBottom="@+id/circuldistance"
                     android:layout_alignStart="@+id/timecounter"
-                    android:layout_marginBottom="4dp"
+                    android:layout_alignBottom="@+id/circuldistance"
                     android:layout_marginStart="4dp"
+                    android:layout_marginBottom="4dp"
                     app:srcCompat="@drawable/c" />
 
                 <com.mikhaellopez.circularprogressbar.CircularProgressBar
                     android:id="@+id/circultime"
                     android:layout_width="49dp"
                     android:layout_height="54dp"
-                    android:layout_marginTop="20dp"
                     android:layout_alignParentStart="true"
-                    android:layout_marginBottom="-4dp"
                     android:layout_marginStart="18dp"
+                    android:layout_marginTop="20dp"
+                    android:layout_marginBottom="-4dp"
                     android:padding="10dp"
                     app:cpb_background_progressbar_color="#e6e6fa"
                     app:cpb_background_progressbar_width="5dp"
@@ -283,8 +284,8 @@
                     android:id="@+id/heart"
                     android:layout_width="15dp"
                     android:layout_height="16dp"
-                    android:layout_alignParentEnd="true"
                     android:layout_alignTop="@+id/circularstep"
+                    android:layout_alignParentEnd="true"
                     android:layout_marginEnd="38dp"
                     android:visibility="gone"
                     app:srcCompat="@drawable/heart" />
@@ -293,13 +294,12 @@
                     android:id="@+id/showrate"
                     android:layout_width="52dp"
                     android:layout_height="wrap_content"
-                    android:layout_alignParentEnd="true"
                     android:layout_alignTop="@+id/textView37"
+                    android:layout_alignParentEnd="true"
                     android:layout_marginEnd="16dp"
                     android:gravity="center"
                     android:text=""
                     android:textSize="10dp" />
-
 
 
             </RelativeLayout>
@@ -309,18 +309,18 @@
                 android:layout_width="match_parent"
                 android:layout_height="110dp"
                 android:layout_marginLeft="10dp"
-                android:layout_marginRight="10dp"
                 android:layout_marginTop="10dp"
+                android:layout_marginRight="10dp"
                 android:background="@drawable/rounded_rec8">
 
                 <TextView
                     android:id="@+id/useColori"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_alignParentBottom="true"
                     android:layout_alignParentStart="true"
-                    android:layout_marginBottom="11dp"
+                    android:layout_alignParentBottom="true"
                     android:layout_marginLeft="10dp"
+                    android:layout_marginBottom="11dp"
                     android:text="0"
                     android:textColor="#000"
                     android:textSize="40dp"
@@ -330,10 +330,10 @@
                     android:id="@+id/textView0"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_alignParentEnd="true"
                     android:layout_alignParentTop="true"
-                    android:layout_marginEnd="31dp"
+                    android:layout_alignParentEnd="true"
                     android:layout_marginTop="11dp"
+                    android:layout_marginEnd="31dp"
                     android:padding="5dp"
                     android:text="میزان مصرف کالری"
                     android:textColor="@android:color/darker_gray"
@@ -344,8 +344,8 @@
                     android:id="@+id/imageView5"
                     android:layout_width="15dp"
                     android:layout_height="19dp"
-                    android:layout_alignParentEnd="true"
                     android:layout_alignTop="@+id/textView0"
+                    android:layout_alignParentEnd="true"
                     android:layout_marginEnd="11dp"
                     app:srcCompat="@drawable/restaurant" />
 
@@ -367,7 +367,7 @@
                     android:text="5000" />
 
                 <Button
-                    android:id="@+id/button"
+                    android:id="@+id/AddFood"
                     android:layout_width="98dp"
                     android:layout_height="24dp"
                     android:layout_above="@+id/textView16"
@@ -382,8 +382,8 @@
                 android:layout_width="match_parent"
                 android:layout_height="110dp"
                 android:layout_marginLeft="10dp"
-                android:layout_marginRight="10dp"
                 android:layout_marginTop="10dp"
+                android:layout_marginRight="10dp"
                 android:background="@drawable/rounded_rec8">
 
                 <TextView
@@ -400,10 +400,10 @@
                     android:id="@+id/useColori2"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_alignParentBottom="true"
                     android:layout_alignParentStart="true"
-                    android:layout_marginBottom="11dp"
+                    android:layout_alignParentBottom="true"
                     android:layout_marginLeft="10dp"
+                    android:layout_marginBottom="11dp"
                     android:text="0"
                     android:textColor="#000"
                     android:textSize="40dp"
@@ -426,8 +426,8 @@
                     android:layout_width="15dp"
                     android:layout_height="20dp"
                     android:layout_alignParentEnd="true"
-                    android:layout_marginEnd="12dp"
                     android:layout_marginTop="12dp"
+                    android:layout_marginEnd="12dp"
                     app:srcCompat="@drawable/running" />
 
                 <TextView
@@ -450,8 +450,8 @@
                 android:layout_width="match_parent"
                 android:layout_height="110dp"
                 android:layout_marginLeft="10dp"
-                android:layout_marginRight="10dp"
                 android:layout_marginTop="10dp"
+                android:layout_marginRight="10dp"
                 android:background="@drawable/rounded_rec8">
 
                 <ImageView
@@ -488,18 +488,18 @@
                     android:id="@+id/imageView11"
                     android:layout_width="15dp"
                     android:layout_height="29dp"
-                    android:layout_alignParentEnd="true"
                     android:layout_alignParentTop="true"
-                    android:layout_marginRight="10dp"
+                    android:layout_alignParentEnd="true"
                     android:layout_marginTop="10dp"
+                    android:layout_marginRight="10dp"
                     app:srcCompat="@drawable/water" />
 
                 <TextView
                     android:id="@+id/water"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_alignParentBottom="true"
                     android:layout_alignParentStart="true"
+                    android:layout_alignParentBottom="true"
                     android:layout_marginLeft="10dp"
                     android:padding="5dp"
                     android:text="0"
@@ -533,18 +533,18 @@
                 android:layout_width="match_parent"
                 android:layout_height="90dp"
                 android:layout_marginLeft="10dp"
-                android:layout_marginRight="10dp"
                 android:layout_marginTop="10dp"
+                android:layout_marginRight="10dp"
                 android:background="@drawable/rounded_rec8">
 
                 <TextView
                     android:id="@+id/textView9"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_alignParentEnd="true"
                     android:layout_alignParentTop="true"
-                    android:layout_marginEnd="29dp"
+                    android:layout_alignParentEnd="true"
                     android:layout_marginTop="12dp"
+                    android:layout_marginEnd="29dp"
                     android:padding="5dp"
                     android:text="میزان خواب"
                     android:textColor="@android:color/darker_gray"
@@ -555,8 +555,8 @@
                     android:id="@+id/imageView12"
                     android:layout_width="15dp"
                     android:layout_height="21dp"
-                    android:layout_alignParentEnd="true"
                     android:layout_alignTop="@+id/textView9"
+                    android:layout_alignParentEnd="true"
                     android:layout_marginEnd="11dp"
                     app:srcCompat="@drawable/moon" />
 
@@ -564,6 +564,7 @@
                     android:id="@+id/textView30"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:layout_below="@+id/button2"
                     android:layout_alignParentStart="true"
                     android:layout_marginStart="13dp"
                     android:text="2 : 46" />

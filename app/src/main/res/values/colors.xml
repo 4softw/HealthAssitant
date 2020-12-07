@@ -3,6 +3,9 @@
     <color name="colorPrimary">#681dae</color>
     <color name="colorPrimaryDark">#561d79</color>
     <color name="colorAccent">#e7e34f</color>
-
+    <array name="sample_progress_gradient">
+        <item>#009688</item>
+        <item>#80CBC4</item>
+    </array>
     <color name="black_overlay">#66000000</color>
 </resources>
