@@ -1,0 +1,22 @@
+Index: app/src/main/java/com/google/se/FoodPage.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>package com.google.se;\r\n\r\nimport android.content.Intent;\r\nimport android.graphics.PorterDuff;\r\nimport android.support.v7.app.AppCompatActivity;\r\nimport android.os.Bundle;\r\nimport android.view.View;\r\nimport android.widget.ImageButton;\r\nimport android.widget.ImageView;\r\nimport android.widget.ProgressBar;\r\nimport android.widget.TextView;\r\n\r\npublic class FoodPage extends AppCompatActivity {\r\n    TextView back;\r\n    ImageView breakfast,lunch,dinner,drink,snack;\r\n    ProgressBar calorieProgress;\r\n    @Override\r\n    protected void onCreate(Bundle savedInstanceState) {\r\n        super.onCreate(savedInstanceState);\r\n        setContentView(R.layout.activity_food_page);\r\n        back = findViewById(R.id.back);\r\n        breakfast = findViewById(R.id.breakfast);\r\n        lunch = findViewById(R.id.lunch);\r\n        dinner = findViewById(R.id.dinner);\r\n        drink = findViewById(R.id.drinks);\r\n        snack = findViewById(R.id.snack);\r\n//        lunch.setColorFilter(0xFFFF0000, PorterDuff.Mode.MULTIPLY);\r\n        back.setOnClickListener(new View.OnClickListener() {\r\n            @Override\r\n            public void onClick(View view) {\r\n                startActivity(new Intent(FoodPage.this,HomePage.class));\r\n            }\r\n        });\r\n        calorieProgress = findViewById(R.id.progressCalorie);\r\n        calorieProgress.setProgress(50);\r\n\r\n\r\n\r\n    }\r\n}
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- app/src/main/java/com/google/se/FoodPage.java	(revision a6e81a3eab4f1003ba59ce429a6e7b6d5f1f6e07)
++++ app/src/main/java/com/google/se/FoodPage.java	(date 1607324733585)
+@@ -24,6 +24,7 @@
+         dinner = findViewById(R.id.dinner);
+         drink = findViewById(R.id.drinks);
+         snack = findViewById(R.id.snack);
++//        View.OnFocusChangeListener(new )
+ //        lunch.setColorFilter(0xFFFF0000, PorterDuff.Mode.MULTIPLY);
+         back.setOnClickListener(new View.OnClickListener() {
+             @Override
+diff --git .idea/shelf/Uncommitted_changes_before_Checkout_at_11_30_2020_1_18_PM__Default_Changelist_.xml .idea/shelf/Uncommitted_changes_before_Checkout_at_11_30_2020_1_18_PM__Default_Changelist_.xml
+diff --git .idea/shelf/Uncommitted_changes_before_Checkout_at_12_1_2020_12_25_PM__Default_Changelist_.xml .idea/shelf/Uncommitted_changes_before_Checkout_at_12_1_2020_12_25_PM__Default_Changelist_.xml
+diff --git .idea/shelf/Uncommitted_changes_before_Checkout_at_11_30_2020_1_50_PM__Default_Changelist_.xml .idea/shelf/Uncommitted_changes_before_Checkout_at_11_30_2020_1_50_PM__Default_Changelist_.xml
+diff --git .idea/shelf/Uncommitted_changes_before_rebase__Default_Changelist_.xml .idea/shelf/Uncommitted_changes_before_rebase__Default_Changelist_.xml
+diff --git .idea/shelf/Uncommitted_changes_before_Checkout_at_12_1_2020_6_28_PM__Default_Changelist_.xml .idea/shelf/Uncommitted_changes_before_Checkout_at_12_1_2020_6_28_PM__Default_Changelist_.xml
