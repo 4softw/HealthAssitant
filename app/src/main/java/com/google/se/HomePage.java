@@ -77,7 +77,7 @@ public class HomePage extends AppCompatActivity implements SensorEventListener {
         FoodAdd.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                startActivity(new Intent(HomePage.this,FoodPage.class));
+    //            startActivity(new Intent(HomePage.this,FoodPage.class));
             }
         });
         Toast.makeText(this, "" + person.size(), Toast.LENGTH_SHORT).show();
