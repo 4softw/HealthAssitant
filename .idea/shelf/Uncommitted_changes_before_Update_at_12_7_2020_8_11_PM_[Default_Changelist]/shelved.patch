@@ -1,0 +1,253 @@
+Index: .idea/shelf/Uncommitted_changes_before_Checkout_at_11_30_2020_1_18_PM__Default_Changelist_.xml
+===================================================================
+--- .idea/shelf/Uncommitted_changes_before_Checkout_at_11_30_2020_1_18_PM__Default_Changelist_.xml	(revision 61deffc2903a49dac91f2236b7f2b247a9579b8d)
++++ .idea/shelf/Uncommitted_changes_before_Checkout_at_11_30_2020_1_18_PM__Default_Changelist_.xml	(revision 61deffc2903a49dac91f2236b7f2b247a9579b8d)
+@@ -1,4 +0,0 @@
+-<changelist name="Uncommitted_changes_before_Checkout_at_11_30_2020_1_18_PM_[Default_Changelist]" date="1606729741286" recycled="true" deleted="true">
+-  <option name="PATH" value="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Checkout_at_11_30_2020_1_18_PM_[Default_Changelist]/shelved.patch" />
+-  <option name="DESCRIPTION" value="Uncommitted changes before Checkout at 11/30/2020 1:18 PM [Default Changelist]" />
+-</changelist>
+\ No newline at end of file
+Index: .idea/shelf/Uncommitted_changes_before_Checkout_at_11_30_2020_1_50_PM__Default_Changelist_.xml
+===================================================================
+--- .idea/shelf/Uncommitted_changes_before_Checkout_at_11_30_2020_1_50_PM__Default_Changelist_.xml	(revision 61deffc2903a49dac91f2236b7f2b247a9579b8d)
++++ .idea/shelf/Uncommitted_changes_before_Checkout_at_11_30_2020_1_50_PM__Default_Changelist_.xml	(revision 61deffc2903a49dac91f2236b7f2b247a9579b8d)
+@@ -1,4 +0,0 @@
+-<changelist name="Uncommitted_changes_before_Checkout_at_11_30_2020_1_50_PM_[Default_Changelist]" date="1606731667844" recycled="true" deleted="true">
+-  <option name="PATH" value="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Checkout_at_11_30_2020_1_50_PM_[Default_Changelist]/shelved.patch" />
+-  <option name="DESCRIPTION" value="Uncommitted changes before Checkout at 11/30/2020 1:50 PM [Default Changelist]" />
+-</changelist>
+\ No newline at end of file
+Index: .idea/shelf/Uncommitted_changes_before_rebase__Default_Changelist_.xml
+===================================================================
+--- .idea/shelf/Uncommitted_changes_before_rebase__Default_Changelist_.xml	(revision 61deffc2903a49dac91f2236b7f2b247a9579b8d)
++++ .idea/shelf/Uncommitted_changes_before_rebase__Default_Changelist_.xml	(revision 61deffc2903a49dac91f2236b7f2b247a9579b8d)
+@@ -1,9 +0,0 @@
+-<changelist name="Uncommitted_changes_before_rebase_[Default_Changelist]" date="1606729286863" recycled="true" deleted="true">
+-  <option name="PATH" value="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_rebase_[Default_Changelist]/shelved.patch" />
+-  <option name="DESCRIPTION" value="Uncommitted changes before rebase [Default Changelist]" />
+-  <binary>
+-    <option name="BEFORE_PATH" value=".idea/caches/build_file_checksums.ser" />
+-    <option name="AFTER_PATH" value=".idea/caches/build_file_checksums.ser" />
+-    <option name="SHELVED_PATH" value="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_rebase_[Default_Changelist]/build_file_checksums.ser" />
+-  </binary>
+-</changelist>
+\ No newline at end of file
+Index: .idea/shelf/Uncommitted_changes_before_Checkout_at_11_30_2020_1_50_PM_[Default_Changelist]/shelved.patch
+===================================================================
+--- .idea/shelf/Uncommitted_changes_before_Checkout_at_11_30_2020_1_50_PM_[Default_Changelist]/shelved.patch	(revision 61deffc2903a49dac91f2236b7f2b247a9579b8d)
++++ .idea/shelf/Uncommitted_changes_before_Checkout_at_11_30_2020_1_50_PM_[Default_Changelist]/shelved.patch	(revision 61deffc2903a49dac91f2236b7f2b247a9579b8d)
+@@ -1,46 +0,0 @@
+-Index: app/src/main/java/com/google/se/HomePage.java
+-IDEA additional info:
+-Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+-<+>package com.google.se;\r\n\r\nimport android.support.v7.app.AppCompatActivity;\r\nimport android.os.Bundle;\r\nimport android.widget.TextView;\r\nimport android.widget.Toast;\r\n\r\nimport com.android.volley.Request;\r\nimport com.android.volley.Response;\r\nimport com.android.volley.VolleyError;\r\nimport com.android.volley.toolbox.StringRequest;\r\nimport com.android.volley.toolbox.Volley;\r\n\r\nimport org.json.JSONArray;\r\nimport org.json.JSONException;\r\nimport org.json.JSONObject;\r\n\r\nimport java.util.HashMap;\r\nimport java.util.Map;\r\n\r\npublic class HomePage extends AppCompatActivity {\r\n\r\n    TextView hi;\r\n    String url = \"http://healthcareassistantproject.ir/mySite/fetchwithid.php\";\r\n    String name;\r\n\r\n    @Override\r\n    protected void onCreate(Bundle savedInstanceState) {\r\n        super.onCreate(savedInstanceState);\r\n        setContentView(R.layout.activity_home_page);\r\n        hi = findViewById(R.id.hi);\r\n        hi.setText(\"name is \"+name);\r\n\r\n    }\r\n\r\n\r\n    private void loadProducts() {\r\n        StringRequest stringRequest = new StringRequest(Request.Method.POST, url,\r\n                new Response.Listener<String>() {\r\n                    @Override\r\n                    public void onResponse(String response) {\r\n                        System.out.println(response);\r\n                        //    Toast.makeText(turbine.this, \"تبریک\", Toast.LENGTH_LONG).show();\r\n                        try {\r\n                            JSONArray array = new JSONArray(response);\r\n                            for (int i = 0; i < array.length(); i++) {\r\n                                InformationModel model=new InformationModel();\r\n                                JSONObject product = array.getJSONObject(i);\r\n                                model.setName(product.getString(\"name\"));\r\n                                name=product.getString(\"name\");\r\n                            }\r\n                        } catch (JSONException e) {\r\n                            e.printStackTrace();\r\n                        }\r\n\r\n\r\n                    }\r\n                },\r\n                new Response.ErrorListener() {\r\n                    @Override\r\n                    public void onErrorResponse(VolleyError error) {\r\n                        //         Toast.makeText(turbine.this, \"خطای اتصال به شبکه\", Toast.LENGTH_LONG).show();\r\n                    }\r\n                }) {\r\n            @Override\r\n            protected Map<String, String> getParams() {\r\n                Map<String, String> params = new HashMap<String, String>();\r\n                params.put(\"id\", MainActivity.person.get(0).getId());\r\n                Toast.makeText(HomePage.this, MainActivity.person.get(0).getId(), Toast.LENGTH_SHORT).show();\r\n                return params;\r\n            }\r\n\r\n        };\r\n    }\r\n}\r\n
+-Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+-<+>UTF-8
+-===================================================================
+---- app/src/main/java/com/google/se/HomePage.java	(revision ff5d13aa805149033639d268ea420b00f4efdad0)
+-+++ app/src/main/java/com/google/se/HomePage.java	(date 1606731458147)
+-@@ -48,6 +48,8 @@
+-                                 JSONObject product = array.getJSONObject(i);
+-                                 model.setName(product.getString("name"));
+-                                 name=product.getString("name");
+-+                                Toast.makeText(HomePage.this, name, Toast.LENGTH_SHORT).show();
+-+
+-                             }
+-                         } catch (JSONException e) {
+-                             e.printStackTrace();
+-Index: .idea/gradle.xml
+-IDEA additional info:
+-Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+-<+><?xml version=\"1.0\" encoding=\"UTF-8\"?>\r\n<project version=\"4\">\r\n  <component name=\"GradleSettings\">\r\n    <option name=\"linkedExternalProjectsSettings\">\r\n      <GradleProjectSettings>\r\n        <option name=\"distributionType\" value=\"DEFAULT_WRAPPED\" />\r\n        <option name=\"externalProjectPath\" value=\"$PROJECT_DIR$\" />\r\n        <option name=\"modules\">\r\n          <set>\r\n            <option value=\"$PROJECT_DIR$\" />\r\n            <option value=\"$PROJECT_DIR$/app\" />\r\n          </set>\r\n        </option>\r\n        <option name=\"resolveModulePerSourceSet\" value=\"false\" />\r\n      </GradleProjectSettings>\r\n    </option>\r\n  </component>\r\n</project>
+-Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+-<+>UTF-8
+-===================================================================
+---- .idea/gradle.xml	(revision ff5d13aa805149033639d268ea420b00f4efdad0)
+-+++ .idea/gradle.xml	(date 1606729700978)
+-@@ -1,8 +1,10 @@
+- <?xml version="1.0" encoding="UTF-8"?>
+- <project version="4">
+-+  <component name="GradleMigrationSettings" migrationVersion="1" />
+-   <component name="GradleSettings">
+-     <option name="linkedExternalProjectsSettings">
+-       <GradleProjectSettings>
+-+        <option name="testRunner" value="PLATFORM" />
+-         <option name="distributionType" value="DEFAULT_WRAPPED" />
+-         <option name="externalProjectPath" value="$PROJECT_DIR$" />
+-         <option name="modules">
+-@@ -12,6 +14,7 @@
+-           </set>
+-         </option>
+-         <option name="resolveModulePerSourceSet" value="false" />
+-+        <option name="useQualifiedModuleNames" value="true" />
+-       </GradleProjectSettings>
+-     </option>
+-   </component>
+Index: .idea/shelf/Uncommitted_changes_before_rebase_[Default_Changelist]/shelved.patch
+===================================================================
+--- .idea/shelf/Uncommitted_changes_before_rebase_[Default_Changelist]/shelved.patch	(revision 61deffc2903a49dac91f2236b7f2b247a9579b8d)
++++ .idea/shelf/Uncommitted_changes_before_rebase_[Default_Changelist]/shelved.patch	(revision 61deffc2903a49dac91f2236b7f2b247a9579b8d)
+@@ -1,110 +0,0 @@
+-Index: .idea/jarRepositories.xml
+-IDEA additional info:
+-Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+-<+>UTF-8
+-===================================================================
+---- .idea/jarRepositories.xml	(date 1606712658190)
+-+++ .idea/jarRepositories.xml	(date 1606712658190)
+-@@ -0,0 +1,40 @@
+-+<?xml version="1.0" encoding="UTF-8"?>
+-+<project version="4">
+-+  <component name="RemoteRepositoriesConfiguration">
+-+    <remote-repository>
+-+      <option name="id" value="central" />
+-+      <option name="name" value="Maven Central repository" />
+-+      <option name="url" value="https://repo1.maven.org/maven2" />
+-+    </remote-repository>
+-+    <remote-repository>
+-+      <option name="id" value="jboss.community" />
+-+      <option name="name" value="JBoss Community repository" />
+-+      <option name="url" value="https://repository.jboss.org/nexus/content/repositories/public/" />
+-+    </remote-repository>
+-+    <remote-repository>
+-+      <option name="id" value="BintrayJCenter" />
+-+      <option name="name" value="BintrayJCenter" />
+-+      <option name="url" value="https://jcenter.bintray.com/" />
+-+    </remote-repository>
+-+    <remote-repository>
+-+      <option name="id" value="Google" />
+-+      <option name="name" value="Google" />
+-+      <option name="url" value="https://dl.google.com/dl/android/maven2/" />
+-+    </remote-repository>
+-+    <remote-repository>
+-+      <option name="id" value="C:\Users\Tenapia\AppData\Local\Android\Sdk\extras\android\m2repository" />
+-+      <option name="name" value="C:\Users\Tenapia\AppData\Local\Android\Sdk\extras\android\m2repository" />
+-+      <option name="url" value="file:/$USER_HOME$/AppData/Local/Android/Sdk/extras/android/m2repository" />
+-+    </remote-repository>
+-+    <remote-repository>
+-+      <option name="id" value="C:\Users\Tenapia\AppData\Local\Android\Sdk\extras\m2repository" />
+-+      <option name="name" value="C:\Users\Tenapia\AppData\Local\Android\Sdk\extras\m2repository" />
+-+      <option name="url" value="file:/$USER_HOME$/AppData/Local/Android/Sdk/extras/m2repository" />
+-+    </remote-repository>
+-+    <remote-repository>
+-+      <option name="id" value="C:\Users\Tenapia\AppData\Local\Android\Sdk\extras\google\m2repository" />
+-+      <option name="name" value="C:\Users\Tenapia\AppData\Local\Android\Sdk\extras\google\m2repository" />
+-+      <option name="url" value="file:/$USER_HOME$/AppData/Local/Android/Sdk/extras/google/m2repository" />
+-+    </remote-repository>
+-+  </component>
+-+</project>
+-\ No newline at end of file
+-Index: .idea/compiler.xml
+-IDEA additional info:
+-Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+-<+>UTF-8
+-===================================================================
+---- .idea/compiler.xml	(date 1606711826071)
+-+++ .idea/compiler.xml	(date 1606711826071)
+-@@ -0,0 +1,6 @@
+-+<?xml version="1.0" encoding="UTF-8"?>
+-+<project version="4">
+-+  <component name="CompilerConfiguration">
+-+    <bytecodeTargetLevel target="1.8" />
+-+  </component>
+-+</project>
+-\ No newline at end of file
+-Index: .idea/gradle.xml
+-IDEA additional info:
+-Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+-<+><?xml version=\"1.0\" encoding=\"UTF-8\"?>\r\n<project version=\"4\">\r\n  <component name=\"GradleSettings\">\r\n    <option name=\"linkedExternalProjectsSettings\">\r\n      <GradleProjectSettings>\r\n        <option name=\"distributionType\" value=\"DEFAULT_WRAPPED\" />\r\n        <option name=\"externalProjectPath\" value=\"$PROJECT_DIR$\" />\r\n        <option name=\"modules\">\r\n          <set>\r\n            <option value=\"$PROJECT_DIR$\" />\r\n            <option value=\"$PROJECT_DIR$/app\" />\r\n          </set>\r\n        </option>\r\n        <option name=\"resolveModulePerSourceSet\" value=\"false\" />\r\n      </GradleProjectSettings>\r\n    </option>\r\n  </component>\r\n</project>
+-Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+-<+>UTF-8
+-===================================================================
+---- .idea/gradle.xml	(revision ff5d13aa805149033639d268ea420b00f4efdad0)
+-+++ .idea/gradle.xml	(date 1606711826163)
+-@@ -1,8 +1,10 @@
+- <?xml version="1.0" encoding="UTF-8"?>
+- <project version="4">
+-+  <component name="GradleMigrationSettings" migrationVersion="1" />
+-   <component name="GradleSettings">
+-     <option name="linkedExternalProjectsSettings">
+-       <GradleProjectSettings>
+-+        <option name="testRunner" value="PLATFORM" />
+-         <option name="distributionType" value="DEFAULT_WRAPPED" />
+-         <option name="externalProjectPath" value="$PROJECT_DIR$" />
+-         <option name="modules">
+-@@ -12,6 +14,7 @@
+-           </set>
+-         </option>
+-         <option name="resolveModulePerSourceSet" value="false" />
+-+        <option name="useQualifiedModuleNames" value="true" />
+-       </GradleProjectSettings>
+-     </option>
+-   </component>
+-Index: .idea/misc.xml
+-IDEA additional info:
+-Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+-<+><?xml version=\"1.0\" encoding=\"UTF-8\"?>\r\n<project version=\"4\">\r\n  <component name=\"NullableNotNullManager\">\r\n    <option name=\"myDefaultNullable\" value=\"android.support.annotation.Nullable\" />\r\n    <option name=\"myDefaultNotNull\" value=\"android.support.annotation.NonNull\" />\r\n    <option name=\"myNullables\">\r\n      <value>\r\n        <list size=\"5\">\r\n          <item index=\"0\" class=\"java.lang.String\" itemvalue=\"org.jetbrains.annotations.Nullable\" />\r\n          <item index=\"1\" class=\"java.lang.String\" itemvalue=\"javax.annotation.Nullable\" />\r\n          <item index=\"2\" class=\"java.lang.String\" itemvalue=\"javax.annotation.CheckForNull\" />\r\n          <item index=\"3\" class=\"java.lang.String\" itemvalue=\"edu.umd.cs.findbugs.annotations.Nullable\" />\r\n          <item index=\"4\" class=\"java.lang.String\" itemvalue=\"android.support.annotation.Nullable\" />\r\n        </list>\r\n      </value>\r\n    </option>\r\n    <option name=\"myNotNulls\">\r\n      <value>\r\n        <list size=\"4\">\r\n          <item index=\"0\" class=\"java.lang.String\" itemvalue=\"org.jetbrains.annotations.NotNull\" />\r\n          <item index=\"1\" class=\"java.lang.String\" itemvalue=\"javax.annotation.Nonnull\" />\r\n          <item index=\"2\" class=\"java.lang.String\" itemvalue=\"edu.umd.cs.findbugs.annotations.NonNull\" />\r\n          <item index=\"3\" class=\"java.lang.String\" itemvalue=\"android.support.annotation.NonNull\" />\r\n        </list>\r\n      </value>\r\n    </option>\r\n  </component>\r\n  <component name=\"ProjectRootManager\" version=\"2\" languageLevel=\"JDK_1_8\" project-jdk-name=\"1.8\" project-jdk-type=\"JavaSDK\">\r\n    <output url=\"file://$PROJECT_DIR$/build/classes\" />\r\n  </component>\r\n  <component name=\"ProjectType\">\r\n    <option name=\"id\" value=\"Android\" />\r\n  </component>\r\n</project>
+-Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+-<+>UTF-8
+-===================================================================
+---- .idea/misc.xml	(revision ff5d13aa805149033639d268ea420b00f4efdad0)
+-+++ .idea/misc.xml	(date 1606711825919)
+-@@ -25,7 +25,7 @@
+-       </value>
+-     </option>
+-   </component>
+--  <component name="ProjectRootManager" version="2" languageLevel="JDK_1_8" project-jdk-name="1.8" project-jdk-type="JavaSDK">
+-+  <component name="ProjectRootManager" version="2" languageLevel="JDK_1_8" default="true" project-jdk-name="1.8" project-jdk-type="JavaSDK">
+-     <output url="file://$PROJECT_DIR$/build/classes" />
+-   </component>
+-   <component name="ProjectType">
+Index: .idea/shelf/Uncommitted_changes_before_Checkout_at_11_30_2020_1_18_PM_[Default_Changelist]/shelved.patch
+===================================================================
+--- .idea/shelf/Uncommitted_changes_before_Checkout_at_11_30_2020_1_18_PM_[Default_Changelist]/shelved.patch	(revision 61deffc2903a49dac91f2236b7f2b247a9579b8d)
++++ .idea/shelf/Uncommitted_changes_before_Checkout_at_11_30_2020_1_18_PM_[Default_Changelist]/shelved.patch	(revision 61deffc2903a49dac91f2236b7f2b247a9579b8d)
+@@ -1,46 +0,0 @@
+-Index: .idea/gradle.xml
+-IDEA additional info:
+-Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+-<+><?xml version=\"1.0\" encoding=\"UTF-8\"?>\r\n<project version=\"4\">\r\n  <component name=\"GradleSettings\">\r\n    <option name=\"linkedExternalProjectsSettings\">\r\n      <GradleProjectSettings>\r\n        <option name=\"distributionType\" value=\"DEFAULT_WRAPPED\" />\r\n        <option name=\"externalProjectPath\" value=\"$PROJECT_DIR$\" />\r\n        <option name=\"modules\">\r\n          <set>\r\n            <option value=\"$PROJECT_DIR$\" />\r\n            <option value=\"$PROJECT_DIR$/app\" />\r\n          </set>\r\n        </option>\r\n        <option name=\"resolveModulePerSourceSet\" value=\"false\" />\r\n      </GradleProjectSettings>\r\n    </option>\r\n  </component>\r\n</project>
+-Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+-<+>UTF-8
+-===================================================================
+---- .idea/gradle.xml	(revision 87b1afdff59f476ccf62e8d8bcd06d7272f34684)
+-+++ .idea/gradle.xml	(date 1606729435483)
+-@@ -1,8 +1,10 @@
+- <?xml version="1.0" encoding="UTF-8"?>
+- <project version="4">
+-+  <component name="GradleMigrationSettings" migrationVersion="1" />
+-   <component name="GradleSettings">
+-     <option name="linkedExternalProjectsSettings">
+-       <GradleProjectSettings>
+-+        <option name="testRunner" value="PLATFORM" />
+-         <option name="distributionType" value="DEFAULT_WRAPPED" />
+-         <option name="externalProjectPath" value="$PROJECT_DIR$" />
+-         <option name="modules">
+-@@ -12,6 +14,7 @@
+-           </set>
+-         </option>
+-         <option name="resolveModulePerSourceSet" value="false" />
+-+        <option name="useQualifiedModuleNames" value="true" />
+-       </GradleProjectSettings>
+-     </option>
+-   </component>
+-Index: .idea/misc.xml
+-IDEA additional info:
+-Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+-<+><?xml version=\"1.0\" encoding=\"UTF-8\"?>\r\n<project version=\"4\">\r\n  <component name=\"ProjectDictionaryState\">\r\n    <dictionary name=\"SunByte\" />\r\n  </component>\r\n  <component name=\"ProjectRootManager\" version=\"2\" languageLevel=\"JDK_1_7\" project-jdk-name=\"1.8\" project-jdk-type=\"JavaSDK\">\r\n    <output url=\"file://$PROJECT_DIR$/build/classes\" />\r\n  </component>\r\n  <component name=\"ProjectType\">\r\n    <option name=\"id\" value=\"Android\" />\r\n  </component>\r\n</project>
+-Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+-<+>UTF-8
+-===================================================================
+---- .idea/misc.xml	(revision 87b1afdff59f476ccf62e8d8bcd06d7272f34684)
+-+++ .idea/misc.xml	(date 1606729435442)
+-@@ -1,8 +1,5 @@
+- <?xml version="1.0" encoding="UTF-8"?>
+- <project version="4">
+--  <component name="ProjectDictionaryState">
+--    <dictionary name="SunByte" />
+--  </component>
+-   <component name="ProjectRootManager" version="2" languageLevel="JDK_1_7" project-jdk-name="1.8" project-jdk-type="JavaSDK">
+-     <output url="file://$PROJECT_DIR$/build/classes" />
+-   </component>
+diff --git .idea/shelf/Uncommitted_changes_before_Checkout_at_12_7_2020_10_35_AM__Default_Changelist_.xml .idea/shelf/Uncommitted_changes_before_Checkout_at_12_7_2020_10_35_AM__Default_Changelist_.xml
