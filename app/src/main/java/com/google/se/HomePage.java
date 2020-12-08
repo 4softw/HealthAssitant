@@ -26,6 +26,7 @@ import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.ListView;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -51,7 +52,7 @@ import java.util.Map;
 
 public class HomePage extends AppCompatActivity implements SensorEventListener,NavigationView.OnNavigationItemSelectedListener {
 
-
+    RelativeLayout waterPage;
     TextView hi, Maincolori, date, point, water, showrate;
     public static final String TAG = "Hiii";
     String url = "http://healthcareassistantproject.ir/mySite/fetchwithid.php";
@@ -69,6 +70,7 @@ public class HomePage extends AppCompatActivity implements SensorEventListener,N
     static List<InformationModel> person = new ArrayList<>();
     SensorManager sensorManager;
     Button FoodAdd;
+    ActionBarDrawerToggle toggle;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -85,7 +87,7 @@ public class HomePage extends AppCompatActivity implements SensorEventListener,N
         FoodAdd.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-    //            startActivity(new Intent(HomePage.this,FoodPage.class));
+                startActivity(new Intent(HomePage.this,FoodPage.class));
             }
         });
         Toast.makeText(this, "" + person.size(), Toast.LENGTH_SHORT).show();
@@ -142,8 +144,25 @@ public class HomePage extends AppCompatActivity implements SensorEventListener,N
 
         }
 
-        ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(this, drawerLayout, null,
+        toggle = new ActionBarDrawerToggle(this, drawerLayout, null,
                 R.string.open, R.string.close);
+        fab.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                toggle = new ActionBarDrawerToggle(HomePage.this, drawerLayout, null,R.string.open, R.string.close);
+                drawerLayout.addDrawerListener(toggle);
+                toggle.syncState();
+            }
+        });
+        waterPage = findViewById(R.id.water_page);
+        waterPage.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent activity = new Intent(HomePage.this,Water.class);
+                activity.putExtra("glass",water.getText().toString());
+                startActivity(activity);
+            }
+        });
         drawerLayout.addDrawerListener(toggle);
         toggle.syncState();
         first();
