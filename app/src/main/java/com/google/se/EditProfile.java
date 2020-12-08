@@ -1,5 +1,6 @@
 package com.google.se;
 
+import android.app.ProgressDialog;
 import android.content.ContentValues;
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
@@ -31,6 +32,7 @@ public class EditProfile extends AppCompatActivity {
     TextView agevalue,heightvalue,weightvalue;
     Button ok;
     String sex;
+    ProgressDialog progressBar;
     SignUpDBHelper signUpDBHelper;
     String url = "http://healthcareassistantproject.ir/mySite/edit.php";
     com.crystal.crystalrangeseekbar.widgets.BubbleThumbSeekbar age,weight,height;
@@ -54,6 +56,9 @@ public class EditProfile extends AppCompatActivity {
         agevalue.setText(HomePage.person.get(0).getAge());
         heightvalue.setText(HomePage.person.get(0).getHeight());
         weightvalue.setText(HomePage.person.get(0).getWeight());
+        progressBar=new ProgressDialog(EditProfile.this);
+        progressBar.setMessage("لطفا صبز کنید...");
+        progressBar.setProgressStyle(ProgressDialog.STYLE_SPINNER);
 
         name.setText(HomePage.person.get(0).getName());
         lastname.setText(HomePage.person.get(0).getLastname());
@@ -111,15 +116,15 @@ public class EditProfile extends AppCompatActivity {
 
 
     private void AddToServer()  {
-       // progressBar.show();
+       progressBar.show();
         RequestQueue queue = Volley.newRequestQueue(EditProfile.this);
         StringRequest request = new StringRequest(Request.Method.POST, url, new Response.Listener<String>() {
 
             @Override
 
             public void onResponse(String response) {
-             //   progressBar.dismiss();
-                  Toast.makeText(EditProfile.this, "***********************" + response, Toast.LENGTH_LONG).show();
+                progressBar.dismiss();
+         //         Toast.makeText(EditProfile.this, "***********************" + response, Toast.LENGTH_LONG).show();
 
      //           Toast.makeText(getContext(), "Go To Home", Toast.LENGTH_SHORT).show();
 
@@ -131,7 +136,7 @@ public class EditProfile extends AppCompatActivity {
             @Override
 
             public void onErrorResponse(VolleyError error) {
-       //         progressBar.dismiss();
+               progressBar.dismiss();
                 Toast.makeText(EditProfile.this, "اینترنت متصل نیست" + error, Toast.LENGTH_LONG).show();
 
                 Log.i("My error", "" + error);

@@ -3,7 +3,7 @@
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     tools:showIn="navigation_view">
-    <item android:title="">
+    <item android:title="تنظیمات عمومی">
         <menu>
             <item
                 android:title=" مشخصات فردی"
@@ -39,7 +39,7 @@
         </menu>
     </item>
 
-    <item android:title="">
+    <item android:title="ارتباطات">
         <menu>
             <item android:title="تماس با ما"
                 android:icon="@drawable/call"

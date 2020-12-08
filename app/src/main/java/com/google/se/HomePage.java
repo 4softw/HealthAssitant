@@ -12,6 +12,7 @@ import android.hardware.SensorManager;
 import android.os.PowerManager;
 import android.support.annotation.NonNull;
 import android.support.design.widget.NavigationView;
+import android.support.v4.app.FragmentManager;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
@@ -26,6 +27,7 @@ import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.ListView;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -52,11 +54,13 @@ import java.util.Map;
 public class HomePage extends AppCompatActivity implements SensorEventListener,NavigationView.OnNavigationItemSelectedListener {
 
 
-    TextView hi, Maincolori, date, point, water, showrate;
+    TextView hi, Maincolori, date, showrate;
+    static TextView water,point;
     public static final String TAG = "Hiii";
     String url = "http://healthcareassistantproject.ir/mySite/fetchwithid.php";
     String name;
     NavigationView navigationView;
+    RelativeLayout searchfood,waterlayout;
     DrawerLayout drawerLayout;
     SignUpDBHelper signUpDBHelper;
     ImageView add, minus;
@@ -167,11 +171,15 @@ public class HomePage extends AppCompatActivity implements SensorEventListener,N
         heart = findViewById(R.id.heart);
         showrate = findViewById(R.id.showrate);
         fab=findViewById(R.id.fab);
+        searchfood=findViewById(R.id.searchfood);
+        waterlayout=findViewById(R.id.waterLayout);
         drawerLayout = findViewById(R.id.drawer_layout);
         navigationView=findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
         circuldistance = findViewById(R.id.circuldistance);
         circularstep.setProgressMax(Integer.parseInt(mainstep.getText().toString()));
+
+
 
         float distance = 0;
         if (person.size() != 0) {
@@ -184,6 +192,22 @@ public class HomePage extends AppCompatActivity implements SensorEventListener,N
             circuldistance.setProgressMax(distance);
             circulartime.setProgressMax(100);
         }
+
+        searchfood.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(HomePage.this,searchFood.class));
+            }
+        });
+
+        waterlayout.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                FragmentManager fm = getSupportFragmentManager();
+                WaterFragment waterFragment = new WaterFragment();
+                waterFragment.show(HomePage.this.getSupportFragmentManager(), "show");
+            }
+        });
 
     }
 

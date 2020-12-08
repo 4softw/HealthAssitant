@@ -31,6 +31,7 @@
         <activity android:name=".StartActivity" />
         <activity android:name=".InformationPage" />
         <activity android:name=".HomePage" />
+        <activity android:name=".searchFood"></activity>
 
         <service android:name=".StepsService" />
 

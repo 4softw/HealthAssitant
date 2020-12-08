@@ -102,7 +102,7 @@ public class SignUpDBHelper extends SQLiteOpenHelper {
 
     public void update(String id,ContentValues values){
         SQLiteDatabase database=getWritableDatabase();
-        database.update("InfTable",values,"Name"+" = "+id ,null);
+        database.update("InfTable",values,"Id = ?", new String[]{id});
     }
 
     @Override

@@ -311,6 +311,7 @@
 
 
             <RelativeLayout
+                android:id="@+id/searchfood"
                 android:layout_width="match_parent"
                 android:layout_height="110dp"
                 android:layout_marginLeft="10dp"
@@ -452,6 +453,7 @@
 
 
             <RelativeLayout
+                android:id="@+id/waterLayout"
                 android:layout_width="match_parent"
                 android:layout_height="110dp"
                 android:layout_marginLeft="10dp"

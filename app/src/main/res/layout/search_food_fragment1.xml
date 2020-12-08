@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <ImageView
+        android:gravity="center"
+        android:layout_centerHorizontal="true"
+        android:layout_centerVertical="true"
+        android:id="@+id/textView32"
+        android:layout_width="150dp"
+        android:alpha="0.5"
+        android:layout_height="150dp"
+        android:src="@drawable/search"
+        android:text="" />
+
+    <SearchView
+        android:id="@+id/serch_f1"
+        android:layout_marginTop="5dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" >
+
+    </SearchView>
+
+    <ListView
+        android:id="@+id/serch_list"
+        android:layout_below="@+id/serch_f1"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" />
+</RelativeLayout>

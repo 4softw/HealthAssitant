@@ -43,6 +43,8 @@ public class InformationPage extends AppCompatActivity {
         }
 
 
+
+
         @Override
         public Fragment getItem(int position) {
             switch (position) {
