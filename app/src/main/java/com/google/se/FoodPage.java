@@ -24,7 +24,6 @@ public class FoodPage extends AppCompatActivity {
         dinner = findViewById(R.id.dinner);
         drink = findViewById(R.id.drinks);
         snack = findViewById(R.id.snack);
-//        lunch.setColorFilter(0xFFFF0000, PorterDuff.Mode.MULTIPLY);
         back.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
