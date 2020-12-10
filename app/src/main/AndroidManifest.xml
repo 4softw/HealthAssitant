@@ -18,6 +18,7 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
+        <activity android:name=".FoodInfo"></activity>
         <activity android:name=".FoodPage" />
         <activity android:name=".loginPage" />
         <activity android:name=".MainActivity">
@@ -31,11 +32,11 @@
         <activity android:name=".StartActivity" />
         <activity android:name=".InformationPage" />
         <activity android:name=".HomePage" />
-        <activity android:name=".searchFood"></activity>
+        <activity android:name=".searchFood" />
 
         <service android:name=".StepsService" />
 
-        <activity android:name=".EditProfile"></activity>
+        <activity android:name=".EditProfile" />
     </application>
 
 </manifest>
