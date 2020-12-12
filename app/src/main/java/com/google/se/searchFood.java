@@ -1,6 +1,5 @@
 package com.google.se;
 
-import android.content.Intent;
 import android.support.design.widget.TabItem;
 import android.support.design.widget.TabLayout;
 import android.support.v4.app.Fragment;
@@ -9,9 +8,6 @@ import android.support.v4.app.FragmentPagerAdapter;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.view.View;
-import android.widget.TableLayout;
-import android.widget.TextView;
 
 public class searchFood extends AppCompatActivity {
 
@@ -19,9 +15,9 @@ public class searchFood extends AppCompatActivity {
     TabItem tabItem;
     ViewPager viewPager;
     FragmentPagerAdapter adapterViewPager;
-    static SearchFoodFragmentPage1 searchFoodFragmentPage1=new SearchFoodFragmentPage1();
-    static SearchFoodFragmentPage2 searchFoodFragmentPage2=new SearchFoodFragmentPage2();
-    static SearchFoodFragmentPage3 searchFoodFragmentPage3=new SearchFoodFragmentPage3();
+    static SearchFoodFragment searchFoodFragment =new SearchFoodFragment();
+    static HistoryFoodFragment historyFoodFragment =new HistoryFoodFragment();
+    static FoodAddFragment foodAddFragment =new FoodAddFragment();
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -66,11 +62,11 @@ public class searchFood extends AppCompatActivity {
         public Fragment getItem(int position) {
             switch (position) {
                 case 0:
-                    return searchFoodFragmentPage1;
+                    return searchFoodFragment;
                 case 1:
-                    return searchFoodFragmentPage2;
+                    return historyFoodFragment;
                 case 2:
-                    return searchFoodFragmentPage3;
+                    return foodAddFragment;
                 default:
                     return null;
             }

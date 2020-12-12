@@ -5,7 +5,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:background="@drawable/rounded_rec12"
-    android:layout_height="300dp"
+    android:layout_height="wrap_content"
     tools:context=".Water">
 
     <com.sasank.roundedhorizontalprogress.RoundedHorizontalProgressBar
@@ -33,24 +33,23 @@
         android:layout_width="wrap_content"
         android:layout_height="1dp"
         android:layout_marginTop="212dp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
         app:srcCompat="@drawable/crust" />
 
     <ImageView
         android:id="@+id/minus"
         android:layout_width="50dp"
         android:layout_height="50dp"
-        android:layout_alignStart="@+id/textView36"
-        android:layout_alignTop="@+id/imageView17"
+
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentTop="true"
         app:srcCompat="@drawable/minuser" />
 
     <ImageView
         android:id="@+id/plus"
         android:layout_width="50dp"
         android:layout_height="50dp"
-        android:layout_alignEnd="@+id/textView36"
-        android:layout_alignTop="@+id/imageView17"
+        android:layout_alignParentTop="true"
+        android:layout_toEndOf="@+id/glass"
         app:srcCompat="@drawable/pluser" />
 
     <TextView

@@ -24,7 +24,9 @@ public class WaterFragment extends DialogFragment {
         if (getDialog() != null && getDialog().getWindow() != null) {
             getDialog().getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
             getDialog().getWindow().requestFeature(Window.FEATURE_NO_TITLE);
-            getDialog().getWindow().setLayout(200, 300);
+            getDialog().getWindow().setLayout((int)0.5*ViewGroup.LayoutParams.MATCH_PARENT,
+                    (int)0.5*ViewGroup.LayoutParams.MATCH_PARENT);
+          //  dialog.getWindow().setLayout(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.MATCH_PARENT);
         }
         add=view.findViewById(R.id.plus);
         minus=view.findViewById(R.id.minus);

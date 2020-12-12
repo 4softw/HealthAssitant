@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
@@ -10,264 +11,197 @@
         android:id="@+id/textView41"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:padding="20dp"
         android:text="تنظیم مقدار مصرفی"
-        app:layout_constraintBottom_toBottomOf="@+id/imageView18"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.032"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.1" />
 
-    <ImageView
-        android:id="@+id/imageView18"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        app:layout_constraintBottom_toTopOf="@+id/imageView24"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.0"
-        app:srcCompat="@drawable/line2" />
-
     <TextView
-        android:id="@+id/textView42"
+        android:id="@+id/nameOfFood"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="12dp"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="77dp"
         android:text="نودل مرغ"
-        app:layout_constraintBottom_toTopOf="@+id/imageView24"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.027"
-        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView41"
         app:layout_constraintVertical_bias="0.424" />
 
     <TextView
-        android:id="@+id/textView43"
+        android:id="@+id/coloriOfFood"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="8dp"
-        android:text="500 Kcal"
-        app:layout_constraintBottom_toTopOf="@+id/imageView24"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.028"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView42"
-        app:layout_constraintVertical_bias="0.0" />
+        android:layout_below="@+id/nameOfFood"
+        android:layout_toStartOf="@+id/textView46"
+        android:text="500 Kcal" />
 
     <ImageView
         android:id="@+id/imageView20"
         android:layout_width="51dp"
         android:layout_height="46dp"
-        app:layout_constraintBottom_toBottomOf="@+id/imageView18"
+        android:layout_alignBottom="@+id/textView41"
+        android:layout_alignEnd="@+id/grOfFood"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/imageView18"
         app:layout_constraintVertical_bias="0.976"
         app:srcCompat="@drawable/fill_star" />
 
-    <ImageView
-        android:id="@+id/imageView24"
-        android:layout_width="578dp"
-        android:layout_height="305dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintVertical_bias="0.211"
-        app:srcCompat="@drawable/c2" />
-
-    <SeekBar
-        android:id="@+id/seekBar2"
-        android:layout_width="333dp"
+    <com.warkiz.widget.IndicatorSeekBar
+        android:id="@+id/grOfFood"
+        style="?android:attr/progressBarStyleHorizontal"
+        android:layout_width="310dp"
         android:layout_height="33dp"
-        app:layout_constraintBottom_toBottomOf="@+id/imageView24"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/imageView18"
-        app:layout_constraintVertical_bias="0.376" />
-
-    <Spinner
-        android:id="@+id/spinner1"
-        android:layout_width="65dp"
-        android:layout_height="37dp"
-        android:background="@android:color/transparent"
-        android:spinnerMode="dropdown"
-        app:layout_constraintBottom_toTopOf="@+id/textView44"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/seekBar2" />
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="138dp"
+        android:indeterminate="false"
+        android:maxHeight="12dp"
+        android:minHeight="2000dp"
+        android:progress="40"
+        app:backgroundColor="#66CCC4C4"
+        app:bar_highlight_color="#dcd9d9"
+        app:left_thumb_color="@color/colorAccent"
+        app:left_thumb_color_pressed="@color/colorAccent"
+        app:max_value="2000"
+        app:progressColor="@color/colorAccent" />
 
     <ImageView
         android:layout_width="27dp"
         android:layout_height="26dp"
-        android:layout_alignParentRight="true"
-        android:layout_centerVertical="true"
+        android:layout_alignParentTop="true"
         android:layout_gravity="center"
+        android:layout_marginTop="188dp"
+        android:layout_toEndOf="@+id/textView44"
         android:src="@drawable/choose"
         app:layout_constraintBottom_toTopOf="@+id/textView44"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toEndOf="@+id/spinner1"
-        app:layout_constraintTop_toBottomOf="@+id/seekBar2" />
+        app:layout_constraintTop_toBottomOf="@+id/grOfFood"
+        app:layout_constraintVertical_bias="0.388" />
 
     <TextView
         android:id="@+id/textView44"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="80dp"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="201dp"
         android:text="مقدار مورد نظر را وارد کنید"
-        app:layout_constraintBottom_toBottomOf="@+id/imageView24"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/seekBar2"
+        app:layout_constraintTop_toBottomOf="@+id/grOfFood"
         app:layout_constraintVertical_bias="0.0" />
 
     <TextView
         android:id="@+id/textView45"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="20dp"
+        android:layout_above="@+id/imageView31"
+        android:layout_marginBottom="20dp"
+        android:textStyle="bold"
+        android:layout_alignStart="@+id/grOfFood"
         android:text="مواد تشکیل دهنده"
-        app:layout_constraintBottom_toTopOf="@+id/imageView32"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.025"
+        app:layout_constraintHorizontal_bias="0.088"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/imageView24"
-        app:layout_constraintVertical_bias="0.0" />
+        app:layout_constraintVertical_bias="0.437" />
 
     <TextView
         android:id="@+id/textView46"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="کربوهیدرات"
-        app:layout_constraintBottom_toTopOf="@+id/imageView34"
-        app:layout_constraintEnd_toStartOf="@+id/textView47"
-        app:layout_constraintHorizontal_bias="0.262"
-        app:layout_constraintStart_toStartOf="@+id/imageView32"
-        app:layout_constraintTop_toTopOf="@+id/imageView32" />
+       android:layout_below="@id/imageView33"
+        android:layout_marginTop="28dp"
+        android:layout_alignStart="@+id/textView48"
+        android:text="کربوهیدرات" />
 
     <ImageView
         android:id="@+id/imageView31"
         android:layout_width="35dp"
         android:layout_height="33dp"
-        app:layout_constraintHorizontal_bias="0.777"
-        app:layout_constraintBottom_toTopOf="@+id/imageView34"
+        android:layout_alignStart="@+id/grOfFood"
+        android:layout_centerVertical="true"
         app:layout_constraintEnd_toStartOf="@+id/textView46"
+        app:layout_constraintHorizontal_bias="0.777"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/imageView32"
         app:layout_constraintVertical_bias="0.526"
         app:srcCompat="@drawable/color1" />
 
     <TextView
-        android:id="@+id/textView47"
+        android:id="@+id/cPersent"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_alignEnd="@+id/grOfFood"
+        android:layout_centerVertical="true"
         android:text="32%"
-        app:layout_constraintBottom_toTopOf="@+id/imageView34"
-        app:layout_constraintEnd_toEndOf="@+id/imageView32"
-        app:layout_constraintHorizontal_bias="0.87"
-        app:layout_constraintStart_toStartOf="@+id/imageView32"
-        app:layout_constraintTop_toTopOf="@+id/imageView32" />
+        app:layout_constraintHorizontal_bias="0.87"/>
 
-    <ImageView
-        android:id="@+id/imageView32"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="92dp"
-        app:layout_constraintBottom_toTopOf="@+id/imageView34"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="1.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/imageView24"
-        app:layout_constraintVertical_bias="0.0"
-        app:srcCompat="@drawable/line2" />
 
     <ImageView
         android:id="@+id/imageView33"
         android:layout_width="36dp"
         android:layout_height="35dp"
-        app:layout_constraintBottom_toBottomOf="@+id/imageView32"
-        app:layout_constraintEnd_toStartOf="@+id/textView48"
-        app:layout_constraintHorizontal_bias="0.777"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/imageView34"
-        app:layout_constraintVertical_bias="1.0"
+        android:layout_marginTop="20dp"
+        android:layout_alignStart="@+id/grOfFood"
+       android:layout_below="@+id/imageView31"
         app:srcCompat="@drawable/color2" />
 
     <TextView
         android:id="@+id/textView48"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_alignEnd="@+id/textView50"
+        android:layout_marginTop="28dp"
+      android:layout_below="@id/imageView31"
         android:text="چربی"
-        app:layout_constraintBottom_toBottomOf="@+id/imageView32"
-        app:layout_constraintEnd_toStartOf="@+id/textView49"
+        app:layout_constraintEnd_toStartOf="@+id/cPersent"
         app:layout_constraintHorizontal_bias="0.234"
-        app:layout_constraintStart_toStartOf="@+id/imageView34"
-        app:layout_constraintTop_toTopOf="@+id/imageView34"
         app:layout_constraintVertical_bias="0.555" />
 
     <TextView
-        android:id="@+id/textView49"
+        android:id="@+id/fPersent"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_alignEnd="@+id/grOfFood"
+        android:layout_alignTop="@+id/textView48"
         android:text="50%"
-        app:layout_constraintBottom_toBottomOf="@+id/imageView32"
-        app:layout_constraintEnd_toEndOf="@+id/imageView34"
         app:layout_constraintHorizontal_bias="0.87"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/imageView34" />
-
-    <ImageView
-        android:id="@+id/imageView34"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="144dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="1.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/imageView24"
-        app:layout_constraintVertical_bias="0.0"
-        app:srcCompat="@drawable/line2" />
+        app:layout_constraintStart_toStartOf="parent" />
 
     <ImageView
         android:id="@+id/imageView35"
         android:layout_width="37dp"
         android:layout_height="37dp"
-        app:layout_constraintBottom_toBottomOf="@+id/imageView34"
-        app:layout_constraintEnd_toStartOf="@+id/textView50"
-        app:layout_constraintHorizontal_bias="0.777"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/imageView32"
-        app:layout_constraintVertical_bias="0.466"
+        android:layout_marginTop="20dp"
+        android:layout_alignStart="@+id/grOfFood"
+       android:layout_below="@id/imageView33"
         app:srcCompat="@drawable/color3" />
 
     <TextView
         android:id="@+id/textView50"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_centerVertical="true"
+        android:layout_toEndOf="@+id/imageView35"
         android:text="پروتیین"
-        app:layout_constraintBottom_toBottomOf="@+id/imageView34"
-        app:layout_constraintEnd_toStartOf="@+id/textView51"
+        app:layout_constraintEnd_toStartOf="@+id/pPersent"
         app:layout_constraintHorizontal_bias="0.246"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/imageView32"
         app:layout_constraintVertical_bias="0.484" />
 
     <TextView
-        android:id="@+id/textView51"
+        android:id="@+id/pPersent"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_alignEnd="@+id/imageView20"
+        android:layout_alignTop="@+id/textView46"
         android:text="18%"
-        app:layout_constraintBottom_toBottomOf="@+id/imageView34"
-        app:layout_constraintEnd_toEndOf="@+id/imageView34"
-        app:layout_constraintHorizontal_bias="0.87"
-        app:layout_constraintStart_toStartOf="@+id/imageView34"
-        app:layout_constraintTop_toBottomOf="@+id/imageView32"
         app:layout_constraintVertical_bias="0.484" />
 
     <Button
@@ -275,6 +209,8 @@
         style="@style/Widget.AppCompat.Button.Borderless"
         android:layout_width="150dp"
         android:layout_height="56dp"
+        android:layout_alignStart="@+id/grOfFood"
+        android:layout_alignTop="@+id/button2"
         android:background="@drawable/but"
         android:text="لغو"
         android:textSize="25dp"
@@ -282,7 +218,6 @@
         app:layout_constraintEnd_toStartOf="@+id/button2"
         app:layout_constraintHorizontal_bias="0.459"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/imageView34"
         app:layout_constraintVertical_bias="0.51" />
 
     <Button
@@ -290,6 +225,9 @@
         style="@style/Widget.AppCompat.Button.Borderless"
         android:layout_width="150dp"
         android:layout_height="56dp"
+        android:layout_alignEnd="@+id/imageView20"
+        android:layout_alignParentBottom="true"
+        android:layout_marginBottom="61dp"
         android:background="@drawable/but"
         android:text="ثبت"
         android:textSize="25dp"
@@ -297,7 +235,6 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.885"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/imageView34"
         app:layout_constraintVertical_bias="0.51" />
 
-</android.support.constraint.ConstraintLayout>
+</RelativeLayout>

@@ -196,7 +196,7 @@ public class HomePage extends AppCompatActivity implements SensorEventListener,N
         searchfood.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                startActivity(new Intent(HomePage.this,searchFood.class));
+                startActivity(new Intent(HomePage.this,FoodPage.class));
             }
         });
 
@@ -308,7 +308,7 @@ public class HomePage extends AppCompatActivity implements SensorEventListener,N
     }
 
 
-    double calculatingColori(String sex) {
+    static double calculatingColori(String sex) {
         double result = 0;
         if (sex.equals("woman")) {
             double part1 = (Float.parseFloat(person.get(0).getWeight()) * 9.563) + 655.1;

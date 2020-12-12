@@ -23,7 +23,7 @@
 
 
     <TextView
-        android:id="@+id/textView18"
+        android:id="@+id/currentColori"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="276dp"
@@ -54,7 +54,7 @@
         app:layout_constraintVertical_bias="1.0" />
 
     <TextView
-        android:id="@+id/textView25"
+        android:id="@+id/allColori"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="4dp"
@@ -86,8 +86,8 @@
         app:layout_constraintVertical_bias="0.358"
         app:progressColor="@color/colorPrimary" />
 
-    <Button
-        android:id="@+id/button5"
+    <TextView
+        android:id="@+id/time"
         style="@style/Widget.AppCompat.Button.Borderless"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -108,8 +108,9 @@
         android:id="@+id/imageView4"
         android:layout_width="38dp"
         android:layout_height="40dp"
+        android:layout_marginStart="80dp"
         app:layout_constraintBottom_toTopOf="@+id/progressCalorie"
-        app:layout_constraintEnd_toStartOf="@+id/textView18"
+        app:layout_constraintEnd_toStartOf="@+id/currentColori"
         app:layout_constraintHorizontal_bias="0.614"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
