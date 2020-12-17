@@ -329,7 +329,7 @@
                     android:layout_marginBottom="11dp"
                     android:text="0"
                     android:textColor="#000"
-                    android:textSize="40dp"
+                    android:textSize="22dp"
                     android:textStyle="bold" />
 
                 <TextView
@@ -545,6 +545,23 @@
                 android:background="@drawable/rounded_rec8">
 
                 <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textSize="10dp"
+                    android:layout_alignParentBottom="true"
+                    android:layout_toEndOf="@+id/m"
+                    android:fontFamily="@font/iransans"
+                    android:text=" 8 ساعت " />
+
+                <TextView
+                    android:id="@+id/m"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentBottom="true"
+                    android:layout_toEndOf="@+id/water1"
+                    android:text="/" />
+
+                <TextView
                     android:id="@+id/textView9"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -557,6 +574,18 @@
                     android:textColor="@android:color/darker_gray"
                     android:textSize="10sp"
                     android:textStyle="bold" />
+                <TextView
+                    android:id="@+id/water1"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentStart="true"
+                    android:layout_alignParentBottom="true"
+                    android:layout_marginLeft="10dp"
+                    android:padding="5dp"
+                    android:text="0"
+                    android:textColor="#000"
+                    android:textSize="40dp"
+                    android:textStyle="bold" />
 
                 <ImageView
                     android:id="@+id/imageView12"
@@ -567,22 +596,14 @@
                     android:layout_marginEnd="11dp"
                     app:srcCompat="@drawable/moon" />
 
-                <TextView
-                    android:id="@+id/textView30"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_alignParentStart="true"
-                    android:layout_marginStart="13dp"
-                    android:text="2 : 46" />
-
                 <ProgressBar
                     android:id="@+id/progressBar2"
                     style="?android:attr/progressBarStyleHorizontal"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_alignEnd="@+id/textView9"
                     android:layout_alignParentBottom="true"
-                    android:layout_marginBottom="22dp" />
+                    android:layout_centerHorizontal="true"
+                    android:layout_marginBottom="26dp" />
             </RelativeLayout>
 
 

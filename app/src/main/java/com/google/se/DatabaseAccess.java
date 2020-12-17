@@ -40,6 +40,7 @@ public class DatabaseAccess {
      */
     public void open() {
         this.database = openHelper.getWritableDatabase();
+//        this.database=openHelper.getReadableDatabase();
     }
 
     /**

@@ -18,6 +18,16 @@ public class FoodModel {
     }
 
     private String ID;
+
+    public String getMeal() {
+        return Meal;
+    }
+
+    public void setMeal(String meal) {
+        Meal = meal;
+    }
+
+    private String Meal;
     private String Name;
     private  String Gruop;
     private double Colorie;

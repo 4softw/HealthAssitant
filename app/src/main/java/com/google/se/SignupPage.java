@@ -137,16 +137,15 @@ public class SignupPage extends AppCompatActivity {
     public void handleSignInResult(Task<GoogleSignInAccount> completedTask) {
         try {
             GoogleSignInAccount account = completedTask.getResult(ApiException.class);
-
             for (int i=0;i<MainActivity.peaple.size();i++){
                 if (account.getEmail().toString().equals(MainActivity.peaple.get(i).getId())){
-                   // startActivity(new Intent(SignupPage.this,InformationPage.class));
+                    Toast.makeText(this, "ایمیل قبلا  ثبت نام شده است وارد شوید", Toast.LENGTH_SHORT).show();
                     bg=true;
                   //  finish();
                 }
             }
             if (bg==false){
-               // Toast.makeText(this, "ایمیل ثبت نام نشده است", Toast.LENGTH_SHORT).show();
+         //       Toast.makeText(this, "ایمیل ثبت نام نشده است", Toast.LENGTH_SHORT).show();
                 ID=account.getEmail().toString();
                 Pass=ID;
                 Signup person=new Signup();
@@ -158,10 +157,6 @@ public class SignupPage extends AppCompatActivity {
                 startActivity(new Intent(SignupPage.this,InformationPage.class));
                 finish();
             }
-            if (bg==true){
-                Toast.makeText(this, "ایمیل ثبت  شده است وارد شوید", Toast.LENGTH_SHORT).show();
-            }
-
             Toast.makeText(this, account.getEmail()+"", Toast.LENGTH_SHORT).show();
 
         } catch (ApiException e) {

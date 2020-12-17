@@ -1,6 +1,7 @@
 package com.google.se;
 
 import android.app.ProgressDialog;
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
@@ -102,6 +103,7 @@ public class WeightAndHeghtFragment extends android.support.v4.app.Fragment {
                     signup.setId(SignupPage.ID);
                     signup.setPassword(SignupPage.Pass);
                     MainActivity.person.add(signup);
+                    startActivity(new Intent(getContext(),HomePage.class));
                 }
 
                 else {
@@ -126,7 +128,7 @@ public class WeightAndHeghtFragment extends android.support.v4.app.Fragment {
                 progressBar.dismiss();
               ///  Toast.makeText(getContext(), "***********************" + response, Toast.LENGTH_LONG).show();
 
-                Toast.makeText(getContext(), "Go To Home", Toast.LENGTH_SHORT).show();
+
 
                 Log.i("My success", "" + response);
             }

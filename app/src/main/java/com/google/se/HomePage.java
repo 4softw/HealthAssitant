@@ -1,14 +1,18 @@
 package com.google.se;
 
+import android.app.Activity;
 import android.app.AlertDialog;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.graphics.Color;
 import android.hardware.Sensor;
 import android.hardware.SensorEvent;
 import android.hardware.SensorEventListener;
 import android.hardware.SensorManager;
+import android.net.Uri;
 import android.os.PowerManager;
 import android.support.annotation.NonNull;
 import android.support.design.widget.NavigationView;
@@ -46,6 +50,8 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import java.io.FileNotFoundException;
+import java.io.InputStream;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -54,7 +60,7 @@ import java.util.Map;
 public class HomePage extends AppCompatActivity implements SensorEventListener,NavigationView.OnNavigationItemSelectedListener {
 
 
-    TextView hi, Maincolori, date, showrate;
+    TextView hi, Maincolori, date, showrate,useColori;
     static TextView water,point;
     public static final String TAG = "Hiii";
     String url = "http://healthcareassistantproject.ir/mySite/fetchwithid.php";
@@ -64,7 +70,7 @@ public class HomePage extends AppCompatActivity implements SensorEventListener,N
     DrawerLayout drawerLayout;
     SignUpDBHelper signUpDBHelper;
     ImageView add, minus;
-    ImageView heart, fab;
+    ImageView heart, fab,pickimage;
     StepsDBHelper mStepsDBHelper;
     ArrayList<DateStepsModel> mStepCountList;
     static PowerManager.WakeLock mWakeLock;
@@ -167,6 +173,7 @@ public class HomePage extends AppCompatActivity implements SensorEventListener,N
         mainstep = findViewById(R.id.Mainstepcounter);
         step = findViewById(R.id.stepcounter);
         time = findViewById(R.id.timecounter);
+        useColori=findViewById(R.id.useColori);
         persent = findViewById(R.id.persent);
         heart = findViewById(R.id.heart);
         showrate = findViewById(R.id.showrate);
@@ -176,11 +183,17 @@ public class HomePage extends AppCompatActivity implements SensorEventListener,N
         drawerLayout = findViewById(R.id.drawer_layout);
         navigationView=findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
+        View header = navigationView.getHeaderView(0);
+        pickimage=header.findViewById(R.id.pickImage);
+        pickimage.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                getImageFromAlbum();
+            }
+        });
         circuldistance = findViewById(R.id.circuldistance);
         circularstep.setProgressMax(Integer.parseInt(mainstep.getText().toString()));
-
-
-
+        useColori.setText(String.valueOf((int)FoodPage.currentColoritxt));
         float distance = 0;
         if (person.size() != 0) {
             if (person.get(0).getSex().equals("man")) {
@@ -216,22 +229,14 @@ public class HomePage extends AppCompatActivity implements SensorEventListener,N
     protected void onResume() {
         super.onResume();
         Sensor countsteps = sensorManager.getDefaultSensor(Sensor.TYPE_STEP_COUNTER);
+        useColori.setText(String.valueOf((int)FoodPage.currentColoritxt));
         sensorManager.registerListener(this, countsteps,
                 SensorManager.SENSOR_DELAY_NORMAL);
+
+
         if (countsteps != null) {
             sensorManager.registerListener(this, countsteps, SensorManager.SENSOR_DELAY_UI);
-        } else {
-            Toast.makeText(this, "Sensor not found", Toast.LENGTH_SHORT).show();
         }
-
-        Sensor heartrate = sensorManager.getDefaultSensor(Sensor.TYPE_HEART_RATE);
-        if (heartrate != null) {
-            sensorManager.registerListener(this, countsteps, SensorManager.SENSOR_DELAY_UI);
-        } else {
-            Toast.makeText(this, "Sensor heart  not found", Toast.LENGTH_SHORT).show();
-        }
-
-
     }
 
 
@@ -268,6 +273,8 @@ public class HomePage extends AppCompatActivity implements SensorEventListener,N
                     Toast.makeText(HomePage.this, "" + person.size(), Toast.LENGTH_SHORT).show();
                     person.add(model);
                     hi.setText(" سلام " + person.get(0).getName());
+                    double c = calculatingColori(person.get(0).getSex());
+                    Maincolori.setText(String.valueOf((int) c));
                     Toast.makeText(HomePage.this, "" + person.size(), Toast.LENGTH_SHORT).show();
                 } catch (JSONException e) {
                     e.printStackTrace();
@@ -418,7 +425,7 @@ public class HomePage extends AppCompatActivity implements SensorEventListener,N
 
     @Override
     protected void onRestart() {
-        Toast.makeText(this, "hiiiiiiiiiii", Toast.LENGTH_SHORT).show();
+   //     Toast.makeText(this, "hiiiiiiiiiii", Toast.LENGTH_SHORT).show();
         super.onRestart();
     }
 
@@ -438,6 +445,35 @@ public class HomePage extends AppCompatActivity implements SensorEventListener,N
     public void checkOpenDrawer() {
         if (drawerLayout.isDrawerOpen(GravityCompat.START)) {
             drawerLayout.closeDrawer(GravityCompat.START, true);
+        }
+    }
+
+    @Override
+    protected void onActivityResult(int reqCode, int resultCode, Intent data) {
+        super.onActivityResult(reqCode, resultCode, data);
+        if (resultCode == Activity.RESULT_OK) {
+            try {
+                final Uri imageUri = data.getData();
+                final InputStream imageStream = getContentResolver().openInputStream(imageUri);
+                final Bitmap selectedImage = BitmapFactory.decodeStream(imageStream);
+                pickimage.setImageBitmap(selectedImage);
+            } catch (FileNotFoundException e) {
+                e.printStackTrace();
+               Toast.makeText(HomePage.this, "Something went wrong", Toast.LENGTH_LONG).show();
+            }
+
+        }else {
+            Toast.makeText(HomePage.this, "You haven't picked Image",Toast.LENGTH_LONG).show();
+        }
+    }
+
+    private void getImageFromAlbum(){
+        try{
+            Intent photoPickerIntent = new Intent(Intent.ACTION_PICK);
+            photoPickerIntent.setType("image/*");
+            startActivityForResult(photoPickerIntent, 13);
+        }catch(Exception exp){
+            Log.i("Error",exp.toString());
         }
     }
 

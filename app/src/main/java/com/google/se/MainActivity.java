@@ -26,7 +26,7 @@ import java.util.Map;
 public class MainActivity extends AppCompatActivity {
     SignUpDBHelper signUpDBHelper;
     String url = "http://healthcareassistantproject.ir/mySite/fetch.php";
-    protected static List<Signup> peaple=new ArrayList<>();
+    static List<Signup> peaple=new ArrayList<>();
     static List<Signup> person=new ArrayList<>();
 
     @Override
@@ -36,14 +36,13 @@ public class MainActivity extends AppCompatActivity {
         signUpDBHelper=new SignUpDBHelper(this);
         person=signUpDBHelper.GetAll();
         loadProducts();
-
+        Toast.makeText(this, ""+peaple.size(), Toast.LENGTH_SHORT).show();
         if (person.size()==0){
             startActivity(new Intent(MainActivity.this,StartActivity.class));
         }
         else {
             startActivity(new Intent(MainActivity.this,HomePage.class));
         }
-
 
     }
 
@@ -61,6 +60,7 @@ public class MainActivity extends AppCompatActivity {
                                 person.setId(product.getString("Id"));
                                 person.setPassword(product.getString("Password"));
                                 peaple.add(person);
+                                Toast.makeText(MainActivity.this, ""+peaple.size(), Toast.LENGTH_SHORT).show();
                             }
 
                         } catch (JSONException e) {

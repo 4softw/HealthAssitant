@@ -11,8 +11,8 @@
         android:id="@+id/textView41"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignParentStart="true"
-        android:layout_alignParentTop="true"
+        android:layout_alignStart="@+id/grOfFood"
+        android:layout_below="@+id/grtext"
         android:padding="20dp"
         android:text="تنظیم مقدار مصرفی"
         app:layout_constraintEnd_toEndOf="parent"
@@ -26,26 +26,18 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentTop="true"
+        android:textSize="15dp"
+        android:textStyle="bold"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="77dp"
-        android:text="نودل مرغ"
-        app:layout_constraintTop_toBottomOf="@+id/textView41"
-        app:layout_constraintVertical_bias="0.424" />
-
-    <TextView
-        android:id="@+id/coloriOfFood"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/nameOfFood"
-        android:layout_toStartOf="@+id/textView46"
-        android:text="500 Kcal" />
+        android:layout_marginTop="150dp"
+        android:text="نودل مرغ" />
 
     <ImageView
         android:id="@+id/imageView20"
         android:layout_width="51dp"
         android:layout_height="46dp"
-        android:layout_alignBottom="@+id/textView41"
         android:layout_alignEnd="@+id/grOfFood"
+        android:layout_alignTop="@+id/textView41"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="parent"
@@ -54,59 +46,37 @@
 
     <com.warkiz.widget.IndicatorSeekBar
         android:id="@+id/grOfFood"
-        style="?android:attr/progressBarStyleHorizontal"
-        android:layout_width="310dp"
-        android:layout_height="33dp"
-        android:layout_alignParentTop="true"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="138dp"
-        android:indeterminate="false"
-        android:maxHeight="12dp"
-        android:minHeight="2000dp"
-        android:progress="40"
-        app:backgroundColor="#66CCC4C4"
-        app:bar_highlight_color="#dcd9d9"
-        app:left_thumb_color="@color/colorAccent"
-        app:left_thumb_color_pressed="@color/colorAccent"
-        app:max_value="2000"
-        app:progressColor="@color/colorAccent" />
-
-    <ImageView
-        android:layout_width="27dp"
-        android:layout_height="26dp"
-        android:layout_alignParentTop="true"
-        android:layout_gravity="center"
-        android:layout_marginTop="188dp"
-        android:layout_toEndOf="@+id/textView44"
-        android:src="@drawable/choose"
-        app:layout_constraintBottom_toTopOf="@+id/textView44"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintTop_toBottomOf="@+id/grOfFood"
-        app:layout_constraintVertical_bias="0.388" />
-
-    <TextView
-        android:id="@+id/textView44"
-        android:layout_width="wrap_content"
+        android:layout_marginLeft="20dp"
+        android:layout_marginRight="20dp"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_alignParentTop="true"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="201dp"
-        android:text="مقدار مورد نظر را وارد کنید"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/grOfFood"
-        app:layout_constraintVertical_bias="0.0" />
+        android:layout_marginTop="208dp"
+        app:isb_indicator_text_color="#ffff"
+        app:isb_indicator_text_size="18sp"
+        app:isb_thumb_color="@color/colorPrimaryDark"
+        app:isb_max="1000"
+        app:isb_min="10"
+        app:isb_progress="100"
+        app:isb_seek_smoothly="true"
+        app:isb_show_tick_marks_type="oval"
+        app:isb_show_tick_texts="true"
+        app:isb_thumb_size="20dp"
+        app:isb_tick_texts_size="15sp"
+        app:isb_track_background_size="2dp"
+        app:isb_track_progress_color="@color/colorPrimary"
+        app:isb_track_progress_size="4dp" />
 
     <TextView
         android:id="@+id/textView45"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_above="@+id/imageView31"
-        android:layout_marginBottom="20dp"
-        android:textStyle="bold"
-        android:layout_alignStart="@+id/grOfFood"
+        android:layout_centerHorizontal="true"
         android:text="مواد تشکیل دهنده"
+        android:textStyle="bold"
+        android:textColor="#000"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.088"
         app:layout_constraintStart_toStartOf="parent"
@@ -120,6 +90,15 @@
         android:layout_marginTop="28dp"
         android:layout_alignStart="@+id/textView48"
         android:text="کربوهیدرات" />
+
+    <TextView
+        android:id="@+id/textView47"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+       android:layout_marginTop="30dp"
+        android:layout_alignStart="@+id/textView46"
+        android:layout_below="@id/imageView35"
+        android:text="کالری" />
 
     <ImageView
         android:id="@+id/imageView31"
@@ -137,10 +116,10 @@
         android:id="@+id/cPersent"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignEnd="@+id/grOfFood"
+        android:layout_alignStart="@+id/imageView20"
         android:layout_centerVertical="true"
         android:text="32%"
-        app:layout_constraintHorizontal_bias="0.87"/>
+        app:layout_constraintHorizontal_bias="0.87" />
 
 
     <ImageView
@@ -168,7 +147,7 @@
         android:id="@+id/fPersent"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignEnd="@+id/grOfFood"
+        android:layout_alignStart="@+id/imageView20"
         android:layout_alignTop="@+id/textView48"
         android:text="50%"
         app:layout_constraintHorizontal_bias="0.87"
@@ -182,6 +161,15 @@
         android:layout_alignStart="@+id/grOfFood"
        android:layout_below="@id/imageView33"
         app:srcCompat="@drawable/color3" />
+
+    <ImageView
+        android:id="@+id/imageView36"
+        android:layout_width="37dp"
+        android:layout_height="37dp"
+        android:layout_marginTop="20dp"
+        android:layout_alignStart="@+id/textView41"
+        android:layout_below="@id/imageView35"
+        app:srcCompat="@drawable/color4" />
 
     <TextView
         android:id="@+id/textView50"
@@ -199,42 +187,97 @@
         android:id="@+id/pPersent"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignEnd="@+id/imageView20"
+        android:layout_alignStart="@+id/imageView20"
         android:layout_alignTop="@+id/textView46"
         android:text="18%"
         app:layout_constraintVertical_bias="0.484" />
 
-    <Button
-        android:id="@+id/button"
-        style="@style/Widget.AppCompat.Button.Borderless"
-        android:layout_width="150dp"
-        android:layout_height="56dp"
-        android:layout_alignStart="@+id/grOfFood"
-        android:layout_alignTop="@+id/button2"
-        android:background="@drawable/but"
-        android:text="لغو"
-        android:textSize="25dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toStartOf="@+id/button2"
-        app:layout_constraintHorizontal_bias="0.459"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintVertical_bias="0.51" />
+
 
     <Button
-        android:id="@+id/button2"
+        android:id="@+id/cancel"
         style="@style/Widget.AppCompat.Button.Borderless"
-        android:layout_width="150dp"
-        android:layout_height="56dp"
-        android:layout_alignEnd="@+id/imageView20"
-        android:layout_alignParentBottom="true"
-        android:layout_marginBottom="61dp"
+        android:layout_width="87dp"
+        android:layout_height="40dp"
+        android:layout_marginLeft="10dp"
         android:background="@drawable/but"
+        android:text="لغو"
+        android:layout_below="@id/textView46"
+        android:layout_toStartOf="@+id/per"
+        android:layout_marginTop="100dp"
+        android:textSize="15dp"
+         />
+
+    <Button
+        android:id="@+id/ok"
+        style="@style/Widget.AppCompat.Button.Borderless"
+        android:layout_width="87dp"
+        android:layout_height="40dp"
+        android:background="@drawable/but"
+        android:layout_below="@id/textView46"
+        android:layout_toEndOf="@+id/per"
+        android:layout_marginTop="100dp"
         android:text="ثبت"
-        android:textSize="25dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.885"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintVertical_bias="0.51" />
+        android:textSize="15dp"
+         />
+
+    <TextView
+        android:id="@+id/grtext"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignStart="@+id/imageView20"
+        android:text="" />
+
+    <TextView
+        android:id="@+id/per"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/textView46"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="80dp"
+        android:text="             " />
+
+    <TextView
+        android:id="@+id/coloriOfFood"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignEnd="@+id/cPersent"
+        android:layout_alignTop="@+id/textView47"
+        android:text="22" />
+
+    <TextView
+        android:id="@+id/textView25"
+        android:layout_width="wrap_content"
+        android:layout_marginLeft="5dp"
+        android:layout_height="wrap_content"
+        android:layout_alignTop="@+id/textView48"
+        android:layout_toEndOf="@+id/cPersent"
+        android:text="%" />
+
+    <TextView
+        android:id="@+id/textView39"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerVertical="true"
+        android:layout_marginLeft="5dp"
+        android:layout_toEndOf="@+id/cPersent"
+        android:text="%" />
+
+    <TextView
+        android:id="@+id/textView30"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="5dp"
+        android:layout_alignTop="@+id/textView46"
+        android:layout_toEndOf="@+id/cPersent"
+        android:text="%" />
+
+    <TextView
+        android:id="@+id/textView42"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignTop="@+id/coloriOfFood"
+        android:layout_toEndOf="@+id/cPersent"
+        android:text="KC"/>
 
 </RelativeLayout>

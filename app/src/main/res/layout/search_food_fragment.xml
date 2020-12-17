@@ -15,6 +15,15 @@
         android:src="@drawable/search"
         android:text="" />
 
+    <TextView
+        android:id="@+id/mealtext"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/searchview"
+        android:layout_centerHorizontal="true"
+        android:textSize="20dp"
+        android:text="میو میو" />
+
     <SearchView
         android:id="@+id/search"
         android:layout_marginTop="5dp"

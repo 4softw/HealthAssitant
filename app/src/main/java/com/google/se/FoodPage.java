@@ -17,6 +17,7 @@ import com.mohamadamin.persianmaterialdatetimepicker.time.TimePickerDialog;
 import com.mohamadamin.persianmaterialdatetimepicker.utils.PersianCalendar;
 
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.List;
 
 public class FoodPage extends AppCompatActivity {
@@ -24,7 +25,9 @@ public class FoodPage extends AppCompatActivity {
     ImageView breakfast,lunch,dinner,drink,snack;
     ProgressBar calorieProgress;
     static String nameOffood;
-    static double gr,coloriOfffod,cPersent,pPersent,fpercent;
+    static  String meal;
+    static double gr,coloriOfffod,cPersent,pPersent,fpercent,currentColoritxt=0;
+    static List<FoodModel> AddedFood=new ArrayList<>();
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -50,12 +53,52 @@ public class FoodPage extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 startActivity(new Intent(FoodPage.this,searchFood.class));
+                meal="صبحانه مورد نظر خود را جست و جو کنید";
             }
         });
 
+        lunch.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(FoodPage.this,searchFood.class));
+                meal="ناهار مورد نظر خودرا جست و جو کنید";
+            }
+        });
+
+        dinner.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(FoodPage.this,searchFood.class));
+                meal="شام  مورد نظر خودرا جست و جو کنید";
+            }
+        });
+        drink.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(FoodPage.this,searchFood.class));
+                meal="نوشیدنی  مورد نظر خودرا جست و جو کنید";
+            }
+        });
+
+        snack.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(FoodPage.this,searchFood.class));
+                meal="میان وعده  مورد نظر خودرا جست و جو کنید";
+            }
+        });
+
+
         calorieProgress = findViewById(R.id.progressCalorie);
         calorieProgress.setMax((int)HomePage.calculatingColori(HomePage.person.get(0).getSex()));
-        allColori.setText(String.valueOf(HomePage.calculatingColori(HomePage.person.get(0).getSex())));
+        allColori.setText(String.valueOf((int)HomePage.calculatingColori(HomePage.person.get(0).getSex())));
 
+
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        currentColori.setText(String.valueOf(currentColoritxt));
     }
 }

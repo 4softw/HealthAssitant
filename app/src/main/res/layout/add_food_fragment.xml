@@ -24,8 +24,8 @@
 
     </SearchView>
 
-    <ListView
-        android:id="@+id/serch_list"
+    <android.support.v7.widget.RecyclerView
+        android:id="@+id/list"
         android:layout_below="@+id/serch_f1"
         android:layout_width="match_parent"
         android:layout_height="match_parent" />

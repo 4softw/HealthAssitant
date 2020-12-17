@@ -17,7 +17,7 @@ public class searchFood extends AppCompatActivity {
     FragmentPagerAdapter adapterViewPager;
     static SearchFoodFragment searchFoodFragment =new SearchFoodFragment();
     static HistoryFoodFragment historyFoodFragment =new HistoryFoodFragment();
-    static FoodAddFragment foodAddFragment =new FoodAddFragment();
+    static AddedFoofFragment addedFoofFragment =new AddedFoofFragment();
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -66,7 +66,7 @@ public class searchFood extends AppCompatActivity {
                 case 1:
                     return historyFoodFragment;
                 case 2:
-                    return foodAddFragment;
+                    return addedFoofFragment;
                 default:
                     return null;
             }

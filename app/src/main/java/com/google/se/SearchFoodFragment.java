@@ -21,7 +21,7 @@ import java.util.List;
 
 public class SearchFoodFragment extends Fragment implements View.OnClickListener {
     ListView ListView;
-    TextView nameFood;
+    TextView nameFood,mealtext;
     ImageView tick,line,searchview;
     SearchView search;
 
@@ -37,9 +37,9 @@ public class SearchFoodFragment extends Fragment implements View.OnClickListener
         ListView =view.findViewById(R.id.search_list);
         searchview=view.findViewById(R.id.searchview);
         search=view.findViewById(R.id.search);
+        mealtext=view.findViewById(R.id.mealtext);
+        mealtext.setText(FoodPage.meal);
         databaseAccess = DatabaseAccess.getInstance(getContext());
-
-
         search.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
             @Override
             public boolean onQueryTextSubmit(String query) {
@@ -52,6 +52,11 @@ public class SearchFoodFragment extends Fragment implements View.OnClickListener
                 quotes = databaseAccess.SearchFoods(newText);
                 if (quotes.size()!=0){
                     searchview.setVisibility(View.INVISIBLE);
+                    mealtext.setVisibility(View.INVISIBLE);
+                }
+                else {
+                    searchview.setVisibility(View.VISIBLE);
+                    mealtext.setVisibility(View.VISIBLE);
                 }
                 ArrayAdapter<FoodModel> adapter = new ArrayAdapter<FoodModel>(getContext(), android.R.layout.simple_list_item_activated_1, quotes);
                 ListView.setAdapter(adapter);
