@@ -116,7 +116,7 @@ public class MainActivity extends AppCompatActivity {
             Toast.makeText(this, ""+calendar.getTimeInMillis(), Toast.LENGTH_SHORT).show();
             AlarmManager alarmManager = (AlarmManager)getSystemService(Context.ALARM_SERVICE);
             alarmManager.setRepeating(AlarmManager.RTC_WAKEUP, calendar.getTimeInMillis(),
-                    AlarmManager.INTERVAL_FIFTEEN_MINUTES, pendingIntent);
+                    AlarmManager.INTERVAL_HOUR*4, pendingIntent);
         }
 
 

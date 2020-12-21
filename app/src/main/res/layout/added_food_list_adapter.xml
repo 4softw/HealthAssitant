@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+    <TextView
+        android:id="@+id/name"
+        android:layout_marginRight="20dp"
+        android:layout_marginTop="20dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentEnd="true"
+        android:textStyle="bold"
+        android:fontFamily="@font/iransans"
+        android:textColor="#000"
+        android:layout_alignParentTop="true"
+        android:textSize="13dp"
+        android:text="نودل مرغ ریش ریش شده" />
+
+    <TextView
+        android:id="@+id/meal"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignEnd="@+id/name"
+        android:layout_marginTop="10dp"
+        android:layout_below="@+id/name"
+        android:text="صبحانه" />
+
+    <TextView
+        android:id="@+id/colori"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentStart="true"
+        android:layout_alignTop="@+id/meal"
+        android:textSize="18dp"
+        android:layout_marginStart="22dp"
+        android:text="13" />
+
+    <TextView
+        android:id="@+id/textView44"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignTop="@+id/meal"
+        android:layout_toEndOf="@+id/colori"
+        android:text="KH" />
+</RelativeLayout>
