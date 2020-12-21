@@ -16,7 +16,7 @@ public class searchFood extends AppCompatActivity {
     ViewPager viewPager;
     FragmentPagerAdapter adapterViewPager;
     static SearchFoodFragment searchFoodFragment =new SearchFoodFragment();
-    static HistoryFoodFragment historyFoodFragment =new HistoryFoodFragment();
+    static AddNewFoodFragment addNewFoodFragment =new AddNewFoodFragment();
     static AddedFoofFragment addedFoofFragment =new AddedFoofFragment();
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -47,11 +47,11 @@ public class searchFood extends AppCompatActivity {
         public CharSequence getPageTitle(int position) {
             switch (position) {
                 case 0:
-                    return "جست و جو";
+                    return "اضافه شده";
                 case 1:
-                    return "غذاهای من";
+                    return "جست و جو";
                 case 2:
-                    return "اضافه کردن";
+                    return "غذا های من";
                 default:
                     return null;
             }
@@ -62,15 +62,23 @@ public class searchFood extends AppCompatActivity {
         public Fragment getItem(int position) {
             switch (position) {
                 case 0:
-                    return searchFoodFragment;
-                case 1:
-                    return historyFoodFragment;
-                case 2:
                     return addedFoofFragment;
+                case 1:
+                    return searchFoodFragment;
+                case 2:
+                    return addNewFoodFragment;
                 default:
                     return null;
             }
         }
 
+    }
+
+    @Override
+    public void onResume() {
+        super.onResume();
+        if (viewPager != null && viewPager.getAdapter() != null) {
+            viewPager.getAdapter().notifyDataSetChanged();
+        }
     }
 }

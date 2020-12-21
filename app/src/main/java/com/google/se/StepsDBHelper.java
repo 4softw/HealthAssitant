@@ -21,7 +21,8 @@ public class StepsDBHelper extends SQLiteOpenHelper {
     private static final String CREATION_DATE = "creationdate";//Date format is mm/dd/yyyy
 
 
-    private static final String CREATE_TABLE_STEPS_SUMMARY = "CREATE TABLE "
+    private static final String CREATE_TABLE_STEPS_SUMMARY
+            = "CREATE TABLE "
             + TABLE_STEPS_SUMMARY + "(" + ID + " INTEGER PRIMARY KEY AUTOINCREMENT," + CREATION_DATE + " TEXT," + STEPS_COUNT + " INTEGER" + ")";
 
 
@@ -98,12 +99,14 @@ public class StepsDBHelper extends SQLiteOpenHelper {
 
     public ArrayList<DateStepsModel> readStepsEntries(Context context)
     {
+        Calendar mCalendar = Calendar.getInstance();
+        String todayDate =
+                String.valueOf(mCalendar.get(Calendar.MONTH)) + "/" +
+                        String.valueOf(mCalendar.get(Calendar.DAY_OF_MONTH)) + "/" + String.valueOf(mCalendar.get(Calendar.YEAR));
+        SQLiteDatabase db = this.getReadableDatabase();
         ArrayList<DateStepsModel> mStepCountList = new ArrayList<DateStepsModel>();
-        String selectQuery = "SELECT * FROM " + TABLE_STEPS_SUMMARY;
+        Cursor c = db.rawQuery("SELECT * FROM StepsSummary  WHERE  creationdate=?",new String[]{todayDate} );
         try {
-
-            SQLiteDatabase db = this.getReadableDatabase();
-            Cursor c = db.rawQuery(selectQuery, null);
             if (c.moveToFirst()) {
                 do {
                     DateStepsModel mDateStepsModel = new DateStepsModel();

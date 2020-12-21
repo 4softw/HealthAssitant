@@ -1,10 +1,13 @@
 package com.google.se;
 
+import android.Manifest;
 import android.app.Activity;
 import android.app.AlertDialog;
+import android.content.ContentValues;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.content.pm.PackageManager;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.graphics.Color;
@@ -12,25 +15,29 @@ import android.hardware.Sensor;
 import android.hardware.SensorEvent;
 import android.hardware.SensorEventListener;
 import android.hardware.SensorManager;
+import android.icu.util.Calendar;
 import android.net.Uri;
+import android.os.Build;
+import android.os.Environment;
 import android.os.PowerManager;
 import android.support.annotation.NonNull;
 import android.support.design.widget.NavigationView;
+import android.support.v4.app.ActivityCompat;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.support.v7.recyclerview.extensions.ListAdapter;
 import android.util.Log;
+import android.view.Gravity;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
-import android.widget.ListView;
+import android.widget.ProgressBar;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -50,17 +57,22 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import java.io.File;
 import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
 import java.io.InputStream;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.Random;
 
 public class HomePage extends AppCompatActivity implements SensorEventListener,NavigationView.OnNavigationItemSelectedListener {
 
 
-    TextView hi, Maincolori, date, showrate,useColori;
+    static TextView hi, Maincolori, date, showrate,useColori,burncolori;
+    com.sasank.roundedhorizontalprogress.RoundedHorizontalProgressBar burndprogressBar;
+    boolean b=false;
     static TextView water,point;
     public static final String TAG = "Hiii";
     String url = "http://healthcareassistantproject.ir/mySite/fetchwithid.php";
@@ -79,6 +91,7 @@ public class HomePage extends AppCompatActivity implements SensorEventListener,N
     static List<InformationModel> person = new ArrayList<>();
     SensorManager sensorManager;
     Button FoodAdd;
+    DailyIDataDBHelper dailyIDataDBHelper;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -86,7 +99,34 @@ public class HomePage extends AppCompatActivity implements SensorEventListener,N
         setContentView(R.layout.activity_home_page1);
         signUpDBHelper = new SignUpDBHelper(this);
         person = signUpDBHelper.GetInf();
+        b=isStoragePermissionGranted();
+        dailyIDataDBHelper=new DailyIDataDBHelper(this);
         init();
+        loadFromFile();
+        if (dailyIDataDBHelper.GetWater().size()==0){
+        //    Toast.makeText(this, ""+dailyIDataDBHelper.GetWater().size(), Toast.LENGTH_SHORT).show();
+            WaterModel waterModel=new WaterModel();
+            waterModel.setGlass(0);
+            waterModel.setTime(getdate());
+            dailyIDataDBHelper.Insertwater(waterModel);
+        }
+        else {
+            water.setText(String.valueOf(dailyIDataDBHelper.GetWater().get(dailyIDataDBHelper.GetWater().size()-1).getGlass()));
+        }
+
+        if (dailyIDataDBHelper.GetPoints().size()==0){
+            PointModel pointModel=new PointModel();
+            pointModel.setPoint(0);
+            pointModel.setDate(getdate());
+            dailyIDataDBHelper.InsertPoint(pointModel);
+        }
+        else {
+            point.setText(String.valueOf(dailyIDataDBHelper.GetPoints().get(dailyIDataDBHelper.GetPoints().size()-1).getPoint()));
+        }
+        File f = new File(Environment.getExternalStorageDirectory().toString() + "/saved");
+        if (b==false|| !f.exists()){
+            pickimage.setImageResource(R.drawable.pp);
+        }
 
         sensorManager = (SensorManager) getSystemService(Context.SENSOR_SERVICE);
         Intent mStepsIntent = new Intent(this, StepsService.class);
@@ -98,8 +138,9 @@ public class HomePage extends AppCompatActivity implements SensorEventListener,N
                 startActivity(new Intent(HomePage.this,FoodInfo.class));
             }
         });
-        Toast.makeText(this, "" + person.size(), Toast.LENGTH_SHORT).show();
+    //    Toast.makeText(this, "" + person.size(), Toast.LENGTH_SHORT).show();
         if (person.size() == 0) {
+            burndprogressBar.setProgress(0);
             GetFromHost(MainActivity.person.get(0).getId());
             person = signUpDBHelper.GetInf();
         }
@@ -123,9 +164,11 @@ public class HomePage extends AppCompatActivity implements SensorEventListener,N
                     int addd = Integer.parseInt(water.getText().toString());
                     addd++;
                     water.setText(String.valueOf(addd));
-                    int p = Integer.parseInt(point.getText().toString());
-                    p = p + 10;
-                    point.setText(String.valueOf(p));
+                    WaterModel waterModel=new WaterModel();
+                    waterModel.setGlass(addd);
+                    waterModel.setTime(HomePage.getdate());
+                    dailyIDataDBHelper.Insertwater(waterModel);
+                    calPoint(10,HomePage.this);
 
                 }
             });
@@ -137,9 +180,11 @@ public class HomePage extends AppCompatActivity implements SensorEventListener,N
                     if (addd != 0) {
                         addd = addd - 1;
                         water.setText(String.valueOf(addd));
-                        int p = Integer.parseInt(point.getText().toString());
-                        p = p - 10;
-                        point.setText(String.valueOf(p));
+                        WaterModel waterModel=new WaterModel();
+                        waterModel.setGlass(addd);
+                        waterModel.setTime(HomePage.getdate());
+                        dailyIDataDBHelper.Insertwater(waterModel);
+                        calPoint(-10,HomePage.this);
                     }
                 }
             });
@@ -156,7 +201,6 @@ public class HomePage extends AppCompatActivity implements SensorEventListener,N
                 R.string.open, R.string.close);
         drawerLayout.addDrawerListener(toggle);
         toggle.syncState();
-        first();
     }
 
 
@@ -178,9 +222,13 @@ public class HomePage extends AppCompatActivity implements SensorEventListener,N
         heart = findViewById(R.id.heart);
         showrate = findViewById(R.id.showrate);
         fab=findViewById(R.id.fab);
+        burncolori=findViewById(R.id.burnColori);
+        burndprogressBar=findViewById(R.id.progressBar);
+        burndprogressBar.setMax(5000);
         searchfood=findViewById(R.id.searchfood);
         waterlayout=findViewById(R.id.waterLayout);
         drawerLayout = findViewById(R.id.drawer_layout);
+        drawerLayout.closeDrawer(Gravity.RIGHT);
         navigationView=findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
         View header = navigationView.getHeaderView(0);
@@ -188,12 +236,21 @@ public class HomePage extends AppCompatActivity implements SensorEventListener,N
         pickimage.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                getImageFromAlbum();
+
+                if (b==true){
+                    getImageFromAlbum();
+                }
+            }
+        });
+        fab.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                drawerLayout.openDrawer(Gravity.RIGHT);
             }
         });
         circuldistance = findViewById(R.id.circuldistance);
         circularstep.setProgressMax(Integer.parseInt(mainstep.getText().toString()));
-        useColori.setText(String.valueOf((int)FoodPage.currentColoritxt));
+        useColori.setText(String.valueOf((int)usedColori()));
         float distance = 0;
         if (person.size() != 0) {
             if (person.get(0).getSex().equals("man")) {
@@ -224,12 +281,18 @@ public class HomePage extends AppCompatActivity implements SensorEventListener,N
 
     }
 
+    @Override
+    protected void onStart() {
+        super.onStart();
+        useColori.setText(String.valueOf((int)usedColori()));
+        drawerLayout.closeDrawer(Gravity.RIGHT);
+    }
 
     @Override
     protected void onResume() {
         super.onResume();
+        useColori.setText(String.valueOf((int)usedColori()));
         Sensor countsteps = sensorManager.getDefaultSensor(Sensor.TYPE_STEP_COUNTER);
-        useColori.setText(String.valueOf((int)FoodPage.currentColoritxt));
         sensorManager.registerListener(this, countsteps,
                 SensorManager.SENSOR_DELAY_NORMAL);
 
@@ -237,6 +300,7 @@ public class HomePage extends AppCompatActivity implements SensorEventListener,N
         if (countsteps != null) {
             sensorManager.registerListener(this, countsteps, SensorManager.SENSOR_DELAY_UI);
         }
+        drawerLayout.closeDrawer(Gravity.RIGHT);
     }
 
 
@@ -244,12 +308,6 @@ public class HomePage extends AppCompatActivity implements SensorEventListener,N
     public void onAccuracyChanged(Sensor sensor, int accuracy) {
 
 
-    }
-
-    @Override
-    protected void onPause() {
-        super.onPause();
-  //      sensorManager.unregisterListener(this);
     }
 
     public void GetFromHost(final String id) {
@@ -270,12 +328,12 @@ public class HomePage extends AppCompatActivity implements SensorEventListener,N
                     model.setSex(product.getString("sex"));
                     model.setLastname(product.getString("lastname"));
                     signUpDBHelper.InsertInf(model);
-                    Toast.makeText(HomePage.this, "" + person.size(), Toast.LENGTH_SHORT).show();
+             //       Toast.makeText(HomePage.this, "" + person.size(), Toast.LENGTH_SHORT).show();
                     person.add(model);
                     hi.setText(" سلام " + person.get(0).getName());
                     double c = calculatingColori(person.get(0).getSex());
                     Maincolori.setText(String.valueOf((int) c));
-                    Toast.makeText(HomePage.this, "" + person.size(), Toast.LENGTH_SHORT).show();
+                 //   Toast.makeText(HomePage.this, "" + person.size(), Toast.LENGTH_SHORT).show();
                 } catch (JSONException e) {
                     e.printStackTrace();
                 }
@@ -284,7 +342,7 @@ public class HomePage extends AppCompatActivity implements SensorEventListener,N
         }, new Response.ErrorListener() {
             @Override
             public void onErrorResponse(VolleyError error) {
-                Toast.makeText(HomePage.this, error.getMessage(), Toast.LENGTH_LONG).show();
+             //   Toast.makeText(HomePage.this, error.getMessage(), Toast.LENGTH_LONG).show();
                 Log.i("My error", "" + error);
             }
         }) {
@@ -333,6 +391,16 @@ public class HomePage extends AppCompatActivity implements SensorEventListener,N
         return result;
     }
 
+    double usedColori(){
+        double colori = 0;
+        List<FoodModel> list;
+        list=dailyIDataDBHelper.GetTodayFood("");
+        for (int i=0;i<list.size();i++){
+            colori=colori+list.get(i).getColorie();
+        }
+        return colori;
+    }
+
 
     @Override
     public void onSensorChanged(SensorEvent event) {
@@ -340,7 +408,6 @@ public class HomePage extends AppCompatActivity implements SensorEventListener,N
         mStepCountList = mStepsDBHelper.readStepsEntries(getApplicationContext());
         circularstep.setProgress((float)mStepCountList.size());
         step.setText(String.valueOf(mStepCountList.size()));
-  //      Toast.makeText(this, ""+mStepCountList.size(), Toast.LENGTH_SHORT).show();
         float distance = 0;
 
             if (person.size() != 0) {
@@ -354,15 +421,47 @@ public class HomePage extends AppCompatActivity implements SensorEventListener,N
             persent.setText(String.valueOf((int) distance));
             circuldistance.setProgress(distance);
             if (Integer.parseInt(persent.getText().toString()) % 50 == 0) {
-                int pget = Integer.valueOf(point.getText().toString());
-                pget = pget + 1;
-                point.setText(String.valueOf(pget));
+                calPoint(1,HomePage.this);
             }
 
             float time1 = (float) ((int) mStepCountList.size()* 100) / (float) 10000;
             circulartime.setProgress(time1);
             time.setText(String.valueOf((int) time1));
+            if (person.size()!=0){
+                burnedColori(time1);
+                burndprogressBar.setProgress((int)burnedColori(time1));
+                burncolori.setText(String.valueOf((int)burnedColori(time1)));
+            }
     }
+
+    void FirstStepinitial(){
+        mStepsDBHelper = new StepsDBHelper(this);
+        mStepCountList = mStepsDBHelper.readStepsEntries(getApplicationContext());
+        circularstep.setProgress((float)mStepCountList.size());
+        step.setText(String.valueOf(mStepCountList.size()));
+        float distance = 0;
+
+        if (person.size() != 0) {
+            if (person.get(0).getSex().equals("man")) {
+                distance = (float) ((int) mStepCountList.size() * 78) / (float) 100;
+            }
+            if (person.get(0).getSex().equals("woman")) {
+                distance = (float) ((int)mStepCountList.size() * 70) / (float) 100;
+            }
+        }
+        persent.setText(String.valueOf((int) distance));
+        circuldistance.setProgress(distance);
+
+        float time1 = (float) ((int) mStepCountList.size()* 100) / (float) 10000;
+        circulartime.setProgress(time1);
+        time.setText(String.valueOf((int) time1));
+        if (person.size()!=0){
+            burnedColori(time1);
+            burndprogressBar.setProgress((int)burnedColori(time1));
+            burncolori.setText(String.valueOf((int)burnedColori(time1)));
+        }
+    }
+
     public void first() {
         mStepsDBHelper = new StepsDBHelper(this);
         mStepCountList = mStepsDBHelper.readStepsEntries(getApplicationContext());
@@ -381,11 +480,6 @@ public class HomePage extends AppCompatActivity implements SensorEventListener,N
         }
         persent.setText(String.valueOf((int) distance));
         circuldistance.setProgress(distance);
-        if (Integer.parseInt(persent.getText().toString()) % 50 == 0) {
-            int pget = Integer.valueOf(point.getText().toString());
-            pget = pget + 1;
-            point.setText(String.valueOf(pget));
-        }
 
         float time1 = (float) ((int) mStepCountList.size()* 100) / (float) 10000;
         circulartime.setProgress(time1);
@@ -457,6 +551,7 @@ public class HomePage extends AppCompatActivity implements SensorEventListener,N
                 final InputStream imageStream = getContentResolver().openInputStream(imageUri);
                 final Bitmap selectedImage = BitmapFactory.decodeStream(imageStream);
                 pickimage.setImageBitmap(selectedImage);
+                SaveImage(selectedImage);
             } catch (FileNotFoundException e) {
                 e.printStackTrace();
                Toast.makeText(HomePage.this, "Something went wrong", Toast.LENGTH_LONG).show();
@@ -477,4 +572,87 @@ public class HomePage extends AppCompatActivity implements SensorEventListener,N
         }
     }
 
+    double  burnedColori(float time){
+       int weight = Integer.parseInt(person.get(0).getWeight());
+       double onehour=weight*25/7;
+       double BurnedColori=time*onehour/60;
+       return BurnedColori;
+    }
+
+    private void SaveImage(Bitmap finalBitmap) {
+        String root = Environment.getExternalStorageDirectory().toString();
+        File myDir = new File(root + "/saved");
+        myDir.mkdirs();
+        String fname = "Image.jpg";
+        File file = new File (myDir, fname);
+        try {
+            Toast.makeText(this, "ok", Toast.LENGTH_SHORT).show();
+            FileOutputStream out = new FileOutputStream(file);
+            finalBitmap.compress(Bitmap.CompressFormat.JPEG, 90, out);
+            out.flush();
+            out.close();
+
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
+    public  Bitmap loadFromFile() {
+        String root = Environment.getExternalStorageDirectory().toString();
+        try {
+            File f = new File(root + "/saved");
+            if (!f.exists()) { return null; }
+            Bitmap tmp = BitmapFactory.decodeFile(root + "/saved/Image.jpg");
+            pickimage.setImageBitmap(tmp);
+            return tmp;
+
+        } catch (Exception e) {
+            Toast.makeText(HomePage.this, "Ok nashod", Toast.LENGTH_SHORT).show();
+            return null;
+        }
+    }
+
+
+    public  boolean isStoragePermissionGranted() {
+        if (Build.VERSION.SDK_INT >= 23) {
+            if (checkSelfPermission(android.Manifest.permission.WRITE_EXTERNAL_STORAGE)
+                    == PackageManager.PERMISSION_GRANTED) {
+                Log.v(TAG,"Permission is granted");
+                return true;
+            } else {
+
+                Log.v(TAG,"Permission is revoked");
+                ActivityCompat.requestPermissions(HomePage.this, new String[]{Manifest.permission.WRITE_EXTERNAL_STORAGE}, 2);
+                return false;
+            }
+        }
+        else { //permission is automatically granted on sdk<23 upon installation
+            Log.v(TAG,"Permission is granted");
+            return true;
+        }
+    }
+
+    @Override
+    public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
+        super.onRequestPermissionsResult(requestCode, permissions, grantResults);
+    }
+    public static String getdate(){
+        Calendar mCalendar = Calendar.getInstance();
+        String todayDate =
+                String.valueOf(mCalendar.get(Calendar.MONTH)) + "/" +
+                        String.valueOf(mCalendar.get(Calendar.DAY_OF_MONTH)) + "/" + String.valueOf(mCalendar.get(Calendar.YEAR));
+        return todayDate;
+    }
+
+    public static void calPoint(int newpoint,Context context){
+        int po=Integer.parseInt(HomePage.point.getText().toString());
+        po=po+newpoint;
+        DailyIDataDBHelper dailyIDataDBHelper=new DailyIDataDBHelper(context);
+        HomePage.point.setText(String.valueOf(po));
+        PointModel pointModel=new PointModel();
+        pointModel.setPoint(po);
+        pointModel.setDate(getdate());
+        dailyIDataDBHelper.InsertPoint(pointModel);
+    }
 }

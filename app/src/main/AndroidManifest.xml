@@ -3,7 +3,9 @@
     package="com.google.se">
 
     <uses-permission android:name="android.permission.INTERNET" />
-    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE"/>
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"></uses-permission>
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.VIBRATE"></uses-permission>
 
     <uses-feature
         android:name="android.hardware.sensor.stepcounter"
@@ -14,14 +16,14 @@
 
     <application
         android:allowBackup="true"
+        android:hardwareAccelerated="false"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
+        android:largeHeap="true"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
-        android:hardwareAccelerated="false"
-        android:largeHeap="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".FoodInfo"></activity>
+        <activity android:name=".FoodInfo" />
         <activity android:name=".FoodPage" />
         <activity android:name=".loginPage" />
         <activity android:name=".MainActivity">
@@ -40,6 +42,8 @@
         <service android:name=".StepsService" />
 
         <activity android:name=".EditProfile" />
+        <activity android:name=".AddNewFood"></activity>
+        <receiver android:name=".MyNotificationPublisher"></receiver>
     </application>
 
 </manifest>

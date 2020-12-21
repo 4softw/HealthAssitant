@@ -202,6 +202,7 @@
         android:layout_marginLeft="10dp"
         android:background="@drawable/but"
         android:text="لغو"
+        android:textColor="#ecebeb"
         android:layout_below="@id/textView46"
         android:layout_toStartOf="@+id/per"
         android:layout_marginTop="100dp"
@@ -218,6 +219,7 @@
         android:layout_toEndOf="@+id/per"
         android:layout_marginTop="100dp"
         android:text="ثبت"
+        android:textColor="#ecebeb"
         android:textSize="15dp"
          />
 
@@ -279,5 +281,23 @@
         android:layout_alignTop="@+id/coloriOfFood"
         android:layout_toEndOf="@+id/cPersent"
         android:text="KC"/>
+
+    <TextView
+        android:id="@+id/grtxt"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignEnd="@+id/textView25"
+        android:layout_alignParentTop="true"
+        android:layout_marginTop="180dp"
+        android:text="100" />
+
+    <TextView
+        android:id="@+id/textView18"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_toEndOf="@+id/grtxt"
+        android:layout_marginLeft="5dp"
+        android:layout_below="@+id/nameOfFood"
+        android:text="gr" />
 
 </RelativeLayout>

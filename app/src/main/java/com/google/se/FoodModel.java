@@ -33,7 +33,19 @@ public class FoodModel {
     private double Colorie;
     private double Fat;
     private double Protoein;
+
+    public String getTime() {
+        return Time;
+    }
+
+    public void setTime(String time) {
+        Time = time;
+    }
+
+    private String Time;
     private double Carbohidrat;
+
+
 
 
     public String getGruop() {

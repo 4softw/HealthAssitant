@@ -1,5 +1,6 @@
 package com.google.se;
 
+import android.content.ContentValues;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
@@ -16,6 +17,7 @@ import android.widget.TextView;
 public class WaterFragment extends DialogFragment {
     ImageView add,minus;
     TextView liter,glass;
+    DailyIDataDBHelper dailyIDataDBHelper;
     com.sasank.roundedhorizontalprogress.RoundedHorizontalProgressBar progressBar;
     @Nullable
     @Override
@@ -24,6 +26,7 @@ public class WaterFragment extends DialogFragment {
         if (getDialog() != null && getDialog().getWindow() != null) {
             getDialog().getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
             getDialog().getWindow().requestFeature(Window.FEATURE_NO_TITLE);
+            dailyIDataDBHelper=new DailyIDataDBHelper(getContext());
             getDialog().getWindow().setLayout((int)0.5*ViewGroup.LayoutParams.MATCH_PARENT,
                     (int)0.5*ViewGroup.LayoutParams.MATCH_PARENT);
           //  dialog.getWindow().setLayout(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.MATCH_PARENT);
@@ -44,9 +47,11 @@ public class WaterFragment extends DialogFragment {
                 int addd = Integer.parseInt(HomePage.water.getText().toString());
                 addd++;
                 HomePage.water.setText(String.valueOf(addd));
-                int p = Integer.parseInt(HomePage.point.getText().toString());
-                p = p + 10;
-                HomePage.point.setText(String.valueOf(p));
+                WaterModel waterModel=new WaterModel();
+                waterModel.setGlass(addd);
+                waterModel.setTime(HomePage.getdate());
+                dailyIDataDBHelper.Insertwater(waterModel);
+               HomePage.calPoint(10,getContext());
                 progressBar.setProgress(Integer.valueOf(HomePage.water.getText().toString()));
                 liter.setText(String.valueOf(Integer.parseInt(HomePage.water.getText().toString())*200)+"ml");
                 glass.setText(HomePage.water.getText().toString());
@@ -61,16 +66,17 @@ public class WaterFragment extends DialogFragment {
                 if (addd != 0) {
                     addd = addd - 1;
                     HomePage.water.setText(String.valueOf(addd));
-                    int p = Integer.parseInt(HomePage.point.getText().toString());
-                    p = p - 10;
-                    HomePage.point.setText(String.valueOf(p));
+                    WaterModel waterModel=new WaterModel();
+                    waterModel.setGlass(addd);
+                    waterModel.setTime(HomePage.getdate());
+                    dailyIDataDBHelper.Insertwater(waterModel);
+                    HomePage.calPoint(-10,getContext());
                     progressBar.setProgress(Integer.valueOf(HomePage.water.getText().toString()));
                     liter.setText(String.valueOf(Integer.parseInt(HomePage.water.getText().toString())*200)+"ml");
                     glass.setText(HomePage.water.getText().toString());
                 }
             }
         });
-
         return view;
     }
 }
