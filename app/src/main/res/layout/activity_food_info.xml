@@ -300,4 +300,13 @@
         android:layout_below="@+id/nameOfFood"
         android:text="gr" />
 
+    <TextView
+        android:id="@+id/grtext"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/grOfFood"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="20dp"
+        android:text="100 گرم" />
+
 </RelativeLayout>

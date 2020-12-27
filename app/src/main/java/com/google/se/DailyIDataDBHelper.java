@@ -38,6 +38,11 @@ public class DailyIDataDBHelper extends SQLiteOpenHelper{
             "\t\"Time\"\tTEXT,\n" +
             "\t\"Point\"\tREAL\n" +
             ");";
+    public static String SLEEPCMD="CREATE TABLE IF NOT EXISTS\"SLEEP\" (\n" +
+            "\t\"Time\"\tTEXT,\n" +
+            "\t\"Sleep\"\tTEXT,\n" +
+            "\t\"SleepM\"\tTEXT\n" +
+            ");";
 
 
     public DailyIDataDBHelper(Context context) {
@@ -49,6 +54,8 @@ public class DailyIDataDBHelper extends SQLiteOpenHelper{
         db.execSQL(POINTCMD);
         db.execSQL(FOODCMD);
         db.execSQL(WATERCMD);
+        db.execSQL(SLEEPCMD);
+
 
     }
 
@@ -168,6 +175,14 @@ public class DailyIDataDBHelper extends SQLiteOpenHelper{
         SQLiteDatabase db=getWritableDatabase();
         db.insert("POINTTABLE",null,values);
     }
+    public void InsertSleep(SleepModel sleep){
+        ContentValues values=new ContentValues();
+        values.put("Sleep",sleep.getSleep());
+        values.put("SleepM",sleep.getSleepM());
+        values.put("Time",sleep.getDate());
+        SQLiteDatabase db=getWritableDatabase();
+        db.insert("SLEEP",null,values);
+    }
     public List<WaterModel> GetWater(){
         SQLiteDatabase db = getReadableDatabase();
         List<WaterModel> w = new ArrayList<>();
@@ -182,7 +197,21 @@ public class DailyIDataDBHelper extends SQLiteOpenHelper{
         cursor.close();
         return w;
     }
-
+    public List<SleepModel> GetSleep(){
+        SQLiteDatabase db = getReadableDatabase();
+        List<SleepModel> p = new ArrayList<>();
+        Cursor cursor = db.rawQuery("SELECT * FROM SLEEP  WHERE  Time=? ",new String[]{getdate()} );
+        if (cursor.moveToFirst()) {
+            do {
+                SleepModel SleepTracker = new SleepModel();
+                SleepTracker.setSleep(cursor.getString(cursor.getColumnIndex("Sleep")));
+                SleepTracker.setSleepM(cursor.getString(cursor.getColumnIndex("SleepM")));
+                p.add(SleepTracker);
+            } while (cursor.moveToNext());
+        }
+        cursor.close();
+        return p;
+    }
     public List<PointModel> GetPoints(){
         SQLiteDatabase db = getReadableDatabase();
         List<PointModel> p = new ArrayList<>();
@@ -201,6 +230,7 @@ public class DailyIDataDBHelper extends SQLiteOpenHelper{
         SQLiteDatabase database=getWritableDatabase();
         database.update("WATERTABLE",glass,"Time"+" = "+getdate() ,null);
     }
+
 
     @Override
     public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {

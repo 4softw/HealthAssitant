@@ -3,10 +3,12 @@ package com.google.se;
 import android.Manifest;
 import android.app.Activity;
 import android.app.AlertDialog;
-import android.content.ContentValues;
+import android.app.IntentService;
+import android.content.ComponentName;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.content.IntentFilter;
 import android.content.pm.PackageManager;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
@@ -24,6 +26,7 @@ import android.support.annotation.NonNull;
 import android.support.design.widget.NavigationView;
 import android.support.v4.app.ActivityCompat;
 import android.support.v4.app.FragmentManager;
+import android.support.v4.content.LocalBroadcastManager;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
@@ -37,7 +40,6 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
-import android.widget.ProgressBar;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -65,10 +67,8 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-import java.util.Random;
 
 public class HomePage extends AppCompatActivity implements SensorEventListener,NavigationView.OnNavigationItemSelectedListener {
-
 
     static TextView hi, Maincolori, date, showrate,useColori,burncolori;
     com.sasank.roundedhorizontalprogress.RoundedHorizontalProgressBar burndprogressBar;
@@ -92,9 +92,14 @@ public class HomePage extends AppCompatActivity implements SensorEventListener,N
     SensorManager sensorManager;
     Button FoodAdd;
     DailyIDataDBHelper dailyIDataDBHelper;
+    static TextView Sleepe;
+    static TextView minutee;
+    SleepTrackingService service = new SleepTrackingService();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+
+        startService(new Intent(this,SleepTrackingService.class));
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home_page1);
         signUpDBHelper = new SignUpDBHelper(this);
@@ -113,7 +118,18 @@ public class HomePage extends AppCompatActivity implements SensorEventListener,N
         else {
             water.setText(String.valueOf(dailyIDataDBHelper.GetWater().get(dailyIDataDBHelper.GetWater().size()-1).getGlass()));
         }
-
+        if (dailyIDataDBHelper.GetSleep().size()==0){
+            //    Toast.makeText(this, ""+dailyIDataDBHelper.GetWater().size(), Toast.LENGTH_SHORT).show();
+            SleepModel sleepModel=new SleepModel();
+            sleepModel.setSleep("0");
+            sleepModel.setSleepM("");
+            sleepModel.setDate(getdate());
+            dailyIDataDBHelper.InsertSleep(sleepModel);
+        }
+        else {
+            Sleepe.setText(String.valueOf(dailyIDataDBHelper.GetSleep().get(dailyIDataDBHelper.GetSleep().size()-1).getSleep()));
+            minutee.setText(String.valueOf(dailyIDataDBHelper.GetSleep().get(dailyIDataDBHelper.GetSleep().size()-1).getSleepM()));
+        }
         if (dailyIDataDBHelper.GetPoints().size()==0){
             PointModel pointModel=new PointModel();
             pointModel.setPoint(0);
@@ -203,8 +219,9 @@ public class HomePage extends AppCompatActivity implements SensorEventListener,N
         toggle.syncState();
     }
 
-
     void init() {
+        minutee = findViewById(R.id.minutes);
+        Sleepe = findViewById(R.id.Sleep);
         hi = findViewById(R.id.hi);
         Maincolori = findViewById(R.id.MainColori);
         date = findViewById(R.id.date);
@@ -301,6 +318,7 @@ public class HomePage extends AppCompatActivity implements SensorEventListener,N
             sensorManager.registerListener(this, countsteps, SensorManager.SENSOR_DELAY_UI);
         }
         drawerLayout.closeDrawer(Gravity.RIGHT);
+//        registerReceiver(broadcastReceiver, lockFilter);
     }
 
 
@@ -655,4 +673,7 @@ public class HomePage extends AppCompatActivity implements SensorEventListener,N
         pointModel.setDate(getdate());
         dailyIDataDBHelper.InsertPoint(pointModel);
     }
+
+
+
 }

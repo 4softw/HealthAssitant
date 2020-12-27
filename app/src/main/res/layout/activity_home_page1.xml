@@ -584,13 +584,16 @@
                     android:textColor="@android:color/darker_gray"
                     android:textSize="10sp"
                     android:textStyle="bold" />
+
                 <TextView
-                    android:id="@+id/water1"
+                    android:id="@+id/Sleep"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_alignParentStart="true"
                     android:layout_alignParentBottom="true"
+                    android:layout_marginStart="11dp"
                     android:layout_marginLeft="10dp"
+                    android:layout_marginBottom="0dp"
                     android:padding="5dp"
                     android:text="0"
                     android:textColor="#000"
@@ -623,6 +626,17 @@
                     app:layout_constraintVertical_bias="0.358"
                     app:progressColor="#161f48"
                     android:layout_centerInParent="true" />
+
+                <TextView
+                    android:id="@+id/minutes"
+                    android:textSize="15dp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignTop="@+id/Sleep"
+                    android:layout_marginLeft="1dp"
+                    android:layout_marginTop="19dp"
+                    android:layout_toRightOf="@+id/Sleep"
+                    android:text="10min" />
             </RelativeLayout>
 
 
