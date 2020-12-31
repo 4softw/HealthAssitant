@@ -568,7 +568,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_alignParentBottom="true"
-                    android:layout_toEndOf="@+id/water1"
+                    android:layout_toEndOf="@+id/Sleep"
                     android:text="/" />
 
                 <TextView
@@ -593,7 +593,7 @@
                     android:layout_alignParentBottom="true"
                     android:layout_marginStart="11dp"
                     android:layout_marginLeft="10dp"
-                    android:layout_marginBottom="0dp"
+                    android:layout_marginBottom="1dp"
                     android:padding="5dp"
                     android:text="0"
                     android:textColor="#000"

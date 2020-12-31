@@ -55,6 +55,12 @@ public class ScreenTimeBroadcastReceiver extends WakefulBroadcastReceiver {
                 String SleepTrack =  hours2 + "";
 //                    Toast.makeText(context, SleepTrack.charAt(0),Toast.LENGTH_LONG).show();
                 Sleep=SleepTrack;
+                DailyIDataDBHelper dailyIDataDBHelper = new DailyIDataDBHelper(context);
+                SleepModel sleepTrack = new SleepModel();
+                sleepTrack.setSleep(Sleep);
+                sleepTrack.setSleepM(minute);
+                sleepTrack.setDate(getdate());
+                dailyIDataDBHelper.InsertSleep(sleepTrack);
 
             }else {
                 if(sleepFlag){
@@ -66,7 +72,8 @@ public class ScreenTimeBroadcastReceiver extends WakefulBroadcastReceiver {
 
                     String SleepTrack =  hours2 + "";
 //                    Toast.makeText(context, SleepTrack.charAt(0),Toast.LENGTH_LONG).show();
-                    Sleep=SleepTrack;}
+                    Sleep=SleepTrack;
+                }
             }
 //            Toast.makeText(context, "Timer Started "+startTimer,Toast.LENGTH_LONG).show();
 
@@ -109,13 +116,9 @@ public class ScreenTimeBroadcastReceiver extends WakefulBroadcastReceiver {
 
         }
         if (Sleep != null) {
-            DailyIDataDBHelper dailyIDataDBHelper = new DailyIDataDBHelper(context);
             HomePage.Sleepe.setText(String.valueOf(Sleep));
             HomePage.minutee.setText(String.valueOf(minute));
-            SleepModel sleepTrack = new SleepModel();
-            sleepTrack.setSleep(Sleep);
-            sleepTrack.setDate(getdate());
-            dailyIDataDBHelper.InsertSleep(sleepTrack);
+
         }
     }
 }

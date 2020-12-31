@@ -71,7 +71,7 @@ import java.util.Map;
 public class HomePage extends AppCompatActivity implements SensorEventListener,NavigationView.OnNavigationItemSelectedListener {
 
     static TextView hi, Maincolori, date, showrate,useColori,burncolori;
-    com.sasank.roundedhorizontalprogress.RoundedHorizontalProgressBar burndprogressBar;
+    com.sasank.roundedhorizontalprogress.RoundedHorizontalProgressBar burndprogressBar,burndprogressBar2;
     boolean b=false;
     static TextView water,point;
     public static final String TAG = "Hiii";
@@ -129,6 +129,7 @@ public class HomePage extends AppCompatActivity implements SensorEventListener,N
         else {
             Sleepe.setText(String.valueOf(dailyIDataDBHelper.GetSleep().get(dailyIDataDBHelper.GetSleep().size()-1).getSleep()));
             minutee.setText(String.valueOf(dailyIDataDBHelper.GetSleep().get(dailyIDataDBHelper.GetSleep().size()-1).getSleepM()));
+            burndprogressBar2.setProgress(Integer.parseInt(Sleepe.getText().toString())*60+Integer.parseInt(minutee.getText().toString()));
         }
         if (dailyIDataDBHelper.GetPoints().size()==0){
             PointModel pointModel=new PointModel();
@@ -160,6 +161,7 @@ public class HomePage extends AppCompatActivity implements SensorEventListener,N
             GetFromHost(MainActivity.person.get(0).getId());
             person = signUpDBHelper.GetInf();
         }
+
 
         if (person.size() != 0) {
             hi.setText(" سلام " + person.get(0).getName());
@@ -240,7 +242,9 @@ public class HomePage extends AppCompatActivity implements SensorEventListener,N
         showrate = findViewById(R.id.showrate);
         fab=findViewById(R.id.fab);
         burncolori=findViewById(R.id.burnColori);
-        burndprogressBar=findViewById(R.id.progressBar);
+        burndprogressBar=findViewById(R.id.progressBar2);
+        burndprogressBar2=findViewById(R.id.progressBar);
+        burndprogressBar2.setMax(480);
         burndprogressBar.setMax(5000);
         searchfood=findViewById(R.id.searchfood);
         waterlayout=findViewById(R.id.waterLayout);
@@ -547,6 +551,10 @@ public class HomePage extends AppCompatActivity implements SensorEventListener,N
         switch (item.getItemId()) {
             case R.id.edit:
                 startActivity(new Intent(HomePage.this,EditProfile.class));
+                checkOpenDrawer();
+                break;
+            case R.id.setting:
+                startActivity(new Intent(HomePage.this,Settings.class));
                 checkOpenDrawer();
                 break;
         }
