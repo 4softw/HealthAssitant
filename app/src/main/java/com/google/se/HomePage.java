@@ -119,12 +119,7 @@ public class HomePage extends AppCompatActivity implements SensorEventListener,N
             water.setText(String.valueOf(dailyIDataDBHelper.GetWater().get(dailyIDataDBHelper.GetWater().size()-1).getGlass()));
         }
         if (dailyIDataDBHelper.GetSleep().size()==0){
-            //    Toast.makeText(this, ""+dailyIDataDBHelper.GetWater().size(), Toast.LENGTH_SHORT).show();
-            SleepModel sleepModel=new SleepModel();
-            sleepModel.setSleep("0");
-            sleepModel.setSleepM("");
-            sleepModel.setDate(getdate());
-            dailyIDataDBHelper.InsertSleep(sleepModel);
+
         }
         else {
             Sleepe.setText(String.valueOf(dailyIDataDBHelper.GetSleep().get(dailyIDataDBHelper.GetSleep().size()-1).getSleep()));

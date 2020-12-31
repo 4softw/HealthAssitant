@@ -43,7 +43,7 @@ public class ScreenTimeBroadcastReceiver extends WakefulBroadcastReceiver {
             ScreenOnTimerEnd = System.currentTimeMillis();
             screenOnTime = ScreenOnTimerStart - ScreenOnTimerEnd;
             int minutes = (int) ((screenOnTime  / (1000*60)) % 60);
-            if (sleepFlag && minutes > 15) {
+            if (sleepFlag && minutes > 1) {
                 sleepFlag = false;
                 SleepTime = SleepTime + screenOffTime ;
 
@@ -87,7 +87,7 @@ public class ScreenTimeBroadcastReceiver extends WakefulBroadcastReceiver {
 //            Toast.makeText(context, "Screen Off Time Is: " + screenOffTime,Toast.LENGTH_LONG).show();
             int minutes = (int) ((screenOffTime / (1000*60)) % 60);
             int hours   = (int) ((screenOffTime / (1000*60*60)) % 24);
-            if( minutes > 30 && hours > 3) {
+            if( minutes > 1) {
 
                 sleepFlag = true;
                 SleepTime = SleepTime + screenOffTime;

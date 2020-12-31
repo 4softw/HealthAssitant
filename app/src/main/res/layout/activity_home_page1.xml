@@ -636,7 +636,7 @@
                     android:layout_marginLeft="1dp"
                     android:layout_marginTop="19dp"
                     android:layout_toRightOf="@+id/Sleep"
-                    android:text="10min" />
+                    android:text="" />
             </RelativeLayout>
 
 
