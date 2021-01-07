@@ -7,6 +7,7 @@ import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 import android.icu.util.Calendar;
 import android.provider.ContactsContract;
+import android.widget.Toast;
 
 import com.mohamadamin.persianmaterialdatetimepicker.utils.PersianCalendar;
 
@@ -159,8 +160,6 @@ public class DailyIDataDBHelper extends SQLiteOpenHelper{
         SQLiteDatabase db=getWritableDatabase();
         db.delete("DataTable","Name =? AND Time=?",new String[]{Name,Time});
     }
-
-
     public void Insertwater(WaterModel water){
         ContentValues values=new ContentValues();
         values.put("Glass",water.getGlass());
@@ -226,9 +225,90 @@ public class DailyIDataDBHelper extends SQLiteOpenHelper{
         cursor.close();
         return p;
     }
-    public void updateWater(ContentValues glass){
-        SQLiteDatabase database=getWritableDatabase();
-        database.update("WATERTABLE",glass,"Time"+" = "+getdate() ,null);
+
+
+    public String GetPastFood(int amunt,Context context){
+        String colori="";
+        double getclori = 0;
+        SQLiteDatabase db = getReadableDatabase();
+        List<FoodModel> foods = new ArrayList<>();
+        Calendar mCalendar = Calendar.getInstance();
+        mCalendar.add(Calendar.DATE,amunt);
+        String pastdate =
+                String.valueOf(mCalendar.get(Calendar.MONTH)) + "/" +
+                        String.valueOf(mCalendar.get(Calendar.DAY_OF_MONTH)) + "/" + String.valueOf(mCalendar.get(Calendar.YEAR));
+        Toast.makeText(context, ""+pastdate, Toast.LENGTH_SHORT).show();
+        Cursor cursor = db.rawQuery("SELECT * FROM DataTable  WHERE  Time=?",new String[]{pastdate} );
+        if (cursor.moveToFirst()) {
+            do {
+                FoodModel food = new FoodModel();
+                food.setTime(cursor.getString(cursor.getColumnIndex("Time")));
+                food.setName(cursor.getString(cursor.getColumnIndex("Name")));
+                food.setMeal(cursor.getString(cursor.getColumnIndex("Meal")));
+                food.setColorie(cursor.getDouble(cursor.getColumnIndex("Colorie")));
+                food.setFat(cursor.getDouble(cursor.getColumnIndex("Fat")));
+                food.setCarbohidrat(cursor.getDouble(cursor.getColumnIndex("Carbohidrat")));
+                food.setProtoein(cursor.getDouble(cursor.getColumnIndex("Protoein")));
+                foods.add(food);
+                getclori=getclori+food.getColorie();
+            } while (cursor.moveToNext());
+        }
+        cursor.close();
+        colori=String.valueOf(getclori);
+        return colori;
+    }
+    public String GetPastWater(int amunt){
+        String pastWater="";
+        Calendar mCalendar = Calendar.getInstance();
+        mCalendar.add(Calendar.DATE,amunt);
+        String pastdate =
+                String.valueOf(mCalendar.get(Calendar.MONTH)) + "/" +
+                        String.valueOf(mCalendar.get(Calendar.DAY_OF_MONTH)) + "/" + String.valueOf(mCalendar.get(Calendar.YEAR));
+        SQLiteDatabase db = getReadableDatabase();
+        List<WaterModel> w = new ArrayList<>();
+        Cursor cursor = db.rawQuery("SELECT * FROM WATERTABLE  WHERE  Time=? ",new String[]{pastdate} );
+        if (cursor.moveToFirst()) {
+            do {
+                WaterModel waterModel = new WaterModel();
+                waterModel.setGlass(cursor.getInt(cursor.getColumnIndex("Glass")));
+                w.add(waterModel);
+            } while (cursor.moveToNext());
+        }
+        cursor.close();
+        if (w.size()==0){
+            pastWater="0";
+        }
+        else {
+            pastWater=String.valueOf(w.get(w.size()-1).glass);
+        }
+        return pastWater;
+    }
+    public String GetPastSleep(int amunt){
+        String sleep="";
+        SQLiteDatabase db = getReadableDatabase();
+        Calendar mCalendar = Calendar.getInstance();
+        mCalendar.add(Calendar.DATE,amunt);
+        String pastdate =
+                String.valueOf(mCalendar.get(Calendar.MONTH)) + "/" +
+                        String.valueOf(mCalendar.get(Calendar.DAY_OF_MONTH)) + "/" + String.valueOf(mCalendar.get(Calendar.YEAR));
+        List<SleepModel> p = new ArrayList<>();
+        Cursor cursor = db.rawQuery("SELECT * FROM SLEEP  WHERE  Time=? ",new String[]{pastdate} );
+        if (cursor.moveToFirst()) {
+            do {
+                SleepModel SleepTracker = new SleepModel();
+                SleepTracker.setSleep(cursor.getString(cursor.getColumnIndex("Sleep")));
+                SleepTracker.setSleepM(cursor.getString(cursor.getColumnIndex("SleepM")));
+                p.add(SleepTracker);
+            } while (cursor.moveToNext());
+        }
+        cursor.close();
+        if (p.size()==0){
+            sleep="0";
+        }
+        else {
+            sleep=p.get(p.size()-1).sleep;
+        }
+        return sleep;
     }
 
 

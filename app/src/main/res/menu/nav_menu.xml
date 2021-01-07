@@ -29,13 +29,6 @@
                 android:layout_gravity="end"
                 />
 
-            <item
-                android:title="notification"
-                android:id="@+id/not"
-                android:icon="@drawable/not"
-                android:gravity="end"
-                android:layout_gravity="end"
-                />
         </menu>
     </item>
 

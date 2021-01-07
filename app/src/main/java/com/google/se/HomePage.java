@@ -3,12 +3,10 @@ package com.google.se;
 import android.Manifest;
 import android.app.Activity;
 import android.app.AlertDialog;
-import android.app.IntentService;
-import android.content.ComponentName;
+import android.app.Dialog;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
-import android.content.IntentFilter;
 import android.content.pm.PackageManager;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
@@ -26,7 +24,6 @@ import android.support.annotation.NonNull;
 import android.support.design.widget.NavigationView;
 import android.support.v4.app.ActivityCompat;
 import android.support.v4.app.FragmentManager;
-import android.support.v4.content.LocalBroadcastManager;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
@@ -71,9 +68,10 @@ import java.util.Map;
 public class HomePage extends AppCompatActivity implements SensorEventListener,NavigationView.OnNavigationItemSelectedListener {
 
     static TextView hi, Maincolori, date, showrate,useColori,burncolori;
-    com.sasank.roundedhorizontalprogress.RoundedHorizontalProgressBar burndprogressBar,burndprogressBar2;
+    com.sasank.roundedhorizontalprogress.RoundedHorizontalProgressBar burndprogressBar;
     boolean b=false;
     static TextView water,point;
+    Dialog dialog;
     public static final String TAG = "Hiii";
     String url = "http://healthcareassistantproject.ir/mySite/fetchwithid.php";
     String name;
@@ -107,6 +105,7 @@ public class HomePage extends AppCompatActivity implements SensorEventListener,N
         b=isStoragePermissionGranted();
         dailyIDataDBHelper=new DailyIDataDBHelper(this);
         init();
+        dialog = new Dialog(this);
         loadFromFile();
         if (dailyIDataDBHelper.GetWater().size()==0){
         //    Toast.makeText(this, ""+dailyIDataDBHelper.GetWater().size(), Toast.LENGTH_SHORT).show();
@@ -119,12 +118,16 @@ public class HomePage extends AppCompatActivity implements SensorEventListener,N
             water.setText(String.valueOf(dailyIDataDBHelper.GetWater().get(dailyIDataDBHelper.GetWater().size()-1).getGlass()));
         }
         if (dailyIDataDBHelper.GetSleep().size()==0){
-
+            //    Toast.makeText(this, ""+dailyIDataDBHelper.GetWater().size(), Toast.LENGTH_SHORT).show();
+            SleepModel sleepModel=new SleepModel();
+            sleepModel.setSleep("0");
+            sleepModel.setSleepM("");
+            sleepModel.setDate(getdate());
+            dailyIDataDBHelper.InsertSleep(sleepModel);
         }
         else {
             Sleepe.setText(String.valueOf(dailyIDataDBHelper.GetSleep().get(dailyIDataDBHelper.GetSleep().size()-1).getSleep()));
             minutee.setText(String.valueOf(dailyIDataDBHelper.GetSleep().get(dailyIDataDBHelper.GetSleep().size()-1).getSleepM()));
-            burndprogressBar2.setProgress(Integer.parseInt(Sleepe.getText().toString())*60+Integer.parseInt(minutee.getText().toString()));
         }
         if (dailyIDataDBHelper.GetPoints().size()==0){
             PointModel pointModel=new PointModel();
@@ -147,7 +150,7 @@ public class HomePage extends AppCompatActivity implements SensorEventListener,N
         FoodAdd.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                startActivity(new Intent(HomePage.this,FoodInfo.class));
+               // startActivity(new Intent(HomePage.this,FoodInfo.class));
             }
         });
     //    Toast.makeText(this, "" + person.size(), Toast.LENGTH_SHORT).show();
@@ -156,7 +159,6 @@ public class HomePage extends AppCompatActivity implements SensorEventListener,N
             GetFromHost(MainActivity.person.get(0).getId());
             person = signUpDBHelper.GetInf();
         }
-
 
         if (person.size() != 0) {
             hi.setText(" سلام " + person.get(0).getName());
@@ -237,9 +239,7 @@ public class HomePage extends AppCompatActivity implements SensorEventListener,N
         showrate = findViewById(R.id.showrate);
         fab=findViewById(R.id.fab);
         burncolori=findViewById(R.id.burnColori);
-        burndprogressBar=findViewById(R.id.progressBar2);
-        burndprogressBar2=findViewById(R.id.progressBar);
-        burndprogressBar2.setMax(480);
+        burndprogressBar=findViewById(R.id.progressBar);
         burndprogressBar.setMax(5000);
         searchfood=findViewById(R.id.searchfood);
         waterlayout=findViewById(R.id.waterLayout);
@@ -548,10 +548,26 @@ public class HomePage extends AppCompatActivity implements SensorEventListener,N
                 startActivity(new Intent(HomePage.this,EditProfile.class));
                 checkOpenDrawer();
                 break;
-            case R.id.setting:
-                startActivity(new Intent(HomePage.this,Settings.class));
+            case R.id.histori_nav:
+                startActivity(new Intent(HomePage.this,HistoryPage.class));
                 checkOpenDrawer();
                 break;
+
+            case R.id.call:
+                dialog.setContentView(R.layout.connect_to_us);
+                dialog.show();
+                break;
+
+
+            case R.id.score:
+                dialog.setContentView(R.layout.rate);
+                dialog.show();
+                break;
+
+            case R.id.setting:
+                startActivity(new Intent(HomePage.this,Settings.class));
+                break;
+
         }
 
         return true;

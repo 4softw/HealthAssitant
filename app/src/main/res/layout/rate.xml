@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="300dp"
+    android:layout_height="250dp">
+
+    <RatingBar
+        android:id="@+id/ratingBar"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true" />
+
+    <Button
+        android:id="@+id/button"
+        android:layout_width="wrap_content"
+        android:layout_height="30dp"
+        android:layout_alignEnd="@+id/ratingBar"
+        android:layout_alignParentBottom="true"
+        android:layout_marginBottom="44dp"
+        android:background="@drawable/rounded_rec15"
+        android:text="ثبت"
+        android:textColor="#fff" />
+
+
+    <Button
+        android:id="@+id/button2"
+        android:layout_width="wrap_content"
+        android:layout_height="30dp"
+        android:layout_alignStart="@+id/ratingBar"
+        android:layout_alignTop="@+id/button"
+        android:background="@drawable/rounded_rec15"
+        android:text="بعدا"
+        android:textColor="#fff" />
+
+    <TextView
+        android:id="@+id/textView49"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="70dp"
+        android:text="امتیاز خود را انتخاب کنید" />
+</RelativeLayout>

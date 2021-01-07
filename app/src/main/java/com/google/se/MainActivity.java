@@ -48,7 +48,9 @@ public class MainActivity extends AppCompatActivity {
     private final static String default_notification_channel_id = "default" ;
     final Calendar myCalendar = Calendar. getInstance () ;
     String datetxt;
-    Button btnDate;
+    private static final int Time_Between_Two_Back = 2000;
+    private long TimeBackPressed;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -56,7 +58,6 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
         signUpDBHelper=new SignUpDBHelper(this);
         person=signUpDBHelper.GetAll();
-        btnDate=findViewById(R.id.button2);
         loadProducts();
      //   Toast.makeText(this, ""+peaple.size(), Toast.LENGTH_SHORT).show();
         if (person.size()==0){
@@ -110,10 +111,10 @@ public class MainActivity extends AppCompatActivity {
                 new com.mohamadamin.persianmaterialdatetimepicker.time.TimePickerDialog();
 
            Calendar calendar = Calendar.getInstance();
-           calendar.set(Calendar.HOUR_OF_DAY, 16);
+           calendar.set(Calendar.HOUR_OF_DAY, 00);
            calendar.set(Calendar.MINUTE, 00);
            calendar.set(Calendar.SECOND, 00);
-            Toast.makeText(this, ""+calendar.getTimeInMillis(), Toast.LENGTH_SHORT).show();
+      //      Toast.makeText(this, ""+calendar.getTimeInMillis(), Toast.LENGTH_SHORT).show();
             AlarmManager alarmManager = (AlarmManager)getSystemService(Context.ALARM_SERVICE);
             alarmManager.setRepeating(AlarmManager.RTC_WAKEUP, calendar.getTimeInMillis(),
                     AlarmManager.INTERVAL_HOUR*4, pendingIntent);
@@ -154,9 +155,20 @@ public class MainActivity extends AppCompatActivity {
         String myFormat = "21/12/2020" ; //In which you need put here
         SimpleDateFormat sdf = new SimpleDateFormat(myFormat , Locale. getDefault ()) ;
         Date date = myCalendar .getTime() ;
-        btnDate .setText(sdf.format(date)) ;
         datetxt=sdf.format(date);
         scheduleNotification(getNotification( "mio mio"), 0) ;
+    }
+
+
+    @Override
+    public void onBackPressed() {
+        if (TimeBackPressed + Time_Between_Two_Back > System.currentTimeMillis()) {
+            super.onBackPressed();
+            return;
+        } else {
+            Toast.makeText(this, "برای خروج دوبار کلیک کنید.", Toast.LENGTH_SHORT).show();
+        }
+        TimeBackPressed = System.currentTimeMillis();
     }
 
 

@@ -22,12 +22,14 @@ public class StartActivity extends AppCompatActivity {
             public void onClick(View v) {
                 Toast.makeText(StartActivity.this, "***********************" , Toast.LENGTH_LONG).show();
                 startActivity(new Intent(StartActivity.this,loginPage.class));
+                finish();
             }
         });
         signup.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 startActivity(new Intent(StartActivity.this,SignupPage.class));
+                finish();
             }
         });
     }

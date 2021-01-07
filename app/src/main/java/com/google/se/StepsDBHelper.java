@@ -122,4 +122,37 @@ public class StepsDBHelper extends SQLiteOpenHelper {
         }
         return mStepCountList;
     }
+
+    public String readStepsPast(Context context,int amunt)
+    {
+        String bcolori="";
+        Calendar mCalendar = Calendar.getInstance();
+        mCalendar.add(Calendar.DATE,amunt);
+        String pastDate =
+                String.valueOf(mCalendar.get(Calendar.MONTH)) + "/" +
+                        String.valueOf(mCalendar.get(Calendar.DAY_OF_MONTH)) + "/" + String.valueOf(mCalendar.get(Calendar.YEAR));
+        SQLiteDatabase db = this.getReadableDatabase();
+        ArrayList<DateStepsModel> mStepCountList = new ArrayList<DateStepsModel>();
+        Cursor c = db.rawQuery("SELECT * FROM StepsSummary  WHERE  creationdate=?",new String[]{pastDate} );
+        try {
+            if (c.moveToFirst()) {
+                do {
+                    DateStepsModel mDateStepsModel = new DateStepsModel();
+                    mDateStepsModel.mDate = c.getString((c.getColumnIndex(CREATION_DATE)));
+                    mDateStepsModel.mStepCount = c.getInt((c.getColumnIndex(STEPS_COUNT)));
+                    mStepCountList.add(mDateStepsModel);
+                    //       Toast.makeText(context, ""+mDateStepsModel.mStepCount, Toast.LENGTH_SHORT).show();
+                } while (c.moveToNext());
+            }
+            db.close();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        float time1 = (float) ((int) mStepCountList.size()* 100) / (float) 10000;
+        int weight = Integer.parseInt(HomePage.person.get(0).getWeight());
+        double onehour=weight*25/7;
+        double BurnedColori=time1*onehour/60;
+        bcolori=String.valueOf((int)BurnedColori);
+        return bcolori;
+    }
 }

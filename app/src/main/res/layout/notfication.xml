@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="200dp"
+    android:layout_height="200dp">
+
+    <Switch
+        android:id="@+id/bcoloris"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:layout_centerVertical="true"
+        android:layout_marginTop="97dp"
+        android:text="       فعالیت روزانه" />
+
+    <Switch
+        android:id="@+id/waters"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/bcoloris"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="-97dp"
+        android:text="            مصرف آب" />
+
+</RelativeLayout>

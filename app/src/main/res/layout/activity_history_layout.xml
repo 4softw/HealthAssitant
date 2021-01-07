@@ -1,0 +1,629 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".HistoryPage">
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentStart="true">
+
+    <TableLayout
+        android:padding="20dp"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:stretchColumns="1">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <TextView
+                android:layout_marginTop="20dp"
+                android:id="@+id/hdate"
+                android:textSize="15dp"
+                android:textColor="#000"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center_horizontal|center_vertical"
+                android:text="شنبه 11/2/99" />
+
+            <LinearLayout
+                android:layout_marginTop="20dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <RelativeLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1">
+
+                    <TextView
+                        android:id="@+id/textView59"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentStart="true"
+                        android:gravity="bottom"
+                        android:textSize="10dp"
+                        android:layout_alignParentTop="true"
+                        android:layout_marginStart="40dp"
+                        android:text="لیوان" />
+
+                    <TextView
+                        android:id="@+id/hwater"
+                        android:layout_width="wrap_content"
+                        android:layout_marginLeft="10dp"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentTop="true"
+                        android:fontFamily="@font/iransans"
+                        android:textSize="15dp"
+                        android:layout_toEndOf="@+id/textView59"
+                        android:layout_weight="1"
+                        android:text="5" />
+
+                </RelativeLayout>
+
+                <TextView
+                    android:layout_marginRight="40dp"
+                    android:id="@+id/textView57"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="میزان آب مصرفی " />
+
+            </LinearLayout>
+            <LinearLayout
+                android:layout_marginTop="20dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <RelativeLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1">
+
+                    <TextView
+                        android:id="@+id/textView5"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentStart="true"
+                        android:gravity="bottom"
+                        android:textSize="10dp"
+                        android:layout_alignParentTop="true"
+                        android:layout_marginStart="40dp"
+                        android:text="کالری" />
+
+                    <TextView
+                        android:id="@+id/hcolori"
+                        android:layout_width="wrap_content"
+                        android:layout_marginLeft="10dp"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentTop="true"
+                        android:textSize="15dp"
+                        android:fontFamily="@font/iransans"
+                        android:layout_toEndOf="@+id/textView5"
+                        android:layout_weight="1"
+                        android:text="10000" />
+
+                </RelativeLayout>
+
+                <TextView
+                    android:layout_marginRight="40dp"
+                    android:id="@+id/textView58"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="میزان کالری مصرفی " />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_marginTop="20dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <RelativeLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1">
+
+                    <TextView
+                        android:id="@+id/textView8"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentStart="true"
+                        android:gravity="bottom"
+                        android:textSize="10dp"
+
+                        android:layout_alignParentTop="true"
+                        android:layout_marginStart="40dp"
+                        android:text="کالری" />
+
+                    <TextView
+                        android:id="@+id/hbcolori"
+                        android:layout_width="wrap_content"
+                        android:layout_marginLeft="10dp"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentTop="true"
+                        android:textSize="15dp"
+                        android:fontFamily="@font/iransans"
+                        android:layout_toEndOf="@+id/textView8"
+                        android:layout_weight="1"
+                        android:text="5" />
+                </RelativeLayout>
+                <TextView
+                    android:layout_marginRight="40dp"
+                    android:id="@+id/textView6"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="میزان کالری سوزانده شده " />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_marginTop="20dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <RelativeLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1">
+
+                    <TextView
+                        android:id="@+id/textView9"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentStart="true"
+                        android:gravity="bottom"
+                        android:textSize="10dp"
+
+                        android:layout_alignParentTop="true"
+                        android:layout_marginStart="40dp"
+                        android:text="ساعت" />
+
+                    <TextView
+                        android:id="@+id/hsleep"
+                        android:layout_width="wrap_content"
+                        android:layout_marginLeft="10dp"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentTop="true"
+                        android:textSize="15dp"
+                        android:fontFamily="@font/iransans"
+                        android:layout_toEndOf="@+id/textView9"
+                        android:layout_weight="1"
+                        android:text="5" />
+                </RelativeLayout>
+                <TextView
+                    android:layout_marginRight="40dp"
+                    android:id="@+id/textView"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="میزان خواب " />
+
+            </LinearLayout>
+        </LinearLayout>
+        <LinearLayout
+            android:layout_marginTop="15dp"
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="#7c7c7c"
+            android:orientation="vertical">
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <TextView
+                android:layout_marginTop="20dp"
+                android:id="@+id/hdate1"
+                android:textSize="15dp"
+                android:textColor="#000"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center_horizontal|center_vertical"
+                android:text="شنبه 11/2/99" />
+
+            <LinearLayout
+                android:layout_marginTop="20dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <RelativeLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1">
+
+                    <TextView
+                        android:id="@+id/textView0"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentStart="true"
+                        android:gravity="bottom"
+                        android:textSize="10dp"
+                        android:layout_alignParentTop="true"
+                        android:layout_marginStart="40dp"
+                        android:text="لیوان" />
+
+                    <TextView
+                        android:id="@+id/hwater1"
+                        android:layout_width="wrap_content"
+                        android:layout_marginLeft="10dp"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentTop="true"
+                        android:fontFamily="@font/iransans"
+                        android:textSize="15dp"
+                        android:layout_toEndOf="@+id/textView0"
+                        android:layout_weight="1"
+                        android:text="5" />
+
+                </RelativeLayout>
+
+                <TextView
+                    android:layout_marginRight="40dp"
+                    android:id="@+id/textView00"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="میزان آب مصرفی " />
+
+            </LinearLayout>
+            <LinearLayout
+                android:layout_marginTop="20dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <RelativeLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1">
+
+                    <TextView
+                        android:id="@+id/textView000"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentStart="true"
+                        android:gravity="bottom"
+                        android:textSize="10dp"
+                        android:layout_alignParentTop="true"
+                        android:layout_marginStart="40dp"
+                        android:text="کالری" />
+
+                    <TextView
+                        android:id="@+id/hcolori1"
+                        android:layout_width="wrap_content"
+                        android:layout_marginLeft="10dp"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentTop="true"
+                        android:textSize="15dp"
+                        android:fontFamily="@font/iransans"
+                        android:layout_toEndOf="@+id/textView000"
+                        android:layout_weight="1"
+                        android:text="10000" />
+
+                </RelativeLayout>
+
+                <TextView
+                    android:layout_marginRight="40dp"
+                    android:id="@+id/textViewi7y"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="میزان کالری مصرفی " />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_marginTop="20dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <RelativeLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1">
+
+                    <TextView
+                        android:id="@+id/t0000"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentStart="true"
+                        android:gravity="bottom"
+                        android:textSize="10dp"
+
+                        android:layout_alignParentTop="true"
+                        android:layout_marginStart="40dp"
+                        android:text="کالری" />
+
+                    <TextView
+                        android:id="@+id/hbcolori1"
+                        android:layout_width="wrap_content"
+                        android:layout_marginLeft="10dp"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentTop="true"
+                        android:textSize="15dp"
+                        android:fontFamily="@font/iransans"
+                        android:layout_toEndOf="@+id/t0000"
+                        android:layout_weight="1"
+                        android:text="5" />
+                </RelativeLayout>
+                <TextView
+                    android:layout_marginRight="40dp"
+                    android:id="@+id/tex6"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="میزان کالری سوزانده شده " />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_marginTop="20dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <RelativeLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1">
+
+                    <TextView
+                        android:id="@+id/t00"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentStart="true"
+                        android:gravity="bottom"
+                        android:textSize="10dp"
+
+                        android:layout_alignParentTop="true"
+                        android:layout_marginStart="40dp"
+                        android:text="ساعت" />
+
+                    <TextView
+                        android:id="@+id/hsleep1"
+                        android:layout_width="wrap_content"
+                        android:layout_marginLeft="10dp"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentTop="true"
+                        android:textSize="15dp"
+                        android:fontFamily="@font/iransans"
+                        android:layout_toEndOf="@+id/t00"
+                        android:layout_weight="1"
+                        android:text="5" />
+                </RelativeLayout>
+                <TextView
+                    android:layout_marginRight="40dp"
+                    android:id="@+id/texw"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="میزان خواب " />
+
+            </LinearLayout>
+        </LinearLayout>
+        <LinearLayout
+            android:layout_marginTop="15dp"
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="#7c7c7c"
+            android:orientation="vertical">
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <TextView
+                android:textSize="15dp"
+                android:textColor="#000"
+                android:layout_marginTop="20dp"
+                android:id="@+id/hdate2"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center_horizontal|center_vertical"
+                android:text="شنبه 11/2/99" />
+
+            <LinearLayout
+                android:layout_marginTop="20dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <RelativeLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1">
+
+                    <TextView
+                        android:id="@+id/txtView0"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentStart="true"
+                        android:gravity="bottom"
+                        android:textSize="10dp"
+                        android:layout_alignParentTop="true"
+                        android:layout_marginStart="40dp"
+                        android:text="لیوان" />
+
+                    <TextView
+                        android:id="@+id/hwater2"
+                        android:layout_width="wrap_content"
+                        android:layout_marginLeft="10dp"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentTop="true"
+                        android:fontFamily="@font/iransans"
+                        android:textSize="15dp"
+                        android:layout_toEndOf="@+id/txtView0"
+                        android:layout_weight="1"
+                        android:text="5" />
+
+                </RelativeLayout>
+
+                <TextView
+                    android:layout_marginRight="40dp"
+                    android:id="@+id/textViw00"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="میزان آب مصرفی " />
+
+            </LinearLayout>
+            <LinearLayout
+                android:layout_marginTop="20dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <RelativeLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1">
+
+                    <TextView
+                        android:id="@+id/textew000"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentStart="true"
+                        android:gravity="bottom"
+                        android:textSize="10dp"
+                        android:layout_alignParentTop="true"
+                        android:layout_marginStart="40dp"
+                        android:text="کالری" />
+
+                    <TextView
+                        android:id="@+id/hcolori2"
+                        android:layout_width="wrap_content"
+                        android:layout_marginLeft="10dp"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentTop="true"
+                        android:textSize="15dp"
+                        android:fontFamily="@font/iransans"
+                        android:layout_toEndOf="@+id/textew000"
+                        android:layout_weight="1"
+                        android:text="10000" />
+
+                </RelativeLayout>
+
+                <TextView
+                    android:layout_marginRight="40dp"
+                    android:id="@+id/texti7y"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="میزان کالری مصرفی " />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_marginTop="20dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <RelativeLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1">
+
+                    <TextView
+                        android:id="@+id/t000"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentStart="true"
+                        android:gravity="bottom"
+                        android:textSize="10dp"
+
+                        android:layout_alignParentTop="true"
+                        android:layout_marginStart="40dp"
+                        android:text="کالری" />
+
+                    <TextView
+                        android:id="@+id/hbcolori2"
+                        android:layout_width="wrap_content"
+                        android:layout_marginLeft="10dp"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentTop="true"
+                        android:textSize="15dp"
+                        android:fontFamily="@font/iransans"
+                        android:layout_toEndOf="@+id/t000"
+                        android:layout_weight="1"
+                        android:text="5" />
+                </RelativeLayout>
+                <TextView
+                    android:layout_marginRight="40dp"
+                    android:id="@+id/te6"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="میزان کالری سوزانده شده " />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_marginTop="20dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <RelativeLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1">
+
+                    <TextView
+                        android:id="@+id/t0"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentStart="true"
+                        android:gravity="bottom"
+                        android:textSize="10dp"
+
+                        android:layout_alignParentTop="true"
+                        android:layout_marginStart="40dp"
+                        android:text="ساعت" />
+
+                    <TextView
+                        android:id="@+id/hsleep2"
+                        android:layout_width="wrap_content"
+                        android:layout_marginLeft="10dp"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentTop="true"
+                        android:textSize="15dp"
+                        android:fontFamily="@font/iransans"
+                        android:layout_toEndOf="@+id/t0"
+                        android:layout_weight="1"
+                        android:text="5" />
+                </RelativeLayout>
+                <TextView
+                    android:layout_marginRight="40dp"
+                    android:id="@+id/txw"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="میزان خواب " />
+
+            </LinearLayout>
+        </LinearLayout>
+
+    </TableLayout>
+    </ScrollView>
+
+
+</RelativeLayout>

@@ -3,9 +3,9 @@
     package="com.google.se">
 
     <uses-permission android:name="android.permission.INTERNET" />
-    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"></uses-permission>
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
-    <uses-permission android:name="android.permission.VIBRATE" />
+    <uses-permission android:name="android.permission.VIBRATE"></uses-permission>
 
     <uses-feature
         android:name="android.hardware.sensor.stepcounter"
@@ -15,6 +15,7 @@
     <uses-permission android:name="android.permission.BODY_SENSORS" />
 
     <application
+
         android:allowBackup="true"
         android:hardwareAccelerated="false"
         android:icon="@mipmap/ic_launcher"
@@ -23,7 +24,6 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".Settings"></activity>
         <activity android:name=".FoodInfo" />
         <activity android:name=".FoodPage" />
         <activity android:name=".loginPage" />
@@ -34,6 +34,7 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity android:name=".Settings"></activity>
         <activity android:name=".SignupPage" />
         <activity android:name=".StartActivity" />
         <activity android:name=".InformationPage" />
@@ -43,27 +44,25 @@
         <service android:name=".StepsService" />
 
         <activity android:name=".EditProfile" />
-        <activity android:name=".AddNewFood" />
-
-        <receiver android:name=".MyNotificationPublisher" />
+        <activity android:name=".HistoryPage"></activity>
+        <activity android:name=".AddNewFood"></activity>
+        <receiver android:name=".MyNotificationPublisher"></receiver>
         <receiver android:name=".ScreenTimeBroadcastReceiver">
             <intent-filter>
                 <action android:name="android.intent.action.BOOT_COMPLETED" />
             </intent-filter>
             <intent-filter>
                 <action android:name="android.intent.action.PACKAGE_REPLACED" />
-
-                <data
-                    android:path="com.application.test"
-                    android:scheme="package" />
+                <data android:scheme="package" android:path="com.application.test" />
             </intent-filter>
         </receiver>
-
-        <service
-            android:name=".SleepTrackingService"
+        <service android:name=".SleepTrackingService"
+            android:process=":ff"
             android:enabled="true"
-            android:exported="true"
-            android:process=":ff" />
+            android:exported="true" />
+
+
+
     </application>
 
 </manifest>

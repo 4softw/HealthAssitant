@@ -74,7 +74,6 @@ public class loginPage extends AppCompatActivity {
         ok.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
                 try {
                     AddToServer();
                     if (be==true){
@@ -83,9 +82,7 @@ public class loginPage extends AppCompatActivity {
                         signup.setPassword(pass1.getText().toString().trim());
                         MainActivity.person.add(signup);
                         signUpDBHelper.Insert(signup);
-                     startActivity(new Intent(loginPage.this,HomePage.class));
-                 //       Toast.makeText(loginPage.this, "Go To Home", Toast.LENGTH_SHORT).show();
-
+                        startActivity(new Intent(loginPage.this,HomePage.class));
                         finish();
                     }
                 }catch (UnsupportedEncodingException e){
@@ -93,7 +90,6 @@ public class loginPage extends AppCompatActivity {
                 }
                 ID=email.getText().toString().trim();
             }
-
         });
 
         signup.setOnClickListener(new View.OnClickListener() {
@@ -107,7 +103,6 @@ public class loginPage extends AppCompatActivity {
         google.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-             //   mGoogleSignInClient.getSignInIntent();
                 mGoogleSignInClient.signOut();
                 Login();
             }
@@ -153,8 +148,8 @@ public class loginPage extends AppCompatActivity {
                     signup.setPassword(account.getEmail());
                     MainActivity.person.add(signup);
                     signUpDBHelper.Insert(signup);
-                    finish();
                     startActivity(new Intent(loginPage.this,HomePage.class));
+                    finish();
                 }
             }
             if (be==false){
@@ -162,7 +157,7 @@ public class loginPage extends AppCompatActivity {
             }
 
         } catch (ApiException e) {
-            Toast.makeText(this, "اینترنت متصل نیست.", Toast.LENGTH_SHORT).show();
+            Toast.makeText(this, "اینترنت متصل نیست", Toast.LENGTH_SHORT).show();
 
         }
     }
@@ -233,12 +228,12 @@ public class loginPage extends AppCompatActivity {
 
                 for (int i=0;i<MainActivity.peaple.size();i++){
                     if (email.getText().toString().equals(MainActivity.peaple.get(i).getId())){
-                        startActivity(new Intent(loginPage.this,HomePage.class));
                         Signup signup=new Signup();
                         signup.setId(email.getText().toString().trim());
                         signup.setPassword(pass1.getText().toString().trim());
                         MainActivity.person.add(signup);
                         be=true;
+              //          startActivity(new Intent(loginPage.this,HomePage.class));
                   //      finish();
                     }
                 }
