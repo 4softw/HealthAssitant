@@ -5,6 +5,7 @@ import android.app.Service;
 import android.content.Context;
 import android.content.Intent;
 import android.content.IntentFilter;
+import android.os.Build;
 import android.os.Bundle;
 import android.os.CountDownTimer;
 import android.os.IBinder;
@@ -30,7 +31,7 @@ public class SleepTrackingService extends Service {
     @Override
     public int onStartCommand(Intent intent, int flags, int startId) {
 
-        startService(new Intent(this,SleepTrackingService.class));
+        startForegroundService(new Intent(this,SleepTrackingService.class));
         lockFilter.addAction(Intent.ACTION_SCREEN_ON);
         lockFilter.addAction(Intent.ACTION_SCREEN_OFF);
 //        LocalBroadcastManager.getInstance(this).registerReceiver(broadcastReceiver, lockFilter);

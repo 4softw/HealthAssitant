@@ -7,6 +7,7 @@ import android.app.Dialog;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.content.IntentFilter;
 import android.content.pm.PackageManager;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
@@ -68,7 +69,7 @@ import java.util.Map;
 public class HomePage extends AppCompatActivity implements SensorEventListener,NavigationView.OnNavigationItemSelectedListener {
 
     static TextView hi, Maincolori, date, showrate,useColori,burncolori;
-    com.sasank.roundedhorizontalprogress.RoundedHorizontalProgressBar burndprogressBar;
+    com.sasank.roundedhorizontalprogress.RoundedHorizontalProgressBar burndprogressBar,burndprogressBar2;
     boolean b=false;
     static TextView water,point;
     Dialog dialog;
@@ -93,12 +94,23 @@ public class HomePage extends AppCompatActivity implements SensorEventListener,N
     static TextView Sleepe;
     static TextView minutee;
     SleepTrackingService service = new SleepTrackingService();
+    ScreenTimeBroadcastReceiver broadcastReceiver = new ScreenTimeBroadcastReceiver();
+    IntentFilter lockFilter = new IntentFilter();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
 
-        startService(new Intent(this,SleepTrackingService.class));
-        super.onCreate(savedInstanceState);
+//        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
+//            this.startForegroundService(new Intent(this, SleepTrackingService.class));
+//        } else {
+//            this.startService(new Intent(this, SleepTrackingService.class));
+//        }
+//        startService(new Intent(this,SleepTrackingService.class));
+//        startForegroundService(new Intent(this,SleepTrackingService.class));
+        lockFilter.addAction(Intent.ACTION_SCREEN_ON);
+        lockFilter.addAction(Intent.ACTION_SCREEN_OFF);
+//        LocalBroadcastManager.getInstance(this).registerReceiver(broadcastReceiver, lockFilter);
+        registerReceiver(broadcastReceiver, lockFilter);        super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home_page1);
         signUpDBHelper = new SignUpDBHelper(this);
         person = signUpDBHelper.GetInf();
@@ -118,16 +130,13 @@ public class HomePage extends AppCompatActivity implements SensorEventListener,N
             water.setText(String.valueOf(dailyIDataDBHelper.GetWater().get(dailyIDataDBHelper.GetWater().size()-1).getGlass()));
         }
         if (dailyIDataDBHelper.GetSleep().size()==0){
-            //    Toast.makeText(this, ""+dailyIDataDBHelper.GetWater().size(), Toast.LENGTH_SHORT).show();
-            SleepModel sleepModel=new SleepModel();
-            sleepModel.setSleep("0");
-            sleepModel.setSleepM("");
-            sleepModel.setDate(getdate());
-            dailyIDataDBHelper.InsertSleep(sleepModel);
+
         }
         else {
             Sleepe.setText(String.valueOf(dailyIDataDBHelper.GetSleep().get(dailyIDataDBHelper.GetSleep().size()-1).getSleep()));
-            minutee.setText(String.valueOf(dailyIDataDBHelper.GetSleep().get(dailyIDataDBHelper.GetSleep().size()-1).getSleepM()));
+            String tmp = String.valueOf(dailyIDataDBHelper.GetSleep().get(dailyIDataDBHelper.GetSleep().size()-1).getSleepM())+"min";
+            minutee.setText(tmp);
+            burndprogressBar2.setProgress(Integer.parseInt(Sleepe.getText().toString())*60+Integer.parseInt(dailyIDataDBHelper.GetSleep().get(dailyIDataDBHelper.GetSleep().size()-1).getSleepM()));
         }
         if (dailyIDataDBHelper.GetPoints().size()==0){
             PointModel pointModel=new PointModel();
@@ -239,8 +248,10 @@ public class HomePage extends AppCompatActivity implements SensorEventListener,N
         showrate = findViewById(R.id.showrate);
         fab=findViewById(R.id.fab);
         burncolori=findViewById(R.id.burnColori);
-        burndprogressBar=findViewById(R.id.progressBar);
+        burndprogressBar=findViewById(R.id.progressBar2);
+        burndprogressBar2=findViewById(R.id.progressBar);
         burndprogressBar.setMax(5000);
+        burndprogressBar.setMax(8*60);
         searchfood=findViewById(R.id.searchfood);
         waterlayout=findViewById(R.id.waterLayout);
         drawerLayout = findViewById(R.id.drawer_layout);
@@ -307,6 +318,16 @@ public class HomePage extends AppCompatActivity implements SensorEventListener,N
     @Override
     protected void onResume() {
         super.onResume();
+        dailyIDataDBHelper=new DailyIDataDBHelper(this);
+        if (dailyIDataDBHelper.GetSleep().size()==0){
+
+        }
+        else {
+            Sleepe.setText(String.valueOf(dailyIDataDBHelper.GetSleep().get(dailyIDataDBHelper.GetSleep().size()-1).getSleep()));
+            String tmp = String.valueOf(dailyIDataDBHelper.GetSleep().get(dailyIDataDBHelper.GetSleep().size()-1).getSleepM())+"min";
+            minutee.setText(tmp);
+            burndprogressBar2.setProgress(Integer.parseInt(Sleepe.getText().toString())*60+Integer.parseInt(dailyIDataDBHelper.GetSleep().get(dailyIDataDBHelper.GetSleep().size()-1).getSleepM()));
+        }
         useColori.setText(String.valueOf((int)usedColori()));
         Sensor countsteps = sensorManager.getDefaultSensor(Sensor.TYPE_STEP_COUNTER);
         sensorManager.registerListener(this, countsteps,
