@@ -22,6 +22,7 @@ import android.os.Build;
 import android.os.Environment;
 import android.os.PowerManager;
 import android.support.annotation.NonNull;
+import android.support.annotation.RequiresApi;
 import android.support.design.widget.NavigationView;
 import android.support.v4.app.ActivityCompat;
 import android.support.v4.app.FragmentManager;
@@ -97,20 +98,18 @@ public class HomePage extends AppCompatActivity implements SensorEventListener,N
     ScreenTimeBroadcastReceiver broadcastReceiver = new ScreenTimeBroadcastReceiver();
     IntentFilter lockFilter = new IntentFilter();
 
+    @RequiresApi(api = Build.VERSION_CODES.O)
     @Override
     protected void onCreate(Bundle savedInstanceState) {
 
-//        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
-//            this.startForegroundService(new Intent(this, SleepTrackingService.class));
-//        } else {
-//            this.startService(new Intent(this, SleepTrackingService.class));
-//        }
-//        startService(new Intent(this,SleepTrackingService.class));
-//        startForegroundService(new Intent(this,SleepTrackingService.class));
-        lockFilter.addAction(Intent.ACTION_SCREEN_ON);
-        lockFilter.addAction(Intent.ACTION_SCREEN_OFF);
-//        LocalBroadcastManager.getInstance(this).registerReceiver(broadcastReceiver, lockFilter);
-        registerReceiver(broadcastReceiver, lockFilter);        super.onCreate(savedInstanceState);
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
+            this.startForegroundService(new Intent(this, SleepTrackingService.class));
+        } else {
+            this.startService(new Intent(this, SleepTrackingService.class));
+        }
+        startService(new Intent(this,SleepTrackingService.class));
+        startForegroundService(new Intent(this,SleepTrackingService.class));
+       super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home_page1);
         signUpDBHelper = new SignUpDBHelper(this);
         person = signUpDBHelper.GetInf();
