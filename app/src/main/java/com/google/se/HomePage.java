@@ -4,6 +4,7 @@ import android.Manifest;
 import android.app.Activity;
 import android.app.AlertDialog;
 import android.app.IntentService;
+import android.content.BroadcastReceiver;
 import android.content.ComponentName;
 import android.content.Context;
 import android.content.DialogInterface;
@@ -95,11 +96,22 @@ public class HomePage extends AppCompatActivity implements SensorEventListener,N
     static TextView Sleepe;
     static TextView minutee;
     SleepTrackingService service = new SleepTrackingService();
+    private IntentFilter lockFilter;
+    private ScreenTimeBroadcastReceiver broadcastReceiver;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-
-        startService(new Intent(this,SleepTrackingService.class));
+//        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
+//            this.startForegroundService(new Intent(this, SleepTrackingService.class));
+//        } else {
+//            this.startService(new Intent(this, SleepTrackingService.class));
+//        }
+//        startService(new Intent(this,SleepTrackingService.class));
+//        startForegroundService(new Intent(this,SleepTrackingService.class));
+        lockFilter.addAction(Intent.ACTION_SCREEN_ON);
+        lockFilter.addAction(Intent.ACTION_SCREEN_OFF);
+//        LocalBroadcastManager.getInstance(this).registerReceiver(broadcastReceiver, lockFilter);
+        registerReceiver(broadcastReceiver, lockFilter);
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home_page1);
         signUpDBHelper = new SignUpDBHelper(this);
@@ -123,8 +135,9 @@ public class HomePage extends AppCompatActivity implements SensorEventListener,N
         }
         else {
             Sleepe.setText(String.valueOf(dailyIDataDBHelper.GetSleep().get(dailyIDataDBHelper.GetSleep().size()-1).getSleep()));
-            minutee.setText(String.valueOf(dailyIDataDBHelper.GetSleep().get(dailyIDataDBHelper.GetSleep().size()-1).getSleepM()));
-            burndprogressBar2.setProgress(Integer.parseInt(Sleepe.getText().toString())*60+Integer.parseInt(minutee.getText().toString()));
+            String tmp = String.valueOf(dailyIDataDBHelper.GetSleep().get(dailyIDataDBHelper.GetSleep().size()-1).getSleepM())+"min";
+            minutee.setText(tmp);
+            burndprogressBar2.setProgress(Integer.parseInt(Sleepe.getText().toString())*60+Integer.parseInt(dailyIDataDBHelper.GetSleep().get(dailyIDataDBHelper.GetSleep().size()-1).getSleepM()));
         }
         if (dailyIDataDBHelper.GetPoints().size()==0){
             PointModel pointModel=new PointModel();
@@ -307,6 +320,16 @@ public class HomePage extends AppCompatActivity implements SensorEventListener,N
     @Override
     protected void onResume() {
         super.onResume();
+        dailyIDataDBHelper=new DailyIDataDBHelper(this);
+        if (dailyIDataDBHelper.GetSleep().size()==0){
+
+        }
+        else {
+            Sleepe.setText(String.valueOf(dailyIDataDBHelper.GetSleep().get(dailyIDataDBHelper.GetSleep().size()-1).getSleep()));
+            String tmp = String.valueOf(dailyIDataDBHelper.GetSleep().get(dailyIDataDBHelper.GetSleep().size()-1).getSleepM())+"min";
+            minutee.setText(tmp);
+            burndprogressBar2.setProgress(Integer.parseInt(Sleepe.getText().toString())*60+Integer.parseInt(dailyIDataDBHelper.GetSleep().get(dailyIDataDBHelper.GetSleep().size()-1).getSleepM()));
+        }
         useColori.setText(String.valueOf((int)usedColori()));
         Sensor countsteps = sensorManager.getDefaultSensor(Sensor.TYPE_STEP_COUNTER);
         sensorManager.registerListener(this, countsteps,
